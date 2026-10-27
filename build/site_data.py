@@ -22,17 +22,25 @@ PASSAGE = {
     "key": "passage",
     "name": "Le Passage",
     "label": "Le Passage, près d'Agen",
+    "at": "au Passage",
     "near": "près d'Agen",
     "street": "64 allée du Loriot, ZAC de Lacassagne",
     "postcode": "47520",
     "city": "Le Passage",
     "address": "64 allée du Loriot, ZAC de Lacassagne, 47520 Le Passage",
-    "phone": None,  # TODO : à recopier depuis la fiche Google
-    "phone_intl": None,
+    "phone": "05 35 55 92 50",  # carte de visite LP + flyer sept. 2026 ; à confirmer sur la fiche Google
+    "phone_intl": "+33535559250",
     "doctolib": DOCTOLIB_PASSAGE,
     "opc": OPC_PASSAGE,
     "page": "opticien-le-passage/",
     "maps": "https://www.google.com/maps/search/?api=1&query=Lunettes+%26+Co+64+all%C3%A9e+du+Loriot+47520+Le+Passage",
+    "reviews": "https://www.google.com/maps?cid=67469068554064698",  # fiche Google (avis), vérifiée le 27/10/2026
+    "gallery": [
+        ("passage-galerie-1.jpg", "Vue d'ensemble du magasin du Passage, suspensions orange et fauteuils"),
+        ("passage-galerie-2.jpg", "Étagères de montures sur mur bleu, au magasin du Passage"),
+        ("passage-galerie-3.jpg", "Table de conseil sous les suspensions orange, au magasin du Passage"),
+        ("passage-galerie-4.jpg", "Fauteuils et présentoirs de montures, au magasin du Passage"),
+    ],
     "image": "passage-magasin.jpg",
     "image_alt": "Intérieur du magasin Lunettes & Co au Passage, près d'Agen",
     "hours": [
@@ -44,13 +52,15 @@ PASSAGE = {
         ("Samedi", "9h30 – 12h30 · 14h30 – 19h"),
         ("Dimanche", "Fermé"),
     ],
-    "parking": None,  # TODO : à confirmer
+    "parking": "Places devant le magasin, et grand parking du Lidl dans la zone commerciale",
+    "bus": "Le Passage d'Agen est desservi par le réseau Tempo (lignes 5, 6 et 7)",
 }
 
 BIAS = {
     "key": "bias",
     "name": "Bias",
     "label": "Bias, près de Villeneuve-sur-Lot",
+    "at": "à Bias",
     "near": "près de Villeneuve-sur-Lot",
     "street": "Centre commercial Auchan (Ponservat), avenue de Bordeaux",
     "postcode": "47300",
@@ -62,6 +72,12 @@ BIAS = {
     "opc": OPC_BIAS,
     "page": "opticien-bias/",
     "maps": "https://www.google.com/maps/search/?api=1&query=Lunettes+%26+Co+Auchan+Ponservat+47300+Bias",
+    "reviews": "https://www.google.com/maps?cid=4794800154801151129",  # fiche Google (avis), vérifiée le 27/10/2026
+    "gallery": [  # photos provisoires : Karine fournit de nouvelles photos de Bias
+        ("bias-galerie-1.jpg", "Table de conseil au magasin de Bias"),
+        ("bias-galerie-2.jpg", "L'espace de vente du magasin de Bias"),
+        ("bias-galerie-3.jpg", "Présentoirs de montures au magasin de Bias"),
+    ],
     "image": "bias-magasin.jpg",
     "image_alt": "Intérieur du magasin Lunettes & Co à Bias, galerie Auchan Ponservat",
     "hours": [
@@ -73,53 +89,52 @@ BIAS = {
         ("Samedi", "9h – 12h30 · 14h – 19h"),
         ("Dimanche", "Fermé"),
     ],
-    "parking": "Parking du centre commercial Auchan",
+    "parking": "Parking gratuit du centre commercial Auchan ; le magasin est accessible par l'entrée du centre commercial",
 }
 
 STORES = [PASSAGE, BIAS]
 
 PRODUCTS = [
-    ("lunettes-de-vue/", "Lunettes de vue", "Montures, verres unifocaux et progressifs, 100% Santé.", "c-green"),
-    ("lunettes-de-soleil/", "Lunettes de soleil", "À votre vue ou non, clips pour la conduite.", "c-orange"),
+    ("lunettes-de-vue/", "Lunettes de vue", "Verres unifocaux et progressifs, 100% Santé, conseil sur le choix des verres.", "c-green"),
+    ("lunettes-de-soleil/", "Lunettes de soleil", "Avec ou sans correction, et des clips teintés pour la conduite.", "c-orange"),
     ("lunettes-enfants/", "Lunettes enfants", "Pour tous les âges, à essayer avec votre enfant.", "c-coral"),
     ("lentilles-de-contact/", "Lentilles de contact", "Adaptation, renouvellement, produits d'entretien.", "c-blue"),
-    ("lunettes-de-sport/", "Lunettes de sport", "Piscine, vélo, running, tir sportif.", "c-rust"),
-    ("lunettes-sur-mesure/", "Lunettes sur mesure", "Avec Loumy, une monture qui n'existe qu'à vous.", "c-brown"),
-    ("reparation-ajustement-lunettes/", "Réparation et ajustement", "Réglage gratuit, réparation, nettoyage aux ultrasons.", "c-green"),
+    ("lunettes-de-sport/", "Lunettes de sport", "Piscine, vélo, running, tir sportif, à votre vue.", "c-rust"),
+    ("lunettes-sur-mesure/", "Lunettes sur mesure", "Avec Loumy, personnalisez votre monture ou créez votre propre paire.", "c-brown"),
+    ("reparation-ajustement-lunettes/", "Réparation et ajustement", "Réglage, réparations, nettoyage aux ultrasons.", "c-green"),
 ]
 
 # Marques : (nom, précision, magasins, catégories, fabrication française)
 # magasins : "both" | "passage" | "bias" ; catégories : vue, soleil, enfant, sport
 BRANDS = [
-    ("Loumy", "Lunetier né à Montauban · fait main, sur mesure", "both", ["vue", "soleil"], True),
-    ("Tavat", "", "passage", ["vue", "soleil"], False),
-    ("Brett", "", "passage", ["vue", "soleil"], False),
-    ("Tiwi", "", "both", ["vue", "soleil"], False),
+    ("Loumy", "Lunetier de Montauban · montures artisanales, sur mesure", "both", ["vue", "soleil"], True),
+    ("Tavat", "États-Unis · fabriquée en Italie", "passage", ["vue", "soleil"], False),
+    ("Brett", "France", "passage", ["vue", "soleil"], False),
+    ("Tiwi", "Espagne", "both", ["vue", "soleil"], False),
     ("Marlone", "", "passage", ["vue"], True),
     ("Bondet", "", "bias", ["vue"], True),
-    ("Victoire Daqui", "", "bias", ["vue"], True),
+    ("Victoire d'Aqui", "", "bias", ["vue"], True),
     ("Lafont Enfant", "", "passage", ["enfant"], True),
-    ("GIGIstudios", "Anciennement Gigi Barcelona", "bias", ["vue"], False),
-    ("Etnia Barcelona", "", "both", ["vue", "enfant"], False),
-    ("Chroma by Etnia Barcelona", "", "passage", ["vue"], False),
-    ("French Retro", "", "both", ["vue", "soleil", "enfant"], False),
-    ("Matttew", "", "both", ["vue"], False),
-    ("Lool", "", "both", ["vue"], False),
+    ("GIGIstudios", "Anciennement Gigi Barcelona · Espagne", "bias", ["vue"], False),
+    ("Etnia Barcelona", "Espagne", "both", ["vue", "enfant"], False),
+    ("Chroma by Etnia Barcelona", "Espagne", "passage", ["vue"], False),
+    ("French Retro", "France", "both", ["vue", "soleil", "enfant"], False),
+    ("Matttew", "Marque belge · fabriquée en France", "both", ["vue"], True),
+    ("Lool", "Espagne", "both", ["vue"], False),
     ("Vogue", "", "both", ["vue", "soleil"], False),
-    ("Lancel", "", "both", ["vue", "soleil"], False),
+    ("Lancel", "France", "both", ["vue", "soleil"], False),
     ("Ray-Ban", "", "both", ["vue", "soleil", "enfant"], False),
-    ("Vicomte Arthur", "", "both", ["vue"], False),
+    ("Vicomte Arthur", "France", "both", ["vue"], False),
     ("Ruud van Dyke", "", "both", ["vue"], False),
-    ("Osmose Clip", "Clips aimantés à fixer sur la monture", "both", ["vue"], False),
-    ("Ki ET LA", "", "both", ["soleil"], False),
-    ("Chantal Thomass", "", "bias", ["vue"], False),
+    ("Osmose Clip", "France · clips aimantés à fixer sur la monture", "both", ["vue"], False),
+    ("Ki ET LA", "France", "both", ["soleil"], False),
+    ("Chantal Thomass", "France", "bias", ["vue"], False),
     ("Azzaro", "Dont Azzaro Homme", "bias", ["vue", "soleil"], False),
-    ("Entourage of 7", "", "bias", ["vue"], False),
-    ("Bellinger", "", "bias", ["vue"], False),
-    ("Osmose", "", "bias", ["vue"], False),
+    ("Entourage of 7", "États-Unis · fabriquée au Japon", "bias", ["vue"], False),
+    ("Bellinger", "Danemark", "bias", ["vue"], False),
     ("Guess", "", "bias", ["vue", "soleil"], False),
-    ("Minima", "Et Minima Kids", "bias", ["vue", "enfant"], False),
+    ("Minima", "Et Minima Kids · France", "bias", ["vue", "enfant"], False),
     ("Polaroid", "", "bias", ["soleil"], False),
-    ("Eleven Paris", "", "both", ["enfant"], False),
-    ("Demetz", "Lunettes de piscine et équipements de sport à la vue", "both", ["sport"], False),
+    ("Eleven Paris", "France", "both", ["enfant"], False),
+    ("Demetz", "France · lunettes de piscine et équipements de sport à la vue", "both", ["sport"], False),
 ]

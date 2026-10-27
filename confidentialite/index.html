@@ -14,14 +14,13 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=League+Spartan:wght@600;700;800&family=Space+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css?v=3">
 
 </head>
 <body>
 
 <a class="skip" href="#contenu">Aller au contenu</a>
-<div class="draft-bar">Ébauche v1 · textes en cours de validation · site non indexé</div>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="logo" href="../" aria-label="Accueil Lunettes & Co"><svg role="img" aria-label="Lunettes & Co, opticiens" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 625.03 268">
@@ -77,15 +76,34 @@
 
 <section class="page-hero"><div class="wrap prose">
   <h1>Politique de confidentialité</h1>
-  <p>Ce site vitrine ne comporte pas de formulaire et ne collecte pas de données personnelles.</p>
+  <p>Dernière mise à jour : <span class="todo">[date de mise en ligne]</span>.</p>
+  <h2>Qui est responsable de vos données ?</h2>
+  <p>Julien Communal, éditeur du site (coordonnées dans les <a href="/mentions-legales/">mentions légales</a>).
+  Contact : <a href="mailto:bias@lunettesandco.fr">bias@lunettesandco.fr</a>.</p>
+  <h2>Quelles données, pourquoi, combien de temps ?</h2>
+  <p>Ce site ne comporte pas de formulaire. Nous ne recueillons directement que :</p>
+  <ul>
+    <li>les e-mails que vous nous envoyez, pour vous répondre (base légale : votre demande ; conservation :
+    <span class="todo">[durée à définir, par exemple 3 ans après le dernier échange]</span>) ;</li>
+    <li>des statistiques de fréquentation anonymisées, si vous acceptez les cookies de mesure d'audience (voir ci-dessous).</li>
+  </ul>
   <h2>Cookies et mesure d'audience</h2>
-  <p>À ce jour, aucun cookie de mesure d'audience n'est déposé. <span class="todo">Si Google Analytics est ajouté :
-  bannière de consentement et mise à jour de cette page (conformité CNIL à faire valider).</span></p>
+  <p>Un cookie est un petit fichier enregistré sur votre appareil. Nous utilisons Google Analytics pour comprendre
+  comment le site est consulté (pages vues, durée, type d'appareil) et l'améliorer. Ces cookies ne sont déposés
+  qu'avec votre accord, que vous pouvez donner, refuser ou retirer à tout moment depuis le bandeau
+  <span class="todo">[lien « Gérer mes cookies » à créer avec la bannière de consentement]</span>.
+  Refuser n'empêche pas de consulter le site. Durée de vie des cookies : <span class="todo">[à vérifier dans la configuration
+  Google Analytics, 13 mois maximum]</span>. Les données peuvent être traitées par Google, y compris hors de l'Union européenne.</p>
   <h2>Services tiers</h2>
-  <p>Les boutons de rendez-vous ouvrent les sites Doctolib et Opticiens par Conviction, qui traitent vos données selon
-  leurs propres politiques de confidentialité. Les polices de caractères sont chargées depuis Google Fonts.</p>
-  <h2>Contact</h2>
-  <p><span class="todo">Adresse de contact pour exercer vos droits : à fournir.</span></p>
+  <p>Les boutons de rendez-vous et les cartes ouvrent Doctolib, Opticiens par Conviction et Google Maps, qui traitent vos
+  données selon leurs propres politiques de confidentialité.
+  <span class="todo">[Polices Google Fonts : à héberger sur le site pour éviter tout transfert de votre adresse IP à Google, puis supprimer cette phrase.]</span>
+  Le site est hébergé par GitHub, qui enregistre des données techniques de connexion.</p>
+  <h2>Vos droits</h2>
+  <p>Vous pouvez demander l'accès, la rectification ou l'effacement de vos données, vous opposer à leur traitement ou en
+  demander la limitation, en écrivant à <a href="mailto:bias@lunettesandco.fr">bias@lunettesandco.fr</a>.
+  Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL
+  (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
 </div></section>
 
 </main>
@@ -137,7 +155,7 @@
       
       <div>
         <h3>Le Passage, près d'Agen</h3>
-        <p>64 allée du Loriot, ZAC de Lacassagne, 47520 Le Passage<br><span class="todo">Téléphone à compléter</span></p>
+        <p>64 allée du Loriot, ZAC de Lacassagne, 47520 Le Passage<br><a href="tel:+33535559250">05 35 55 92 50</a></p>
         <p class="hours-foot">Lundi : Fermé<br>Mardi : 9h30 – 12h30 · 14h30 – 19h<br>Mercredi : 14h30 – 19h<br>Jeudi : 9h30 – 12h30 · 14h30 – 19h<br>Vendredi : 9h30 – 12h30 · 14h30 – 19h<br>Samedi : 9h30 – 12h30 · 14h30 – 19h<br>Dimanche : Fermé</p>
         <p><a href="../opticien-le-passage/">Voir le magasin</a></p>
       </div>
@@ -153,7 +171,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Lunettes &amp; Co, opticiens · Horaires provisoires, à vérifier sur nos fiches Google</span>
+      <span>© 2026 Lunettes &amp; Co, opticiens indépendants</span>
       <span><a href="../mentions-legales/">Mentions légales</a> · <a href="../confidentialite/">Confidentialité</a></span>
     </div>
   </div>
@@ -183,7 +201,7 @@
       <span class="rdv-step-label" style="display:block;margin-top:1rem">Étape 2 sur 2</span>
       <h2 data-step-title>Choisissez votre magasin</h2>
       <p class="notice" data-type-notice="tele" hidden><strong>Ce n'est pas un service d'urgence : en cas d'urgence, contactez le SAMU au 15.</strong> Réservé aux personnes de 16 ans et plus. La réservation s'ouvre sur Doctolib.</p>
-      <p class="notice" data-type-notice="magasin" hidden>La réservation s'ouvre sur le site de notre réseau, Opticiens par Conviction.</p>
+      <p class="notice" data-type-notice="magasin" hidden>La réservation s'ouvre sur le site de notre prestataire de rendez-vous en ligne.</p>
       <p class="notice" data-type-notice="libre" hidden>Vous pouvez passer sans rendez-vous ; le rendez-vous limite l'attente.</p>
       <div class="choice-list">
         <a class="choice" data-store="passage" href="https://www.opticiensparconviction.fr/votre-opticien-a-le-passage/lunettes-and-co/prise-de-rdv"

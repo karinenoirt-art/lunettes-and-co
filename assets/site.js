@@ -83,4 +83,21 @@
       });
     });
   }
+
+  // Apparition douce des blocs au défilement (sans effet si l'utilisateur limite les animations)
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if ("IntersectionObserver" in window && !calm) {
+    var items = document.querySelectorAll("main section:not(.hero-full) .section-head, main .two-col > *, main .grid > *, main .faq, main .cta-band .wrap > *");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    items.forEach(function (el, i) {
+      el.classList.add("reveal");
+      el.style.transitionDelay = (i % 3) * 90 + "ms";
+      io.observe(el);
+    });
+    document.documentElement.classList.add("reveal-on");
+  }
 })();

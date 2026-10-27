@@ -33,3 +33,12 @@ ils sont réécrits à chaque génération.
 4. Ajouter de vrais avis Google sur l'accueil.
 5. Brancher le domaine : fichier `CNAME` (lunettesandco.fr) + DNS chez Julien.
 6. Passer `DRAFT = False` dans `build/build.py`, retirer le `Disallow` de `robots.txt`, régénérer.
+
+## Avis Google : à faire dans Claude Code (mis à jour le 27/10/2026 : des avis Google existent déjà, voir A-FAIRE-CLAUDE-CODE.md)
+- Le bloc « Ce que disent nos clients » est masqué tant qu'il n'y a pas de vrais avis (décision du 27/10/2026).
+- Quand la collecte (QR code) a produit des avis : remplir le bloc avec uniquement les derniers avis positifs, chacun avec sa source (Google), sa date et le prénom ou l'initiale affichés sur Google.
+- Ne rien inventer, ne rien reformuler, ne pas afficher de note ni de nombre d'avis non vérifiés. Vérifier les conditions de reprise d'avis de la plateforme.
+- Ajouter le balisage correspondant dans le JSON-LD seulement si les avis sont réels et visibles sur la page.
+
+## Liste des modifications à intégrer
+Voir `A-FAIRE-CLAUDE-CODE.md` (note Noota du 27/10/2026 + décisions validées avec Claude).

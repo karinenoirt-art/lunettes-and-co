@@ -35,7 +35,6 @@ def header(p, slug):
     products = "".join(link(h, label) for h, label, _, _ in PRODUCTS)
     return f"""
 <a class="skip" href="#contenu">Aller au contenu</a>
-<div class="draft-bar">Ébauche v1 · textes en cours de validation · site non indexé</div>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="logo" href="{p or './'}" aria-label="Accueil Lunettes & Co">{LOGO_SVG}<span class="logo-sub">opticiens</span></a>
@@ -98,7 +97,7 @@ def footer(p):
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Lunettes &amp; Co, opticiens · Horaires provisoires, à vérifier sur nos fiches Google</span>
+      <span>© 2026 Lunettes &amp; Co, opticiens indépendants</span>
       <span><a href="{p}mentions-legales/">Mentions légales</a> · <a href="{p}confidentialite/">Confidentialité</a></span>
     </div>
   </div>
@@ -137,7 +136,7 @@ def rdv_dialog(p):
       <span class="rdv-step-label" style="display:block;margin-top:1rem">Étape 2 sur 2</span>
       <h2 data-step-title>Choisissez votre magasin</h2>
       <p class="notice" data-type-notice="tele" hidden><strong>Ce n'est pas un service d'urgence : en cas d'urgence, contactez le SAMU au 15.</strong> Réservé aux personnes de 16 ans et plus. La réservation s'ouvre sur Doctolib.</p>
-      <p class="notice" data-type-notice="magasin" hidden>La réservation s'ouvre sur le site de notre réseau, Opticiens par Conviction.</p>
+      <p class="notice" data-type-notice="magasin" hidden>La réservation s'ouvre sur le site de notre prestataire de rendez-vous en ligne.</p>
       <p class="notice" data-type-notice="libre" hidden>Vous pouvez passer sans rendez-vous ; le rendez-vous limite l'attente.</p>
       <div class="choice-list">{stores}
       </div>
@@ -210,8 +209,8 @@ def render(page):
 <link rel="icon" href="{p}assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=League+Spartan:wght@600;700;800&family=Space+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{p}assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{p}assets/style.css?v=3">
 {ld}
 </head>
 <body>
