@@ -20,7 +20,7 @@ DRAFT = True
 
 with open(os.path.join(ROOT, "assets", "logo.svg"), encoding="utf-8") as f:
     LOGO_SVG = re.sub(r"<\?xml[^>]*\?>\s*", "", f.read())
-    LOGO_SVG = re.sub(r"<defs>.*?</defs>", "<style>path{fill:currentColor}</style>", LOGO_SVG, flags=re.S)
+    LOGO_SVG = re.sub(r"<defs>.*?</defs>", "<style>path,rect{fill:currentColor}</style>", LOGO_SVG, flags=re.S)
     LOGO_SVG = LOGO_SVG.replace("<svg ", '<svg role="img" aria-label="Lunettes & Co, opticiens" ', 1)
     LOGO_SVG = re.sub(r'\s(id|data-name)="[^"]*"', "", LOGO_SVG)
 
