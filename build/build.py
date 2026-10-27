@@ -182,11 +182,23 @@ def json_ld_faq(faqs):
     return json.dumps(data, ensure_ascii=False, indent=1)
 
 
+def strip_todos(html):
+    """Retire des pages publiées les passages « à compléter » (<span class="todo">), qui restent dans build/.
+
+    Nettoie aussi ce qu'ils laissent derrière eux : libellé sans valeur (« Téléphone : . »), point orphelin, paragraphe vide.
+    """
+    html = re.sub(r'\s*<span class="todo">.*?</span>', "", html, flags=re.S)
+    html = re.sub(r"\s*(?:Téléphone|Dernière mise à jour|Durée de vie des cookies)\s*:\s*\.", "", html)
+    html = re.sub(r"([.!?])\s*\.(?=\s|<)", r"\1", html)
+    html = re.sub(r"<p>\s*</p>\s*", "", html)
+    return html
+
+
 def render(page):
     slug = page["slug"]
     depth = slug.count("/")
     p = "../" * depth
-    body = page["body"](p)
+    body = strip_todos(page["body"](p))
     robots = '<meta name="robots" content="noindex, nofollow">' if DRAFT else ""
     ld = ""
     if page.get("org_ld"):
