@@ -5,7 +5,7 @@ Tout ce qui est marqué TODO est à confirmer avant la mise en ligne publique.
 """
 
 SITE_NAME = "Lunettes & Co"
-DOMAIN = "https://lunettesandco.fr"  # nom de domaine prévu (géré par Julien)
+DOMAIN = "https://www.lunettesandco.fr"  # adresse principale (DNS chez OVH)
 
 DOCTOLIB_PASSAGE = (
     "https://www.doctolib.fr/magasin-d-optique/le-passage/lunettes-co-teleconsultation-ophtalmologique"

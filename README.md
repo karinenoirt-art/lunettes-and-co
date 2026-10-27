@@ -1,7 +1,7 @@
 # Lunettes & Co, site vitrine
 
 Site statique de Lunettes & Co, opticien indépendant au Passage (près d'Agen) et à Bias (près de Villeneuve-sur-Lot).
-Hébergé sur GitHub Pages. Nom de domaine prévu : lunettesandco.fr.
+Hébergé sur GitHub Pages. Adresse : https://www.lunettesandco.fr
 
 **Statut : ébauche v1 (26/10/2026).** Le site est volontairement non indexé (`noindex` + `robots.txt`) tant que les textes
 ne sont pas validés.
@@ -31,7 +31,7 @@ ils sont réécrits à chaque génération.
 2. Compléter : téléphone du Passage, horaires définitifs (fiches Google), parking du Passage, mentions légales (éditeur, SIRET), e-mail.
 3. Fournir le logo 100% Santé et le logo Doctolib (emplacements en pointillés sur le site).
 4. Ajouter de vrais avis Google sur l'accueil.
-5. Brancher le domaine : fichier `CNAME` (lunettesandco.fr) + DNS chez Julien.
+5. ~~Brancher le domaine~~ : fait (CNAME www.lunettesandco.fr, DNS OVH vers GitHub Pages).
 6. Passer `DRAFT = False` dans `build/build.py`, retirer le `Disallow` de `robots.txt`, régénérer.
 
 ## Avis Google : à faire dans Claude Code (mis à jour le 27/10/2026 : des avis Google existent déjà, voir A-FAIRE-CLAUDE-CODE.md)
