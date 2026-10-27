@@ -32,7 +32,7 @@ def home(p):
       {rdv_buttons(p)}
     </div>
     <div class="hero-media">
-      <img src="{p}assets/img/loumy-orange.jpg" alt="Monture Loumy orange en gros plan, sur le terrazzo du magasin du Passage" width="1800" height="1350">
+      <img src="{p}assets/img/loumy-miroir.jpg" alt="Lunettes de soleil Loumy vertes posées sur leur étui, devant un miroir, au magasin du Passage" width="1800" height="1350">
       <i class="shape eye"></i><i class="shape s2 c-blue"></i><i class="shape s3 c-coral"></i>
     </div>
   </div>
