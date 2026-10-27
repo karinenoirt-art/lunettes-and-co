@@ -77,23 +77,26 @@ strong { font-weight: 600; }
   font-size: .92em; box-decoration-break: clone; -webkit-box-decoration-break: clone;
 }
 
-/* En-tête */
+/* En-tête : bandeau orange de la charte, logo et menu en blanc */
 .site-header {
+  --header-ink: var(--white);  /* couleur du logo et des liens sur l'orange */
   position: sticky; top: 0; z-index: 40;
-  background: rgba(255, 255, 255, .94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
+  background: var(--orange); color: var(--header-ink);
 }
 .header-inner { display: flex; align-items: center; gap: 1.2rem; min-height: 72px; }
 .logo { color: var(--ink); display: inline-flex; flex-direction: column; align-items: center; text-decoration: none; flex: none; }
 .logo:hover { color: var(--ink); }
+.site-header .logo, .site-header .logo:hover { color: var(--header-ink); }
 .logo svg { width: 92px; height: auto; }
 .logo-sub { font: 500 .52rem/1 var(--font-mono); letter-spacing: .42em; text-transform: lowercase; margin-top: .35rem; padding-left: .42em; }
 .nav { margin-left: auto; display: flex; align-items: center; gap: 1.25rem; }
 .nav a, .nav-group > button {
-  color: var(--ink); text-decoration: none; white-space: nowrap;
+  color: var(--header-ink); text-decoration: none; white-space: nowrap;
   font: 500 .86rem/1 var(--font-body);
 }
-.nav a:hover, .nav a[aria-current="page"], .nav-group > button:hover { color: var(--orange); }
+.nav > a:hover, .nav > a[aria-current="page"], .nav-group > button:hover {
+  color: var(--header-ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px;
+}
 .nav-group { position: relative; }
 .nav-group > button {
   background: none; border: 0; cursor: pointer; padding: 0;
@@ -102,15 +105,19 @@ strong { font-weight: 600; }
 .nav-group > button::after { content: ""; width: 6px; height: 6px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-2px); }
 .submenu {
   position: absolute; top: calc(100% + 18px); left: -1rem; min-width: 270px; background: var(--white);
-  border-radius: 14px; box-shadow: 0 18px 40px rgba(29, 29, 27, .14); padding: .5rem; display: none;
+  border-radius: 14px; box-shadow: 0 18px 40px rgba(29, 29, 27, .18); padding: .5rem; display: none;
 }
 .nav-group.open .submenu { display: block; }
-.submenu a { display: block; padding: .6rem .8rem; border-radius: 8px; font-size: .9rem; }
-.submenu a:hover { background: var(--blue-tint); color: var(--ink); }
+.submenu a { display: block; padding: .6rem .8rem; border-radius: 8px; font-size: .9rem; color: var(--ink); }
+.submenu a:hover, .submenu a[aria-current="page"] { background: var(--orange-tint); color: var(--orange); }
 .header-cta { display: flex; gap: .5rem; flex: none; }
 .header-cta .btn { white-space: nowrap; }
+.header-cta .btn-store { background: var(--white); color: var(--orange); }
+.header-cta .btn-store:hover { background: var(--ink); color: var(--white); }
+.header-cta .btn-tele:hover { background: var(--white); color: var(--ink); }
 .menu-toggle { display: none; margin-left: auto; background: none; border: 0; padding: .5rem; cursor: pointer; }
-.menu-toggle span { display: block; width: 26px; height: 2px; background: var(--ink); margin: 6px 0; border-radius: 2px; }
+.menu-toggle span { display: block; width: 26px; height: 2px; background: var(--header-ink); margin: 6px 0; border-radius: 2px; }
+.site-header :focus-visible { outline-color: var(--white); }
 
 /* Boutons */
 .btn {
@@ -349,7 +356,7 @@ a.card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(29, 29,
     background: var(--white); padding: 1rem var(--gutter) 1.5rem; gap: 1rem; border-bottom: 1px solid var(--line);
     max-height: calc(100vh - 72px); overflow: auto;
   }
-  .site-header.open .nav a, .site-header.open .nav-group > button { font-size: 1rem; }
+  .site-header.open .nav a, .site-header.open .nav-group > button { font-size: 1rem; color: var(--ink); }
   .site-header.open .submenu { position: static; display: block; box-shadow: none; background: transparent; padding: .3rem 0 0 .6rem; min-width: 0; }
   .site-header.open .nav-group > button::after { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }

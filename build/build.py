@@ -5,6 +5,7 @@ Les pages sont écrites à la racine du dépôt (index.html, opticien-bias/index
 Les textes viennent de Site-reference/ (fichiers 14 à 32) ; modifier ici puis relancer.
 """
 
+import hashlib
 import json
 import os
 import re
@@ -182,6 +183,12 @@ def json_ld_faq(faqs):
     return json.dumps(data, ensure_ascii=False, indent=1)
 
 
+def asset_version(name):
+    """Empreinte courte du fichier : change à chaque modification, pour que les navigateurs rechargent la nouvelle version."""
+    with open(os.path.join(ROOT, "assets", name), "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()[:8]
+
+
 def strip_todos(html):
     """Retire des pages publiées les passages « à compléter » (<span class="todo">), qui restent dans build/.
 
@@ -222,7 +229,7 @@ def render(page):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{p}assets/style.css?v=3">
+<link rel="stylesheet" href="{p}assets/style.css?v={asset_version("style.css")}">
 {ld}
 </head>
 <body>
@@ -232,7 +239,7 @@ def render(page):
 </main>
 {footer(p)}
 {rdv_dialog(p)}
-<script src="{p}assets/site.js"></script>
+<script src="{p}assets/site.js?v={asset_version("site.js")}"></script>
 </body>
 </html>
 """
