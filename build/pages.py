@@ -1238,7 +1238,7 @@ def mentions(p):
   <span class="todo">[adresse postale et site internet à ajouter dès réception des coordonnées]</span>.</p>
   <h2>Hébergement</h2>
   <p>Le site est hébergé par GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.
-  Téléphone : <span class="todo">[numéro à vérifier sur github.com, rubrique contact]</span>.</p>
+  Téléphone : <a href="tel:+33553401996">05 53 40 19 96</a> (magasin de Bias).</p>
   <h2>Propriété intellectuelle</h2>
   <p>La marque Lunettes &amp; Co appartient à Julien Communal (dépôt effectué auprès de l'INPI). Les photographies du site sont la
   propriété de Karine Noirt. Toute reproduction sans autorisation écrite est interdite.</p>
