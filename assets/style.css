@@ -168,6 +168,7 @@ strong { font-weight: 600; }
 .hero-media img { border-radius: 999px 999px var(--radius) var(--radius); aspect-ratio: 4/5; object-fit: cover; object-position: 50% 60%; width: 100%; position: relative; z-index: 1; }
 .shape { position: absolute; border-radius: 50%; z-index: 2; }
 .hero-media .s1 { width: 30%; aspect-ratio: 1; left: -9%; bottom: 10%; border: 7px solid var(--white); }
+.hero-media .s1.s1-low { bottom: -8%; }
 .hero-media .s2 { width: 18%; aspect-ratio: 1; right: -5%; top: 8%; }
 .hero-media .s3 { width: 16%; aspect-ratio: 2/1; border-radius: 0 0 999px 999px; right: 12%; bottom: -3%; }
 /* Pastille « œil » du motif de la charte */

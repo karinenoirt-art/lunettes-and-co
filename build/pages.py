@@ -826,7 +826,7 @@ def sur_mesure(p):
     ]
     return f"""
 {page_hero(p, "Lunettes personnalisées", "Lunettes personnalisées avec Loumy : une monture à vos couleurs", intro,
-           "loumy.jpg", "Monture Loumy bleue et écaille, fabriquée à Montauban", buttons, ("c-brown", "c-coral"))}
+           "loumy-espace.jpg", "Monture Loumy Espace noire aux branches orange, posée sur un présentoir devant un mur en terrazzo", buttons, ("c-brown s1-low", "c-coral"))}
 
 <section class="bg-white">
   <div class="wrap">
