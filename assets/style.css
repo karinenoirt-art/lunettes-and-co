@@ -148,6 +148,9 @@ strong { font-weight: 600; }
 .btn .ic { width: 16px; height: 16px; flex: none; }
 .notice { font-size: .82rem; color: var(--muted); max-width: 62ch; line-height: 1.6; }
 .notice strong { color: var(--ink); }
+.btn-row-tele { margin-bottom: .5rem; }
+.notice-tele { margin: 0; font-size: .74rem; }
+.btn-row-stores { margin-top: 1rem; }
 
 /* Héros de l'accueil : texte à gauche, gros plan Loumy dans une arche à droite */
 .hero-home { padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 6vw, 5.5rem); position: relative; overflow: hidden; }

@@ -13,16 +13,21 @@ def ext(href, label, cls):
 
 
 def rdv_buttons(p, notice=True):
-    """Bouton principal téléconsultation (choix du magasin) + rendez-vous en magasin par magasin."""
-    html = f"""
-<div class="btn-row">
-  <a class="btn btn-tele" href="{p}teleconsultation-ophtalmologie/" data-open-rdv="tele">Téléconsultation d'ophtalmologie : prendre rendez-vous</a>
-  {ext(PASSAGE['opc'], 'Rendez-vous en magasin : Le Passage', 'btn-store')}
-  {ext(BIAS['opc'], 'Rendez-vous en magasin : Bias', 'btn-store')}
+    """Bouton principal téléconsultation (choix du magasin), sa mention juste en dessous,
+    puis les rendez-vous en magasin par magasin."""
+    tele = f'<a class="btn btn-tele" href="{p}teleconsultation-ophtalmologie/" data-open-rdv="tele">Téléconsultation d\'ophtalmologie : prendre rendez-vous</a>'
+    stores = (f"{ext(PASSAGE['opc'], 'Rendez-vous en magasin : Le Passage', 'btn-store')}\n"
+              f"  {ext(BIAS['opc'], 'Rendez-vous en magasin : Bias', 'btn-store')}")
+    if not notice:
+        return f'\n<div class="btn-row">\n  {tele}\n  {stores}\n</div>'
+    return f"""
+<div class="btn-row btn-row-tele">
+  {tele}
+</div>
+<p class="notice notice-tele">{NOTICE_TELE}</p>
+<div class="btn-row btn-row-stores">
+  {stores}
 </div>"""
-    if notice:
-        html += f'<p class="notice">{NOTICE_TELE}</p>'
-    return html
 
 
 def store_buttons(store):
