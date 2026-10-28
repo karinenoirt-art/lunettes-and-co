@@ -187,7 +187,7 @@ def store_page(store):
         <li><a href="{p}lunettes-de-vue/">Lunettes de vue</a>, <a href="{p}lunettes-de-soleil/">lunettes de soleil</a> et <a href="{p}lunettes-enfants/">lunettes pour enfants</a>.</li>
         <li><a href="{p}lentilles-de-contact/">Lentilles de contact</a>, avec leurs produits d'entretien.</li>
         <li><a href="{p}lunettes-de-sport/">Lunettes de sport</a> (piscine, vélo, running, tir sportif) : Julien pratique lui-même le tir en compétition.</li>
-        <li><a href="{p}lunettes-sur-mesure/">Lunettes sur mesure</a>.</li>
+        <li><a href="{p}lunettes-personnalisees/">Lunettes personnalisées</a>.</li>
         <li><a href="{p}reparation-ajustement-lunettes/">Réparation et ajustement</a> de vos montures.</li>
         <li>Téléconsultation d'ophtalmologie augmentée en magasin, <a href="{p}teleconsultation-ophtalmologie/">sur rendez-vous</a>.</li>
         <li>Facilités de paiement : jusqu'à 4 fois.</li>"""
@@ -222,7 +222,7 @@ def store_page(store):
         <li><a href="{p}lunettes-de-vue/">Lunettes de vue</a>, <a href="{p}lunettes-de-soleil/">de soleil</a> et <a href="{p}lunettes-enfants/">pour enfants</a>.</li>
         <li><a href="{p}lentilles-de-contact/">Lentilles de contact</a> et produits d'entretien.</li>
         <li><a href="{p}lunettes-de-sport/">Lunettes de sport</a> : piscine, vélo, running, tir sportif (Julien est lui-même tireur de compétition).</li>
-        <li><a href="{p}lunettes-sur-mesure/">Lunettes sur mesure</a>.</li>
+        <li><a href="{p}lunettes-personnalisees/">Lunettes personnalisées</a>.</li>
         <li><a href="{p}reparation-ajustement-lunettes/">Réparation et ajustement</a> de vos lunettes.</li>
         <li><a href="{p}teleconsultation-ophtalmologie/">Téléconsultation d'ophtalmologie augmentée</a> en magasin, sur rendez-vous.</li>
         <li>Paiement en plusieurs fois, jusqu'à 4 fois.</li>"""
@@ -489,7 +489,7 @@ def lunettes_vue(p):
     <div class="grid grid-4">
       <a class="card" href="{p}lunettes-de-soleil/"><i class="dot c-orange"></i><h3>Au volant</h3><p>Clips teintés à fixer sur votre monture.</p></a>
       <a class="card" href="{p}lunettes-de-sport/"><i class="dot c-rust"></i><h3>Pour le sport</h3><p>Piscine, vélo, running, tir sportif.</p></a>
-      <a class="card" href="{p}lunettes-sur-mesure/"><i class="dot c-brown"></i><h3>Sur mesure</h3><p>Une monture adaptée à vos besoins.</p></a>
+      <a class="card" href="{p}lunettes-personnalisees/"><i class="dot c-brown"></i><h3>Personnalisation</h3><p>Une monture à vos couleurs.</p></a>
       <a class="card" href="{p}lunettes-enfants/"><i class="dot c-coral"></i><h3>Enfants et ados</h3><p>Des montures pour tous les âges.</p></a>
     </div>
     <p style="margin-top:1.2rem">Une seule paire pour deux usages ? Les clips aimantés Osmose Clip se fixent sur la monture (dans les deux magasins).</p>
@@ -804,43 +804,28 @@ def sport(p):
 """
 
 
-# ---------------------------------------------------------------- Sur mesure
+# ---------------------------------------------------------------- Personnalisation (Loumy)
 def sur_mesure(p):
-    intro = """<p class="lead">Avec Loumy, lunetier de Montauban et partenaire de nos magasins, vous pouvez faire réaliser des lunettes
-    sur mesure : une monture pensée pour votre visage, vos goûts et votre usage. Du simple changement de couleur d'une monture
-    existante jusqu'à la création de votre propre paire de lunettes.</p>"""
+    intro = """<p class="lead">Avec Loumy, lunetier de Montauban et partenaire de nos magasins, vous avez la possibilité de personnaliser
+    votre monture : couleurs, effets de matière, choix des branches. Une monture unique, à votre image.</p>"""
     buttons = f"""<div class="btn-row">{ext(PASSAGE['opc'], 'Rendez-vous en magasin : Le Passage', 'btn-store')}
     {ext(BIAS['opc'], 'Rendez-vous en magasin : Bias', 'btn-store')}</div>"""
     mfaq = [
-        ("Que veut dire « lunettes sur mesure » chez vous ?",
-         "Personnaliser une monture Loumy existante (couleurs, taille, nez des montures plastiques) jusqu'à une monture "
-         "entièrement sur mesure, avec des formes et des couleurs spécifiques."),
-        ("Qui fabrique les montures sur mesure ?", "Loumy, une marque née à Montauban, créée par Dominique et Aurore Basso."),
-        ("Combien de temps faut-il attendre ?", "Environ 6 semaines (délai indicatif) pour la fabrication d'une monture sur mesure."),
-        ("Combien ça coûte ?", "Cela dépend de ce que vous choisissez : un devis gratuit vous est remis en magasin avant tout achat."),
-        ("Le sur mesure est-il disponible dans les deux magasins ?", "Oui, au Passage et à Bias."),
-        ("Puis-je faire du sur mesure avec ma correction ?", "Oui, tous les types de verres sont compatibles avec une monture Loumy sur mesure."),
+        ("Que veut dire « personnaliser » une monture ?",
+         "Choisir les couleurs, les effets de matière et les branches d'une monture Loumy."),
+        ("Qui fabrique les montures ?", "Loumy, une marque née à Montauban, créée par Dominique et Aurore Basso."),
+        ("La personnalisation est-elle disponible dans les deux magasins ?", "Oui, au Passage et à Bias."),
+        ("Puis-je personnaliser une monture avec ma correction ?", "Oui, tous les types de verres sont compatibles."),
     ]
     return f"""
-{page_hero(p, "Lunettes sur mesure", "Lunettes sur mesure avec Loumy : personnalisez votre monture ou créez votre propre paire", intro,
+{page_hero(p, "Lunettes personnalisées", "Lunettes personnalisées avec Loumy : une monture à vos couleurs", intro,
            "loumy.jpg", "Monture Loumy bleue et écaille, fabriquée à Montauban", buttons, ("c-brown", "c-coral"))}
 
 <section class="bg-white">
-  <div class="wrap two-col" style="align-items:start">
-    <div>
-      <h2>Le sur mesure, comment ça marche ?</h2>
-      <p>Avec Loumy, nous pouvons personnaliser une monture existante : changer la couleur des branches, la couleur de la face,
-      l'ajuster à la taille d'un grand visage, ou retravailler le nez des montures plastiques. Nous pouvons aller jusqu'à la
-      création de votre propre paire, avec des formes et des couleurs spécifiques. Cela peut aussi aider les personnes qui
-      ne rentrent pas dans les tailles standards.</p>
-    </div>
-    <ol class="steps">
-      <li>Vous venez en magasin : nous écoutons votre besoin et vos envies.</li>
-      <li>Nous choisissons ensemble ce que nous personnalisons (couleurs, taille, nez…).</li>
-      <li>Pour créer votre propre paire, nous relevons les mesures de votre visage sur photo, et Julien échange avec Loumy pour définir ce qui est possible.</li>
-      <li>La monture est fabriquée : comptez environ 6 semaines (délai indicatif).</li>
-      <li>Nous vous la remettons, nous l'ajustons à votre visage, et nous la réajustons quand vous voulez.</li>
-    </ol>
+  <div class="wrap">
+    <h2>Personnaliser sa monture</h2>
+    <p>Tous les modèles Loumy se prêtent à la personnalisation. Vous choisissez les coloris de la face (unis, effets et motifs,
+    translucides, associations de couleurs) et les branches, en acétate ou en métal. Votre opticien vous conseille en magasin.</p>
   </div>
 </section>
 
@@ -856,19 +841,16 @@ def sur_mesure(p):
 </section>
 
 <section>
-  <div class="wrap grid grid-2">
+  <div class="wrap">
     <div class="card"><i class="dot c-green"></i><h3>Pour qui ? Pour quels usages ?</h3>
-      <p>Le sur mesure Loumy concerne les lunettes de vue pour adultes, avec tous les types de verres, dans nos deux magasins.
+      <p>La personnalisation Loumy concerne les lunettes de vue pour adultes, avec tous les types de verres, dans nos deux magasins.
       Voir <a href="{p}lunettes-de-vue/">Lunettes de vue</a>.</p></div>
-    <div class="card"><i class="dot c-blue"></i><h3>Prix et prise en charge</h3>
-      <p>Le sur mesure se chiffre sur devis. Un devis détaillé gratuit vous est remis avant tout achat.
-      Paiement en plusieurs fois, jusqu'à 4 fois.</p></div>
   </div>
 </section>
 
 {where(p)}
 {faq_section(p, mfaq)}
-{cta_end(p, "Envie d'une monture pensée pour vous ?", "Prenez rendez-vous au Passage ou à Bias.")}
+{cta_end(p, "Envie d'une monture à votre image ?", "Prenez rendez-vous au Passage ou à Bias.")}
 """
 
 
@@ -1187,9 +1169,9 @@ FAQ_GROUPS = [
         ("Quelle différence entre un clip solaire et un clip pour la conduite de nuit ?",
          "Le clip solaire (teinte de catégorie 3, polarisant) se porte de jour et ne se porte pas la nuit. Le clip pour la conduite "
          "de nuit, à teinte jaune, s'utilise la nuit ou en lumière faible. L'effet varie selon les personnes : testez-les avec votre opticien."),
-        ("Que veut dire « lunettes sur mesure » ?",
-         "Avec Loumy, nous pouvons personnaliser une monture existante ou aller jusqu'à une monture entièrement conçue pour vous, "
-         "à partir des mesures de votre visage. Délai indicatif : environ 6 semaines. Devis gratuit en magasin."),
+        ("Que veut dire « personnaliser » une monture ?",
+         "Avec Loumy, vous pouvez choisir les couleurs, les effets de matière et les branches d'une monture existante. "
+         "Votre opticien vous conseille en magasin."),
     ]),
     ("Lentilles de contact", [
         ("Faut-il une ordonnance pour acheter des lentilles de contact ?", "Oui, les lentilles de contact sont délivrées sur ordonnance."),
@@ -1330,8 +1312,8 @@ PAGES = [
     {"slug": "lunettes-de-sport/", "title": "Lunettes de sport à la vue, tir sportif | Lunettes & Co",
      "description": "Lunettes de sport à votre vue : piscine, vélo, running, et tir sportif avec Julien, tireur de compétition.",
      "body": sport},
-    {"slug": "lunettes-sur-mesure/", "title": "Lunettes sur mesure avec Loumy | Lunettes & Co",
-     "description": "Lunettes sur mesure avec Loumy, lunetier de Montauban : personnalisation ou monture entièrement conçue pour vous.",
+    {"slug": "lunettes-personnalisees/", "title": "Lunettes personnalisées avec Loumy | Lunettes & Co",
+     "description": "Personnalisez votre monture Loumy, lunetier de Montauban : couleurs, matières, branches. Au Passage et à Bias, avec le conseil de votre opticien.",
      "body": sur_mesure},
     {"slug": "reparation-ajustement-lunettes/", "title": "Réparation et réglage de lunettes | Lunettes & Co",
      "description": "Réglage, réparation, nettoyage aux ultrasons et changement de verres, au Passage et à Bias.",

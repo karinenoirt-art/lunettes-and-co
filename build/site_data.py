@@ -100,14 +100,14 @@ PRODUCTS = [
     ("lunettes-enfants/", "Lunettes enfants", "Pour tous les âges, à essayer avec votre enfant.", "c-coral"),
     ("lentilles-de-contact/", "Lentilles de contact", "Adaptation, renouvellement, produits d'entretien.", "c-blue"),
     ("lunettes-de-sport/", "Lunettes de sport", "Piscine, vélo, running, tir sportif, à votre vue.", "c-rust"),
-    ("lunettes-sur-mesure/", "Lunettes sur mesure", "Avec Loumy, personnalisez votre monture ou créez votre propre paire.", "c-brown"),
+    ("lunettes-personnalisees/", "Lunettes personnalisées", "Avec Loumy, personnalisez votre monture à vos couleurs.", "c-brown"),
     ("reparation-ajustement-lunettes/", "Réparation et ajustement", "Réglage, réparations, nettoyage aux ultrasons.", "c-green"),
 ]
 
 # Marques : (nom, précision, magasins, catégories, fabrication française)
 # magasins : "both" | "passage" | "bias" ; catégories : vue, soleil, enfant, sport
 BRANDS = [
-    ("Loumy", "Lunetier de Montauban · montures artisanales, sur mesure", "both", ["vue", "soleil"], True),
+    ("Loumy", "Lunetier de Montauban · montures artisanales, personnalisables", "both", ["vue", "soleil"], True),
     ("Tavat", "États-Unis · fabriquée en Italie", "passage", ["vue", "soleil"], False),
     ("Brett", "France", "passage", ["vue", "soleil"], False),
     ("Tiwi", "Espagne", "both", ["vue", "soleil"], False),
