@@ -161,7 +161,7 @@ BRANDS = [
      "Maison parisienne fondée en 1876, connue pour sa maroquinerie : des lunettes élégantes et féminines.",
      "", "both", ["vue", "soleil"], False),
     ("Ray-Ban", "us", "",
-     "L'Aviator (1937) et la Wayfarer (1952), deux modèles devenus des classiques.",
+     "L'Aviator et la Wayfarer, deux modèles devenus des classiques.",
      "", "both", ["vue", "soleil", "enfant"], False),
     ("Vicomte Arthur", "fr", "",
      "Marque de mode française créée en 2005, qui revendique l'élégance à la française.",
