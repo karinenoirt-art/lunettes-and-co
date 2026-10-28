@@ -1,2 +1,32 @@
+# Robots d'entraînement d'intelligence artificielle : refusés sur tout le site
+# (opposition à la fouille de textes et de données, art. L. 122-5-3 du CPI).
+# À conserver après la mise en ligne publique.
+
+# Meta (Facebook, Instagram, WhatsApp, Meta AI)
+# Ne pas bloquer facebookexternalhit : il sert aux aperçus de liens partagés.
+User-agent: meta-externalagent
+User-agent: meta-externalfetcher
+User-agent: FacebookBot
+# OpenAI
+User-agent: GPTBot
+# Anthropic
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+# Google (IA Gemini ; n'affecte pas le référencement Google)
+User-agent: Google-Extended
+# Apple (IA ; n'affecte pas Siri ni Spotlight)
+User-agent: Applebot-Extended
+# Autres collecteurs pour l'entraînement d'IA
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: Amazonbot
+User-agent: cohere-ai
+User-agent: cohere-training-data-crawler
+User-agent: Diffbot
+User-agent: omgili
+User-agent: Timpibot
+Disallow: /
+
+# Ébauche non indexée : bloc à retirer à la mise en ligne publique.
 User-agent: *
 Disallow: /

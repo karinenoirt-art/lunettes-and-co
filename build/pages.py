@@ -1263,6 +1263,12 @@ def mentions(p):
   <h2>Propriété intellectuelle</h2>
   <p>La marque Lunettes &amp; Co appartient à Julien Communal (dépôt effectué auprès de l'INPI). La charte graphique et les
   photographies du site sont la propriété de Karine Noirt. Toute reproduction sans autorisation écrite est interdite.</p>
+  <h2>Intelligence artificielle et fouille de données</h2>
+  <p>En application de l'article L. 122-5-3 du Code de la propriété intellectuelle, les titulaires des droits s'opposent
+  à toute fouille de textes et de données sur les contenus de ce site (textes, photographies, charte graphique), en
+  particulier pour entraîner ou alimenter des systèmes d'intelligence artificielle, quel que soit leur éditeur (Meta,
+  OpenAI, Google, etc.). Cette opposition est aussi exprimée par des procédés lisibles par machine : fichier
+  <a href="../robots.txt">robots.txt</a> et protocole TDMRep. Toute utilisation à ces fins nécessite une autorisation écrite préalable.</p>
   <h2>Prise de rendez-vous</h2>
   <p>Les prises de rendez-vous sont assurées par des services tiers : Doctolib (téléconsultation d'ophtalmologie) et
   Opticiens par Conviction (rendez-vous en magasin), selon leurs propres conditions.</p>

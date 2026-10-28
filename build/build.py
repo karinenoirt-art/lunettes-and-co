@@ -240,6 +240,7 @@ def render(page):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{page['title']}</title>
 <meta name="description" content="{page['description']}">
+<meta name="tdm-reservation" content="1">
 {robots}
 <link rel="canonical" href="{DOMAIN}/{slug}">
 <meta property="og:title" content="{page['title']}">

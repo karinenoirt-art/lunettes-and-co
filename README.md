@@ -32,7 +32,7 @@ ils sont réécrits à chaque génération.
 3. Fournir le logo 100% Santé et le logo Doctolib (emplacements en pointillés sur le site).
 4. Ajouter de vrais avis Google sur l'accueil.
 5. ~~Brancher le domaine~~ : fait (CNAME www.lunettesandco.fr, DNS OVH vers GitHub Pages).
-6. Passer `DRAFT = False` dans `build/build.py`, retirer le `Disallow` de `robots.txt`, régénérer.
+6. Passer `DRAFT = False` dans `build/build.py`, retirer le bloc `User-agent: *` de `robots.txt` (garder le bloc des robots d'IA), régénérer.
 
 ## Avis Google : à faire dans Claude Code (mis à jour le 27/10/2026 : des avis Google existent déjà, voir A-FAIRE-CLAUDE-CODE.md)
 - Le bloc « Ce que disent nos clients » est masqué tant qu'il n'y a pas de vrais avis (décision du 27/10/2026).
