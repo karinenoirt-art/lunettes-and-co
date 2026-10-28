@@ -179,7 +179,7 @@ def store_page(store):
             brands_p = f"""Vous trouverez notamment Ray-Ban, Lancel, Tiwi, GIGIstudios, Azzaro, Guess et Chantal Thomass.
             <a href="{p}marques/">Toutes nos marques</a>."""
             craft_title = "Artisanales, fabriquées en France"
-            craft = """À Bias, nous proposons Loumy, fabriquée à Montauban, et Victoire d'Aqui, fabriquée au Pays Basque : des
+            craft = """À Bias, nous proposons Loumy, fabriquée à Montauban, et Victoire d'Aqui, fabriquée à Hossegor, dans les Landes : des
             montures artisanales. Bondet est elle aussi fabriquée en France."""
             sante_p = """Le magasin de Bias propose aussi le 100% Santé, pour tous les âges : monture et verres sans reste à charge
             avec une complémentaire santé responsable ou la Complémentaire santé solidaire. Le devis est gratuit."""
@@ -462,7 +462,7 @@ def lunettes_vue(p):
       <p>Nos montures démarrent à 100 euros (hors 100% Santé), et les montures 100% Santé sont à 30 euros maximum. Devis gratuit
       en magasin, avec l'offre 100% Santé et l'offre à tarifs libres, pour comparer.</p>
       <h3 style="margin-top:2rem">Pour se faire plaisir : des montures artisanales</h3>
-      <p>Loumy, fabriquée à Montauban, et Victoire d'Aqui, fabriquée au Pays Basque, sont des montures artisanales. Bondet et
+      <p>Loumy, fabriquée à Montauban, et Victoire d'Aqui, fabriquée à Hossegor, dans les Landes, sont des montures artisanales. Bondet et
       Marlone sont elles aussi fabriquées en France. <a href="{p}marques/">Toutes nos marques</a>.</p>
     </div>
   </div>
@@ -927,18 +927,38 @@ def reparation(p):
 
 
 # ---------------------------------------------------------------- Marques
+# Petits drapeaux en SVG : les émojis drapeaux s'affichent en lettres sous Windows.
+# Couleurs en style en ligne, car la feuille de style force fill: currentColor sur les rect.
+FLAGS = {
+    "fr": ("France", '<rect width="3" height="2" style="fill:#ED2939"/><rect width="2" height="2" style="fill:#fff"/><rect width="1" height="2" style="fill:#002395"/>', "0 0 3 2"),
+    "it": ("Italie", '<rect width="3" height="2" style="fill:#CE2B37"/><rect width="2" height="2" style="fill:#fff"/><rect width="1" height="2" style="fill:#009246"/>', "0 0 3 2"),
+    "be": ("Belgique", '<rect width="3" height="2" style="fill:#EF3340"/><rect width="2" height="2" style="fill:#FDDA24"/><rect width="1" height="2" style="fill:#000"/>', "0 0 3 2"),
+    "es": ("Espagne", '<rect width="3" height="2" style="fill:#AA151B"/><rect y=".5" width="3" height="1" style="fill:#F1BF00"/>', "0 0 3 2"),
+    "dk": ("Danemark", '<rect width="37" height="28" style="fill:#C8102E"/><rect x="12" width="4" height="28" style="fill:#fff"/><rect y="12" width="37" height="4" style="fill:#fff"/>', "0 0 37 28"),
+    "us": ("États-Unis", '<rect width="19" height="10" style="fill:#B22234"/>'
+           + "".join(f'<rect y="{y * 2 * 10 / 13:.3f}" width="19" height="{10 / 13:.3f}" style="fill:#fff" transform="translate(0 {10 / 13:.3f})"/>' for y in range(6))
+           + '<rect width="7.6" height="5.385" style="fill:#3C3B6E"/>', "0 0 19 10"),
+}
+
+
+def flag(code):
+    country, shapes, box = FLAGS[code]
+    return (f'<span class="brand-origin"><svg class="flag" viewBox="{box}" preserveAspectRatio="none" aria-hidden="true">{shapes}</svg>'
+            f'{country}</span>')
+
+
 def marques(p):
     labels = {"both": ("both", "Dans les deux magasins"), "passage": ("passage", "Au Passage"), "bias": ("bias", "À Bias")}
     cat_names = {"vue": "Vue", "soleil": "Soleil", "enfant": "Enfant", "sport": "Sport"}
     items = []
-    for name, note, store, cats, fr in sorted(BRANDS, key=lambda b: b[0].lower()):
+    for name, country, made, desc, url, store, cats, fr in sorted(BRANDS, key=lambda b: b[0].lower()):
         cls, lab = labels[store]
         tags = " ".join(cats + ([store] if store != "both" else ["passage", "bias"]) + (["fr"] if fr else []))
         pills = f'<span class="pill {cls}">{lab}</span>' + "".join(f'<span class="pill both">{cat_names[c]}</span>' for c in cats)
-        if fr:
-            pills += '<span class="pill fr">Fabriqué en France</span>'
-        items.append(f'<div class="brand" data-tags="{tags}"><strong>{name}</strong>'
-                     f'{f"<small>{note}</small>" if note else ""}{pills}</div>')
+        link = (f'<a class="brand-link" href="{url}" target="_blank" rel="noopener">Découvrir la marque <span aria-hidden="true">↗</span>'
+                f'<span class="sr-only"> (nouvel onglet)</span></a>') if url else ""
+        items.append(f'<div class="brand" data-tags="{tags}"><strong>{name}</strong>{flag(country)}'
+                     f'{f"<small>{made}</small>" if made else ""}<p>{desc}</p><div class="pills">{pills}</div>{link}</div>')
     filters = [("all", "Toutes"), ("passage", "Au Passage"), ("bias", "À Bias"), ("vue", "Vue"), ("soleil", "Soleil"),
                ("enfant", "Enfant"), ("fr", "Fabriqué en France")]
     fbtn = "".join(f'<button data-filter="{k}" aria-pressed="{"true" if k == "all" else "false"}">{v}</button>' for k, v in filters)
