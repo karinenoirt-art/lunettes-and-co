@@ -304,6 +304,8 @@ a.card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(29, 29,
 .brands { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .8rem; }
 .brand { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.1rem; display: flex; flex-direction: column; }
 .brand strong { font-size: 1.05rem; display: block; }
+/* display: flex sur .brand annule l'attribut hidden : le filtre doit pouvoir masquer les cartes */
+.brand[hidden] { display: none; }
 .brand small { display: block; color: var(--muted); font-size: .82rem; margin-top: .2rem; }
 .brand-origin { display: flex; align-items: center; gap: .45rem; font-size: .85rem; margin-top: .35rem; }
 .flag { width: 21px; height: 14px; border-radius: 2px; box-shadow: 0 0 0 1px var(--line); flex: none; }
