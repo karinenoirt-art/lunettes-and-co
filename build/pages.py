@@ -281,8 +281,14 @@ def store_page(store):
         {services}
         {extra_service}
       </ul>
-      <div class="callout blue"><p>{NOTICE_TELE}</p>
-        {ext(store['doctolib'], "Prendre rendez-vous " + store['at'], 'btn-tele btn-sm')}</div>
+      <div class="callout blue callout-tele">
+        <span class="kicker">Sur rendez-vous {store['at']}</span>
+        <h3>Téléconsultation d'ophtalmologie</h3>
+        <p>Des examens réalisés en magasin, puis un échange en visioconférence avec un ophtalmologue.</p>
+        <div class="btn-row btn-row-tele">{ext(store['doctolib'], "Téléconsultation : prendre rendez-vous", 'btn-tele btn-sm')}</div>
+        <p class="notice notice-tele">{NOTICE_TELE}</p>
+        <p><a href="{p}teleconsultation-ophtalmologie/">Comment ça se passe ? →</a></p>
+      </div>
     </div>
   </div>
 </section>

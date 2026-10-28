@@ -276,6 +276,9 @@ a.card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(29, 29,
 .callout { background: var(--white); border-radius: var(--radius); padding: clamp(1.4rem, 3vw, 2.2rem); border: 1px solid var(--line); border-left: 6px solid var(--orange); }
 .callout.blue { border-left-color: var(--blue); }
 .callout.coral { border-left-color: var(--rose); }
+.callout-tele h3 { margin: .2rem 0 .6rem; }
+.callout-tele .btn-row-tele { margin-top: 1rem; }
+.callout-tele p:last-child { margin: 1rem 0 0; }
 .badge-slot {
   display: inline-flex; align-items: center; justify-content: center; border: 2px dashed var(--muted);
   border-radius: 10px; padding: .4rem .8rem; font: 400 .75rem var(--font-mono); color: var(--muted); margin-bottom: 1rem;
