@@ -948,17 +948,21 @@ def flag(code):
 
 
 def marques(p):
-    labels = {"both": ("both", "Dans les deux magasins"), "passage": ("passage", "Au Passage"), "bias": ("bias", "À Bias")}
+    stores = {"both": ["passage", "bias"], "passage": ["passage"], "bias": ["bias"]}
+    store_names = {"passage": "Le Passage", "bias": "Bias"}
     cat_names = {"vue": "Vue", "soleil": "Soleil", "enfant": "Enfant", "sport": "Sport"}
     items = []
     for name, country, made, desc, url, store, cats, fr in sorted(BRANDS, key=lambda b: b[0].lower()):
-        cls, lab = labels[store]
         tags = " ".join(cats + ([store] if store != "both" else ["passage", "bias"]) + (["fr"] if fr else []))
-        pills = f'<span class="pill {cls}">{lab}</span>' + "".join(f'<span class="pill both">{cat_names[c]}</span>' for c in cats)
-        link = (f'<a class="brand-link" href="{url}" target="_blank" rel="noopener">Découvrir la marque <span aria-hidden="true">↗</span>'
-                f'<span class="sr-only"> (nouvel onglet)</span></a>') if url else ""
-        items.append(f'<div class="brand" data-tags="{tags}"><strong>{name}</strong>{flag(country)}'
-                     f'{f"<small>{made}</small>" if made else ""}<p>{desc}</p><div class="pills">{pills}</div>{link}</div>')
+        # Magasin en pastilles colorées (information principale), catégories en texte simple
+        shops = "".join(f'<span class="shop {s}">{store_names[s]}</span>' for s in stores[store])
+        # Le nom de la marque mène à son site officiel
+        title = (f'<a class="brand-link" href="{url}" target="_blank" rel="noopener">{name}'
+                 f'<span class="sr-only"> : site de la marque (nouvel onglet)</span></a>') if url else name
+        items.append(f'<div class="brand" data-tags="{tags}"><strong>{title}</strong>{flag(country)}'
+                     f'{f"<small>{made}</small>" if made else ""}<p>{desc}</p>'
+                     f'<div class="brand-meta"><div class="shops">{shops}</div>'
+                     f'<span class="cats">{" · ".join(cat_names[c] for c in cats)}</span></div></div>')
     filters = [("all", "Toutes"), ("passage", "Au Passage"), ("bias", "À Bias"), ("vue", "Vue"), ("soleil", "Soleil"),
                ("enfant", "Enfant"), ("fr", "Fabriqué en France")]
     fbtn = "".join(f'<button data-filter="{k}" aria-pressed="{"true" if k == "all" else "false"}">{v}</button>' for k, v in filters)

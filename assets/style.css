@@ -308,13 +308,17 @@ a.card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(29, 29,
 .brand-origin { display: flex; align-items: center; gap: .45rem; font-size: .85rem; margin-top: .35rem; }
 .flag { width: 21px; height: 14px; border-radius: 2px; box-shadow: 0 0 0 1px var(--line); flex: none; }
 .brand p { font-size: .9rem; line-height: 1.45; margin: .6rem 0 0; }
-.brand .pills { margin-top: auto; padding-top: .3rem; }
-.brand-link { display: inline-block; margin-top: .7rem; font-weight: 500; font-size: .88rem; color: var(--ink); }
-.pill { display: inline-block; font: 500 .66rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: .35rem .55rem; border-radius: 999px; margin-top: .55rem; margin-right: .25rem; }
-.pill.both { background: var(--cream); }
-.pill.passage { background: var(--orange-tint); }
-.pill.bias { background: var(--blue-tint); }
-.pill.fr { background: var(--rose-tint); }
+.brand-meta { margin-top: auto; padding-top: .8rem; }
+.shops { display: flex; flex-wrap: wrap; gap: .35rem; }
+.shop { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; font-size: .8rem; padding: .3rem .7rem; border-radius: 999px; }
+.shop::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; }
+.shop.passage { background: #f3cdb4; }
+.shop.passage::before { background: var(--orange); }
+.shop.bias { background: #cfdaef; }
+.shop.bias::before { background: #3f5f9e; }
+.cats { display: block; color: var(--muted); font-size: .8rem; margin-top: .45rem; }
+.brand-link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.brand-link:hover { color: var(--orange); }
 
 /* Motif de la charte (image exacte, extraite de COULEURS MOTIFS.ai) */
 .pattern { display: block; width: 100%; aspect-ratio: 1; border-radius: var(--radius); }
