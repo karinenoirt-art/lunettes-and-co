@@ -236,7 +236,7 @@ def store_page(store):
                      "Oui. Au Passage, un service de téléconsultation d'ophtalmologie augmentée est disponible en magasin, sur rendez-vous, à partir de 16 ans."),
                     ("Proposez-vous le 100% Santé ?", "Oui, le magasin du Passage le propose pour toute la famille."),
                     ("Où se garer près du magasin ?", "Il y a des places devant le magasin, et le grand parking du Lidl se trouve dans la zone commerciale."),
-                    ("Comment venir au magasin en bus ?", "Le Passage d'Agen est desservi par le réseau Tempo (lignes 5, 6 et 7).")]
+                    ("Comment venir au magasin en bus ?", "Prenez la ligne 7 du réseau Tempo et descendez à l'arrêt Demi-Lune : le magasin est à 2 minutes à pied.")]
 
         name_h1 = "à Bias" if is_bias else "au Passage d'Agen"
         parking = store["parking"]
@@ -389,11 +389,12 @@ def teleconsultation(p):
     <div class="card"><i class="dot c-green"></i><h3>Ce que propose la téléconsultation augmentée</h3>
       <p>Un bilan visuel avec des professionnels de santé. Prise en charge Assurance Maladie et mutuelle*.
       Ordonnance si nécessaire, avec renouvellement de lentilles : la décision de prescrire appartient à l'ophtalmologue.
-      Un délai moyen indicatif de 6 jours pour obtenir un rendez-vous.</p></div>
+      Un délai moyen indicatif de 6 jours pour obtenir un rendez-vous**.</p></div>
   </div>
   <div class="wrap"><p class="notice" style="margin-top:1.2rem">*Prise en charge par l'Assurance Maladie et la mutuelle selon le niveau de couverture du patient et les conditions de remboursement.
   Nos services sont adaptés aux patients rencontrant des difficultés à obtenir un rendez-vous avec un ophtalmologue.
-  Ce n'est pas un service d'urgence : en cas d'urgence, contactez le SAMU au 15.</p></div>
+  Ce n'est pas un service d'urgence : en cas d'urgence, contactez le SAMU au 15.<br>
+  **Délai moyen communiqué par notre partenaire de téléconsultation, donné à titre indicatif : il peut varier selon les disponibilités.</p></div>
 </section>
 
 <section class="bg-cream2">
@@ -1252,7 +1253,7 @@ def confidentialite(p):
     return """
 <section class="page-hero"><div class="wrap prose">
   <h1>Politique de confidentialité</h1>
-  <p>Dernière mise à jour : <span class="todo">[date de mise en ligne]</span>.</p>
+  <p>Dernière mise à jour : 28 octobre 2026.</p>
   <h2>Qui est responsable de vos données ?</h2>
   <p>Julien Communal, éditeur du site (coordonnées dans les <a href="/mentions-legales/">mentions légales</a>).
   Contact : <a href="mailto:bias@lunettesandco.fr">bias@lunettesandco.fr</a>.</p>
@@ -1266,14 +1267,13 @@ def confidentialite(p):
   <h2>Cookies et mesure d'audience</h2>
   <p>Un cookie est un petit fichier enregistré sur votre appareil. Nous utilisons Google Analytics pour comprendre
   comment le site est consulté (pages vues, durée, type d'appareil) et l'améliorer. Ces cookies ne sont déposés
-  qu'avec votre accord, que vous pouvez donner, refuser ou retirer à tout moment depuis le bandeau
-  <span class="todo">[lien « Gérer mes cookies » à créer avec la bannière de consentement]</span>.
-  Refuser n'empêche pas de consulter le site. Durée de vie des cookies : <span class="todo">[à vérifier dans la configuration
-  Google Analytics, 13 mois maximum]</span>. Les données peuvent être traitées par Google, y compris hors de l'Union européenne.</p>
+  qu'avec votre accord. Vous pouvez le donner, le refuser ou le retirer à tout moment : avec le bandeau
+  qui s'affiche lors de votre première visite, puis avec le lien « Gérer mes cookies » en bas de chaque page.
+  Refuser n'empêche pas de consulter le site. Votre choix est conservé 6 mois. Les cookies de mesure d'audience
+  sont conservés 13 mois au maximum. Les données peuvent être traitées par Google, y compris hors de l'Union européenne.</p>
   <h2>Services tiers</h2>
   <p>Les boutons de rendez-vous et les cartes ouvrent Doctolib, Opticiens par Conviction et Google Maps, qui traitent vos
   données selon leurs propres politiques de confidentialité.
-  <span class="todo">[Polices Google Fonts : à héberger sur le site pour éviter tout transfert de votre adresse IP à Google, puis supprimer cette phrase.]</span>
   Le site est hébergé par GitHub, qui enregistre des données techniques de connexion.</p>
   <h2>Vos droits</h2>
   <p>Vous pouvez demander l'accès, la rectification ou l'effacement de vos données, vous opposer à leur traitement ou en

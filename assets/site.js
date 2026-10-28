@@ -100,4 +100,69 @@
     });
     document.documentElement.classList.add("reveal-on");
   }
+
+  // Cookies : Google Analytics n'est chargé qu'après accord. Le choix est gardé 6 mois, puis redemandé.
+  var gaId = document.body.getAttribute("data-ga");
+  var banner = document.getElementById("cookies");
+  if (gaId && banner) {
+    var KEY = "lc-consent";
+    var SIX_MONTHS = 182 * 24 * 3600 * 1000;
+    var THIRTEEN_MONTHS = 395 * 24 * 3600; // durée de vie maximale des cookies Analytics (CNIL)
+
+    function readChoice() {
+      try {
+        var c = JSON.parse(localStorage.getItem(KEY));
+        if (c && Date.now() - c.t < SIX_MONTHS) return c.v;
+      } catch (e) {}
+      return null;
+    }
+    function saveChoice(v) {
+      try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) {}
+    }
+    function loadAnalytics() {
+      if (window.gtag) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag("js", new Date());
+      window.gtag("config", gaId, { cookie_expires: THIRTEEN_MONTHS });
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gaId);
+      document.head.appendChild(s);
+    }
+    function removeAnalyticsCookies() {
+      var host = location.hostname.replace(/^www\./, "");
+      document.cookie.split(";").forEach(function (c) {
+        var name = c.split("=")[0].trim();
+        if (/^_ga/.test(name)) {
+          ["", "; domain=" + host, "; domain=." + host].forEach(function (d) {
+            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" + d;
+          });
+        }
+      });
+    }
+    function showBanner() { banner.hidden = false; }
+
+    banner.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-cookie]");
+      if (!btn) return;
+      var v = btn.getAttribute("data-cookie");
+      saveChoice(v);
+      banner.hidden = true;
+      if (v === "accept") { loadAnalytics(); return; }
+      window["ga-disable-" + gaId] = true; // coupe Analytics avant d'effacer ses cookies
+      removeAnalyticsCookies();
+      if (window.gtag) location.reload();
+    });
+    document.querySelectorAll("[data-cookie-settings]").forEach(function (el) {
+      el.addEventListener("click", function (e) { e.preventDefault(); showBanner(); });
+    });
+
+    var choice = readChoice();
+    if (choice === "accept") loadAnalytics();
+    else {
+      removeAnalyticsCookies(); // nettoie d'éventuels cookies laissés par un ancien accord
+      if (choice === null) showBanner();
+    }
+  }
 })();

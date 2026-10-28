@@ -7,6 +7,9 @@ Tout ce qui est marqué TODO est à confirmer avant la mise en ligne publique.
 SITE_NAME = "Lunettes & Co"
 DOMAIN = "https://www.lunettesandco.fr"  # adresse principale (DNS chez OVH)
 
+# Google Analytics 4 : identifiant de mesure (« G-XXXXXXXXXX »). Tant qu'il est vide, ni Analytics ni bandeau cookies.
+GA_ID = ""
+
 DOCTOLIB_PASSAGE = (
     "https://www.doctolib.fr/magasin-d-optique/le-passage/lunettes-co-teleconsultation-ophtalmologique"
     "/booking/motives?specialityId=13512&telehealth=false&placeId=practice-724754&source=profile"
@@ -53,7 +56,7 @@ PASSAGE = {
         ("Dimanche", "Fermé"),
     ],
     "parking": "Places devant le magasin, et grand parking du Lidl dans la zone commerciale",
-    "bus": "Le Passage d'Agen est desservi par le réseau Tempo (lignes 5, 6 et 7)",
+    "bus": "Arrêt Demi-Lune, ligne 7 du réseau Tempo, à 2 minutes à pied du magasin",  # vérifié le 28/10/2026 (fiche ligne 7 éd. oct. 2026, OpenStreetMap : ~130 m)
 }
 
 BIAS = {

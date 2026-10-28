@@ -10,7 +10,7 @@ import json
 import os
 import re
 
-from site_data import (BIAS, BRANDS, DOMAIN, PASSAGE, PRODUCTS, SITE_NAME, STORES)
+from site_data import (BIAS, BRANDS, DOMAIN, GA_ID, PASSAGE, PRODUCTS, SITE_NAME, STORES)
 from pages import PAGES
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -99,13 +99,34 @@ def footer(p):
     </div>
     <div class="footer-bottom">
       <span>© 2026 Lunettes &amp; Co, opticiens indépendants</span>
-      <span><a href="{p}mentions-legales/">Mentions légales</a> · <a href="{p}confidentialite/">Confidentialité</a></span>
+      <span><a href="{p}mentions-legales/">Mentions légales</a> · <a href="{p}confidentialite/">Confidentialité</a>{cookie_link()}</span>
     </div>
   </div>
 </footer>
 <div class="mobile-bar">
   <a class="btn btn-tele" href="{p}teleconsultation-ophtalmologie/" data-open-rdv="tele">{ICON_VIDEO}Téléconsultation</a>
   <a class="btn btn-store" href="{p}contact-rendez-vous/" data-open-rdv="">{ICON_CAL}Rendez-vous</a>
+</div>"""
+
+
+def cookie_link():
+    return ' · <button type="button" class="link-btn" data-cookie-settings>Gérer mes cookies</button>' if GA_ID else ""
+
+
+def cookie_banner(p):
+    """Bandeau de consentement : Google Analytics n'est chargé qu'après « Accepter »."""
+    if not GA_ID:
+        return ""
+    return f"""
+<div class="cookie-banner" id="cookies" role="dialog" aria-labelledby="cookies-title" aria-describedby="cookies-text" hidden>
+  <p class="cookie-title" id="cookies-title">Cookies</p>
+  <p id="cookies-text">Avec votre accord, nous utilisons des cookies de mesure d'audience (Google Analytics) pour savoir
+  comment le site est consulté et l'améliorer. Vous pouvez changer d'avis à tout moment.
+  <a href="{p}confidentialite/">En savoir plus</a></p>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-cookie" data-cookie="refuse">Refuser</button>
+    <button type="button" class="btn btn-cookie" data-cookie="accept">Accepter</button>
+  </div>
 </div>"""
 
 
@@ -226,19 +247,17 @@ def render(page):
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <link rel="icon" href="{p}assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{p}assets/style.css?v={asset_version("style.css")}">
 {ld}
 </head>
-<body>
+<body{f' data-ga="{GA_ID}"' if GA_ID else ""}>
 {header(p, slug)}
 <main id="contenu">
 {body}
 </main>
 {footer(p)}
 {rdv_dialog(p)}
+{cookie_banner(p)}
 <script src="{p}assets/site.js?v={asset_version("site.js")}"></script>
 </body>
 </html>
