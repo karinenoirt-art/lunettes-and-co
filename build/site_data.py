@@ -8,7 +8,7 @@ SITE_NAME = "Lunettes & Co"
 DOMAIN = "https://www.lunettesandco.fr"  # adresse principale (DNS chez OVH)
 
 # Google Analytics 4 : identifiant de mesure (« G-XXXXXXXXXX »). Tant qu'il est vide, ni Analytics ni bandeau cookies.
-GA_ID = ""
+GA_ID = "G-JGCQHGMNHW"
 
 DOCTOLIB_PASSAGE = (
     "https://www.doctolib.fr/magasin-d-optique/le-passage/lunettes-co-teleconsultation-ophtalmologique"
