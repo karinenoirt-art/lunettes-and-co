@@ -440,7 +440,7 @@ def lunettes_vue(p):
     ] + ORDONNANCE_FAQ[:2]
     return f"""
 {page_hero(p, "Lunettes de vue", "Lunettes de vue : des montures pour tous les budgets, au Passage et à Bias", intro,
-           "vue.jpg", "Monture de vue ronde bicolore verte et bleue, en vitrine", None, ("c-green", "c-coral"))}
+           "vue-etageres.jpg", "Étagères en bois éclairées et montures de vue, au magasin du Passage", None, ("c-green", "c-coral"))}
 
 <section class="bg-white">
   <div class="wrap">
@@ -762,7 +762,7 @@ def sport(p):
     ]
     return f"""
 {page_hero(p, "Lunettes de sport", "Des lunettes de sport à votre vue, de la piscine au tir sportif", intro,
-           "atelier.jpg", "L'atelier du magasin du Passage, où sont montés et ajustés les verres", None, ("c-rust", "c-blue"))}
+           "sport-running.jpg", "Une femme et un homme courent au soleil levant, avec des lunettes de sport", None, ("c-rust", "c-blue"))}
 
 <section class="bg-white">
   <div class="wrap">
@@ -1269,6 +1269,8 @@ def mentions(p):
   <h2>Propriété intellectuelle</h2>
   <p>La marque Lunettes &amp; Co appartient à Julien Communal (dépôt effectué auprès de l'INPI). La charte graphique et les
   photographies du site sont la propriété de Karine Noirt. Toute reproduction sans autorisation écrite est interdite.</p>
+  <p>Seule exception : la photo d'illustration de la page <a href="../lunettes-de-sport/">Lunettes de sport</a> provient de la
+  banque d'images Magnific, utilisée sous licence, et a été retouchée par intelligence artificielle.</p>
   <h2>Intelligence artificielle et fouille de données</h2>
   <p>En application de l'article L. 122-5-3 du Code de la propriété intellectuelle, les titulaires des droits s'opposent
   à toute fouille de textes et de données sur les contenus de ce site (textes, photographies, charte graphique), en
