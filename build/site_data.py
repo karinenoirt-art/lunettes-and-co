@@ -108,7 +108,8 @@ PRODUCTS = [
 ]
 
 # Marques : (nom, pays, fabrication ou précision, description, lien, magasins, catégories, fabrication française)
-# pays : fr | es | it | us | be | dk ; fabrication et lien : "" si inconnu ou sans lien
+# pays : fr | es | it | us | be | dk ; fabrication : "" si inconnue
+# lien : site officiel, conservé pour mémoire mais non affiché (décision de Karine du 28/10/2026)
 # magasins : "both" | "passage" | "bias" ; catégories : vue, soleil, enfant, sport
 # Origines : Site-reference/34-marques-origines-v1.md ; descriptions vérifiées sur les sites officiels le 28/10/2026
 BRANDS = [

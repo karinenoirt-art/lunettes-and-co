@@ -956,10 +956,7 @@ def marques(p):
         tags = " ".join(cats + ([store] if store != "both" else ["passage", "bias"]) + (["fr"] if fr else []))
         # Magasin en pastilles colorées (information principale), catégories en texte simple
         shops = "".join(f'<span class="shop {s}">{store_names[s]}</span>' for s in stores[store])
-        # Le nom de la marque mène à son site officiel
-        title = (f'<a class="brand-link" href="{url}" target="_blank" rel="noopener">{name}'
-                 f'<span class="sr-only"> : site de la marque (nouvel onglet)</span></a>') if url else name
-        items.append(f'<div class="brand" data-tags="{tags}"><strong>{title}</strong>{flag(country)}'
+        items.append(f'<div class="brand" data-tags="{tags}"><strong>{name}</strong>{flag(country)}'
                      f'{f"<small>{made}</small>" if made else ""}<p>{desc}</p>'
                      f'<div class="brand-meta"><div class="shops">{shops}</div>'
                      f'<span class="cats">{" · ".join(cat_names[c] for c in cats)}</span></div></div>')
