@@ -541,7 +541,7 @@ def lunettes_soleil(p):
     ]
     return f"""
 {page_hero(p, "Lunettes de soleil", "Lunettes de soleil, avec ou sans correction, au Passage et à Bias", intro,
-           "soleil.jpg", "Lunettes de soleil écaille aux verres teintés, sur fond terrazzo", None, ("c-orange", "c-blue"))}
+           "soleil-lancel.jpg", "Gros plan d'une paire de lunettes de soleil Lancel verte aux verres teintés, posée sur une table en bois", None, ("c-orange", "c-blue"))}
 
 <section class="bg-white">
   <div class="wrap two-col">
