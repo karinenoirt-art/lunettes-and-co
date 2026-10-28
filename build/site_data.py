@@ -161,7 +161,7 @@ BRANDS = [
      "Maison parisienne fondée en 1876, connue pour sa maroquinerie : des lunettes élégantes et féminines.",
      "https://lancel.com/fr/collections/lunettes-de-soleil-femme", "both", ["vue", "soleil"], False),
     ("Ray-Ban", "us", "",
-     "L'Aviator et la Wayfarer, deux modèles devenus des classiques.",
+     "Une marque mythique de la lunette de soleil : l'Aviator et la Wayfarer sont devenues des classiques, aussi déclinées en lunettes de vue.",
      "https://www.ray-ban.com/france", "both", ["vue", "soleil", "enfant"], False),
     ("Vicomte Arthur", "fr", "",
      "Marque de mode française créée en 2005, qui revendique l'élégance à la française.",
