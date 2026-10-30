@@ -188,7 +188,7 @@ def store_page(store):
         <li><a href="{p}lentilles-de-contact/">Lentilles de contact</a>, avec leurs produits d'entretien.</li>
         <li><a href="{p}lunettes-de-sport/">Lunettes de sport</a> (piscine, vélo, running, tir sportif) : Julien pratique lui-même le tir en compétition.</li>
         <li><a href="{p}lunettes-personnalisees/">Lunettes personnalisées</a>.</li>
-        <li><a href="{p}reparation-ajustement-lunettes/">Réparation et ajustement</a> de vos montures.</li>
+        <li><a href="{p}reparation-ajustement-lunettes/">Réparation et ajustage</a> de vos montures.</li>
         <li>Téléconsultation d'ophtalmologie augmentée en magasin, <a href="{p}teleconsultation-ophtalmologie/">sur rendez-vous</a>.</li>
         <li>Facilités de paiement : jusqu'à 4 fois.</li>"""
             extra_service = "<li>Magasin partenaire du réseau de soins Carte Blanche.</li>"
@@ -223,7 +223,7 @@ def store_page(store):
         <li><a href="{p}lentilles-de-contact/">Lentilles de contact</a> et produits d'entretien.</li>
         <li><a href="{p}lunettes-de-sport/">Lunettes de sport</a> : piscine, vélo, running, tir sportif (Julien est lui-même tireur de compétition).</li>
         <li><a href="{p}lunettes-personnalisees/">Lunettes personnalisées</a>.</li>
-        <li><a href="{p}reparation-ajustement-lunettes/">Réparation et ajustement</a> de vos lunettes.</li>
+        <li><a href="{p}reparation-ajustement-lunettes/">Réparation et ajustage</a> de vos lunettes.</li>
         <li><a href="{p}teleconsultation-ophtalmologie/">Téléconsultation d'ophtalmologie augmentée</a> en magasin, sur rendez-vous.</li>
         <li>Paiement en plusieurs fois, jusqu'à 4 fois.</li>"""
             around = """Nous accueillons les clients du Passage, d'Agen, de Boé, Bon-Encontre, Brax, Colayrac-Saint-Cirq, Estillac,
@@ -733,7 +733,7 @@ def lentilles(p):
   <div class="wrap grid grid-2">
     <div class="card"><i class="dot c-blue"></i><h3>Produits d'entretien</h3>
       <p>Nous vendons des produits d'entretien et des accessoires pour vos lentilles de contact, avec conseil en magasin.
-      Pour vos lunettes : sprays, lingettes et microfibres. Voir aussi <a href="{p}reparation-ajustement-lunettes/">Réparation et ajustement</a>.</p></div>
+      Pour vos lunettes : sprays, lingettes et microfibres. Voir aussi <a href="{p}reparation-ajustement-lunettes/">Réparation et ajustage</a>.</p></div>
     <div class="card"><i class="dot c-green"></i><h3>Prix et prise en charge</h3>
       <p>La prise en charge des lentilles par l'Assurance Maladie est prévue dans certains cas précis, sur prescription médicale.
       Renseignez-vous auprès de votre complémentaire santé. Paiement en plusieurs fois, jusqu'à 4 fois, également pour les lentilles.</p></div>
@@ -887,14 +887,14 @@ def reparation(p):
          "et si une pièce peut être commandée."),
     ]
     return f"""
-{page_hero(p, "Réparation et ajustement", "Réparation, réglage et nettoyage de vos lunettes, au Passage et à Bias", intro,
+{page_hero(p, "Réparation et ajustage", "Réparation, réglage et nettoyage de vos lunettes, au Passage et à Bias", intro,
            "atelier.jpg", "Atelier de montage et de réparation au magasin du Passage", buttons, ("c-green", "c-orange"))}
 
 <section class="bg-white">
   <div class="wrap">
     <div class="section-head"><h2>Ce que nous faisons</h2></div>
     <div class="grid grid-4">
-      <div class="card"><i class="dot c-green"></i><h3>Réglage et ajustement</h3><p>Nous ajustons vos lunettes sur votre visage, au magasin, pour qu'elles soient bien posées.</p></div>
+      <div class="card"><i class="dot c-green"></i><h3>Réglage et ajustage</h3><p>Nous ajustons vos lunettes sur votre visage, au magasin, pour qu'elles soient bien posées.</p></div>
       <div class="card"><i class="dot c-blue"></i><h3>Nettoyage aux ultrasons</h3><p>Un nettoyage de votre monture, que nous passons au bac à ultrasons avec les verres.</p></div>
       <div class="card"><i class="dot c-orange"></i><h3>Réparation</h3><p>Changement de plaquettes, revissage, remplacement de vis perdues, dépannage de branches, soudures sur les montures métalliques classiques (le titane et le plastique injecté ne se soudent pas).</p></div>
       <div class="card"><i class="dot c-coral"></i><h3>Changement de verres</h3><p>Si votre monture est en bon état, nous pouvons simplement changer les verres.</p></div>
@@ -1324,15 +1324,15 @@ PAGES = [
      "body": home, "org_ld": True, "faq_ld": HOME_FAQ},
     {"slug": "opticien-le-passage/", "title": "Opticien Le Passage, près d'Agen | Lunettes & Co",
      "description": "Opticien indépendant au Passage, près d'Agen (ZAC de Lacassagne) : lunettes de vue, de soleil, enfants, lentilles et téléconsultation d'ophtalmologie.",
-     "body": store_page(PASSAGE)},
+     "body": store_page(PASSAGE), "store": PASSAGE},
     {"slug": "opticien-bias/", "title": "Opticien à Bias, près de Villeneuve-sur-Lot | Lunettes & Co",
      "description": "Opticien indépendant à Bias, près de Villeneuve-sur-Lot et de Sainte-Livrade : lunettes, lentilles, téléconsultation. Ancien Optical Discount.",
-     "body": store_page(BIAS)},
+     "body": store_page(BIAS), "store": BIAS},
     {"slug": "teleconsultation-ophtalmologie/", "title": "Téléconsultation ophtalmologue augmentée | Lunettes & Co",
      "description": "Téléconsultation d'ophtalmologie augmentée : visioconférence avec un ophtalmologue, en magasin à Bias et au Passage, sur rendez-vous. Dès 16 ans.",
      "body": teleconsultation},
     {"slug": "lunettes-de-vue/", "title": "Lunettes de vue près d'Agen et Villeneuve | Lunettes & Co",
-     "description": "Lunettes de vue près d'Agen et de Villeneuve-sur-Lot : montures dès 100 euros (hors 100% Santé), verres progressifs.",
+     "description": "Lunettes de vue près d'Agen et de Villeneuve-sur-Lot : montures dès 100 euros (hors 100% Santé), verres progressifs, conseil d'un opticien indépendant.",
      "body": lunettes_vue},
     {"slug": "lunettes-de-soleil/", "title": "Lunettes de soleil, à votre vue ou non | Lunettes & Co",
      "description": "Lunettes de soleil au Passage et à Bias : Ray-Ban, Ki ET LA, Lancel, verres polarisants, solaires à la vue et clips pour la conduite.",
@@ -1341,16 +1341,16 @@ PAGES = [
      "description": "Lunettes pour enfants au Passage et à Bias : essayage avec votre enfant, montures dès 80 euros (hors 100% Santé), 100% Santé.",
      "body": lunettes_enfants},
     {"slug": "lentilles-de-contact/", "title": "Lentilles de contact et produits d'entretien | Lunettes & Co",
-     "description": "Adaptation et renouvellement de lentilles de contact, produits d'entretien, au Passage et à Bias.",
+     "description": "Lentilles de contact au Passage, près d'Agen, et à Bias : adaptation, renouvellement et produits d'entretien, avec votre opticien indépendant.",
      "body": lentilles},
     {"slug": "lunettes-de-sport/", "title": "Lunettes de sport à la vue, tir sportif | Lunettes & Co",
-     "description": "Lunettes de sport à votre vue : piscine, vélo, running, et tir sportif avec Julien, tireur de compétition.",
+     "description": "Lunettes de sport à votre vue au Passage et à Bias : piscine, vélo, running, et tir sportif avec Julien, tireur de compétition. Opticien indépendant.",
      "body": sport},
     {"slug": "lunettes-personnalisees/", "title": "Lunettes personnalisées avec Loumy | Lunettes & Co",
      "description": "Personnalisez votre monture Loumy, lunetier de Montauban : couleurs, matières, branches. Au Passage et à Bias, avec le conseil de votre opticien.",
      "body": sur_mesure},
     {"slug": "reparation-ajustement-lunettes/", "title": "Réparation et réglage de lunettes | Lunettes & Co",
-     "description": "Réglage, réparation, nettoyage aux ultrasons et changement de verres, au Passage et à Bias.",
+     "description": "Réglage, réparation, nettoyage aux ultrasons et changement de verres au Passage, près d'Agen, et à Bias, près de Villeneuve-sur-Lot. Opticien indépendant.",
      "body": reparation},
     {"slug": "marques/", "title": "Nos marques de lunettes | Lunettes & Co",
      "description": "Loumy, Tavat, Brett, Tiwi, GIGIstudios, Etnia Barcelona, Ray-Ban… Les marques de lunettes disponibles au Passage et à Bias.",
@@ -1359,13 +1359,13 @@ PAGES = [
      "description": "Julien, opticien depuis plus de 15 ans, vous accueille à Bias et au Passage : conseil personnalisé et montures pour tous les budgets.",
      "body": histoire},
     {"slug": "contact-rendez-vous/", "title": "Contact et rendez-vous | Lunettes & Co",
-     "description": "Adresses, téléphones, horaires et prise de rendez-vous des magasins Lunettes & Co au Passage et à Bias.",
+     "description": "Adresses, téléphones, horaires et prise de rendez-vous des magasins Lunettes & Co au Passage, près d'Agen, et à Bias, près de Villeneuve-sur-Lot.",
      "body": contact},
     {"slug": "faq/", "title": "Questions fréquentes | Lunettes & Co",
-     "description": "Rendez-vous, 100% Santé, ordonnance, téléconsultation, lentilles, réparations : les réponses de Lunettes & Co.",
+     "description": "Rendez-vous, 100% Santé, ordonnance, téléconsultation, lentilles, réparations : les réponses de Lunettes & Co, opticien indépendant au Passage et à Bias.",
      "body": faq_page, "faq_ld": FAQ_ALL},
     {"slug": "mentions-legales/", "title": "Mentions légales | Lunettes & Co",
-     "description": "Mentions légales du site Lunettes & Co.", "body": mentions},
+     "description": "Mentions légales du site Lunettes & Co, opticien indépendant au Passage, près d'Agen, et à Bias, près de Villeneuve-sur-Lot.", "body": mentions},
     {"slug": "confidentialite/", "title": "Confidentialité | Lunettes & Co",
-     "description": "Politique de confidentialité du site Lunettes & Co.", "body": confidentialite},
+     "description": "Politique de confidentialité du site Lunettes & Co, opticien indépendant au Passage et à Bias : données, cookies de mesure d'audience, vos droits.", "body": confidentialite},
 ]

@@ -9,6 +9,7 @@ import hashlib
 import json
 import os
 import re
+from datetime import date
 
 from site_data import (BIAS, BRANDS, DOMAIN, GA_ID, PASSAGE, PRODUCTS, SITE_NAME, STORES)
 from pages import PAGES
@@ -17,6 +18,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Tant que le site est une ébauche, il n'est pas indexé par les moteurs de recherche.
 DRAFT = True
+
+# Image de partage (Open Graph) : 1200×630, motifs de la charte + logo.
+OG_IMAGE_DEFAULT = "partage-1200x630.jpg"
 
 with open(os.path.join(ROOT, "assets", "logo.svg"), encoding="utf-8") as f:
     LOGO_SVG = re.sub(r"<\?xml[^>]*\?>\s*", "", f.read())
@@ -167,20 +171,45 @@ def rdv_dialog(p):
 </dialog>"""
 
 
-def json_ld_org():
-    def optician(s):
-        d = {
-            "@type": "Optician",
-            "name": f"{SITE_NAME} {s['name']}",
-            "address": {"@type": "PostalAddress", "streetAddress": s["street"], "postalCode": s["postcode"],
-                        "addressLocality": s["city"], "addressRegion": "Lot-et-Garonne", "addressCountry": "FR"},
-            "url": f"{DOMAIN}/{s['page']}",
-            "parentOrganization": {"@id": f"{DOMAIN}/#organisation"},
-        }
-        if s["phone_intl"]:
-            d["telephone"] = s["phone_intl"]
-        return d
+DAYS_EN = {"Lundi": "Monday", "Mardi": "Tuesday", "Mercredi": "Wednesday", "Jeudi": "Thursday",
+           "Vendredi": "Friday", "Samedi": "Saturday", "Dimanche": "Sunday"}
 
+
+def store_id(s):
+    return f"{DOMAIN}/{s['page']}#magasin"
+
+
+def opening_hours(s):
+    """Horaires de site_data.py au format schema.org (« 9h30 – 12h30 · 14h30 – 19h » -> 09:30-12:30 et 14:30-19:00)."""
+    specs = []
+    for day, txt in s["hours"]:
+        for h1, m1, h2, m2 in re.findall(r"(\d{1,2})h(\d{2})?\s*–\s*(\d{1,2})h(\d{2})?", txt):
+            specs.append({"@type": "OpeningHoursSpecification", "dayOfWeek": DAYS_EN[day],
+                          "opens": f"{int(h1):02d}:{m1 or '00'}", "closes": f"{int(h2):02d}:{m2 or '00'}"})
+    return specs
+
+
+def optician(s):
+    d = {
+        "@type": "Optician",
+        "@id": store_id(s),
+        "name": f"{SITE_NAME} {s['name']}",
+        "address": {"@type": "PostalAddress", "streetAddress": s["street"], "postalCode": s["postcode"],
+                    "addressLocality": s["city"], "addressRegion": "Lot-et-Garonne", "addressCountry": "FR"},
+        "url": f"{DOMAIN}/{s['page']}",
+        "image": f"{DOMAIN}/assets/img/{s['image']}",
+        "geo": {"@type": "GeoCoordinates", "latitude": s["geo"][0], "longitude": s["geo"][1]},
+        "openingHoursSpecification": opening_hours(s),
+        "sameAs": [s["reviews"]],
+        "parentOrganization": {"@id": f"{DOMAIN}/#organisation"},
+    }
+    if s["phone_intl"]:
+        d["telephone"] = s["phone_intl"]
+    # Ni areaServed, ni priceRange : en attente de la validation de Karine (brief SEO, A2).
+    return d
+
+
+def json_ld_org():
     data = {
         "@context": "https://schema.org",
         "@graph": [
@@ -192,6 +221,12 @@ def json_ld_org():
         ],
     }
     return json.dumps(data, ensure_ascii=False, indent=1)
+
+
+def json_ld_store(s):
+    d = optician(s)
+    d["@context"] = "https://schema.org"
+    return json.dumps(d, ensure_ascii=False, indent=1)
 
 
 def json_ld_faq(faqs):
@@ -222,15 +257,36 @@ def strip_todos(html):
     return html
 
 
+IMG_SIZES = "(max-width: 760px) 100vw, 600px"
+
+
+def optimise_imgs(html):
+    """Ajoute srcset/sizes (WebP générés par optimise_images.py) aux <img> JPEG ; priorité haute pour les images non différées."""
+    def repl(m):
+        tag, prefix, name = m.group(0), m.group(1), m.group(2)
+        widths = [w for w in (480, 800, 1200) if os.path.exists(os.path.join(ROOT, "assets", "img", f"{name}-{w}.webp"))]
+        if not widths:
+            return tag
+        srcset = ", ".join(f"{prefix}assets/img/{name}-{w}.webp {w}w" for w in widths)
+        extra = f' srcset="{srcset}" sizes="{IMG_SIZES}"'
+        if 'loading="lazy"' not in tag:
+            extra += ' fetchpriority="high"'
+        return tag[:-1] + extra + ">"
+    return re.sub(r'<img src="((?:\.\./)*)assets/img/([\w-]+)\.jpg"[^>]*>', repl, html)
+
+
 def render(page):
     slug = page["slug"]
     depth = slug.count("/")
     p = "../" * depth
-    body = strip_todos(page["body"](p))
+    body = optimise_imgs(strip_todos(page["body"](p)))
     robots = '<meta name="robots" content="noindex, nofollow">' if DRAFT else ""
     ld = ""
+    og_image = f"{DOMAIN}/assets/img/{page.get('og_image', OG_IMAGE_DEFAULT)}"
     if page.get("org_ld"):
         ld += f'<script type="application/ld+json">{json_ld_org()}</script>'
+    if page.get("store"):
+        ld += f'<script type="application/ld+json">{json_ld_store(page["store"])}</script>'
     if page.get("faq_ld"):
         ld += f'<script type="application/ld+json">{json_ld_faq(page["faq_ld"])}</script>'
     return f"""<!doctype html>
@@ -247,6 +303,10 @@ def render(page):
 <meta property="og:description" content="{page['description']}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="{DOMAIN}/{slug}">
+<meta property="og:site_name" content="{SITE_NAME}">
+<meta property="og:image" content="{og_image}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{p}assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{p}assets/style.css?v={asset_version("style.css")}">
 {ld}
@@ -265,6 +325,39 @@ def render(page):
 """
 
 
+AI_TRAINING_BOTS = [
+    "meta-externalagent", "meta-externalfetcher", "FacebookBot", "GPTBot", "ClaudeBot", "anthropic-ai",
+    "Google-Extended", "Applebot-Extended", "CCBot", "Bytespider", "Amazonbot", "cohere-ai",
+    "cohere-training-data-crawler", "Diffbot", "omgili", "Timpibot",
+]
+SEARCH_BOTS = [
+    "Googlebot", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User",
+    "PerplexityBot", "Perplexity-User",
+]
+
+
+def robots_txt():
+    """Robots d'entraînement IA toujours refusés ; en brouillon, tout le reste l'est aussi."""
+    out = ["# Robots d'entraînement IA : refusés (opposition à la fouille de textes et de données, art. L. 122-5-3 du CPI).",
+           "# Ne pas bloquer facebookexternalhit : il sert aux aperçus de liens partagés."]
+    out += [f"User-agent: {b}" for b in AI_TRAINING_BOTS] + ["Disallow: /", ""]
+    if DRAFT:
+        out += ["# Ébauche non indexée : bloc à retirer à la mise en ligne publique (DRAFT = False).",
+                "User-agent: *", "Disallow: /"]
+    else:
+        out += ["# Moteurs de recherche et assistants IA : autorisés (pour pouvoir être cité dans les réponses)"]
+        out += [f"User-agent: {b}" for b in SEARCH_BOTS] + ["Allow: /", "", f"Sitemap: {DOMAIN}/sitemap.xml"]
+    return "\n".join(out) + "\n"
+
+
+def sitemap_xml():
+    today = date.today().isoformat()
+    urls = "".join(f"  <url>\n    <loc>{DOMAIN}/{p['slug']}</loc>\n    <lastmod>{today}</lastmod>\n  </url>\n"
+                   for p in PAGES if not p.get("noindex"))
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + urls + "</urlset>\n")
+
+
 def main():
     for page in PAGES:
         out_dir = os.path.join(ROOT, page["slug"])
@@ -272,7 +365,16 @@ def main():
         with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
             f.write(render(page))
         print("ok", page["slug"] or "/")
-    print(len(PAGES), "pages générées")
+    with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write(robots_txt())
+    sitemap_path = os.path.join(ROOT, "sitemap.xml")
+    if DRAFT:
+        if os.path.exists(sitemap_path):
+            os.remove(sitemap_path)
+    else:
+        with open(sitemap_path, "w", encoding="utf-8") as f:
+            f.write(sitemap_xml())
+    print(len(PAGES), "pages générées ;", "robots.txt fermé, pas de sitemap (DRAFT)" if DRAFT else "robots.txt ouvert + sitemap.xml")
 
 
 if __name__ == "__main__":

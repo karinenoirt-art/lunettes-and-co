@@ -31,6 +31,7 @@ PASSAGE = {
     "postcode": "47520",
     "city": "Le Passage",
     "address": "64 allée du Loriot, ZAC de Lacassagne, 47520 Le Passage",
+    "geo": (44.194682, 0.597402),  # vérifié par Karine dans Google Maps le 28/10/2026
     "phone": "05 35 55 92 50",  # carte de visite LP + flyer sept. 2026 ; à confirmer sur la fiche Google
     "phone_intl": "+33535559250",
     "doctolib": DOCTOLIB_PASSAGE,
@@ -69,6 +70,7 @@ BIAS = {
     "postcode": "47300",
     "city": "Bias",
     "address": "Centre commercial Auchan (Ponservat), avenue de Bordeaux, 47300 Bias",
+    "geo": (44.405188, 0.676313),  # vérifié par Karine dans Google Maps le 28/10/2026 (centre commercial Auchan Ponservat)
     "phone": "05 53 40 19 96",
     "phone_intl": "+33553401996",
     "doctolib": DOCTOLIB_BIAS,
@@ -104,7 +106,7 @@ PRODUCTS = [
     ("lentilles-de-contact/", "Lentilles de contact", "Adaptation, renouvellement, produits d'entretien.", "c-blue"),
     ("lunettes-de-sport/", "Lunettes de sport", "Piscine, vélo, running, tir sportif, à votre vue.", "c-rust"),
     ("lunettes-personnalisees/", "Lunettes personnalisées", "Avec Loumy, personnalisez votre monture à vos couleurs.", "c-brown"),
-    ("reparation-ajustement-lunettes/", "Réparation et ajustement", "Réglage, réparations, nettoyage aux ultrasons.", "c-green"),
+    ("reparation-ajustement-lunettes/", "Réparation et ajustage", "Réglage, réparations, nettoyage aux ultrasons.", "c-green"),
 ]
 
 # Marques : (nom, pays, fabrication ou précision, description, lien, magasins, catégories, fabrication française)
