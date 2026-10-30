@@ -32,13 +32,19 @@ PASSAGE = {
     "city": "Le Passage",
     "address": "64 allée du Loriot, ZAC de Lacassagne, 47520 Le Passage",
     "geo": (44.194682, 0.597402),  # vérifié par Karine dans Google Maps le 28/10/2026
-    "phone": "05 35 55 92 50",  # carte de visite LP + flyer sept. 2026 ; à confirmer sur la fiche Google
+    "phone": "05 35 55 92 50",  # carte de visite LP + flyer sept. 2026 ; confirmé sur la fiche Google le 30/10/2026
     "phone_intl": "+33535559250",
     "doctolib": DOCTOLIB_PASSAGE,
     "opc": OPC_PASSAGE,
     "page": "opticien-le-passage/",
     "maps": "https://www.google.com/maps/search/?api=1&query=Lunettes+%26+Co+64+all%C3%A9e+du+Loriot+47520+Le+Passage",
     "reviews": "https://www.google.com/maps?cid=67469068554064698",  # fiche Google (avis), vérifiée le 27/10/2026
+    # Avis Google repris mot pour mot (relevés sur la fiche le 30/10/2026) : (texte, auteur, date de la visite)
+    "review_quotes": [
+        ("Excellent accueil et professionnalisme. Analyse très consciencieuse de tous les paramètres de ma vision en tenant compte des contraintes et un résultat parfait pour mes verres progressifs. Merci à vous.", "Isabelle D.", "novembre 2025"),
+        ("Très bien reçu et conseillés par Ambre et Julien. Il y a un large choix de montures qu'on ne trouve pas partout. Merci encore ☺️", "Ophélie L.", "novembre 2025"),
+        ("Merci a julien pour c'est bon conseil, mes anciennes lunettes me gêné, la je suis au top niveau vision.", "Cédric A.", "février"),
+    ],
     "gallery": [
         ("passage-galerie-1.jpg", "Vue d'ensemble du magasin du Passage, suspensions orange et fauteuils"),
         ("passage-galerie-2.jpg", "Étagères de montures sur mur bleu, au magasin du Passage"),
@@ -78,6 +84,12 @@ BIAS = {
     "page": "opticien-bias/",
     "maps": "https://www.google.com/maps/search/?api=1&query=Lunettes+%26+Co+Auchan+Ponservat+47300+Bias",
     "reviews": "https://www.google.com/maps?cid=4794800154801151129",  # fiche Google (avis), vérifiée le 27/10/2026
+    # Avis Google repris mot pour mot (relevés sur la fiche le 30/10/2026) : (texte, auteur, date de la visite)
+    "review_quotes": [
+        ("Excellent rapport qualité-prix, excellent conseil et excellent accueil : je recommande !", "Christophe L.", "avril 2026"),
+        ("Très très professionnel. Accueil très chaleureux avec des conseils personnalisés. Suivi de votre dossier avec le plus grand soin jusqu'à ce que vous ayez vos lunettes sur le nez . Je recommande et j'y retournerai", "Marine T.", "avril 2024"),
+        ("Accueil chaleureux , Jimmy et Anne sont très pro et trouveront toujours une solution adaptée.", "Idrelythïa", "décembre 2025"),
+    ],
     "gallery": [  # photos provisoires : Karine fournit de nouvelles photos de Bias
         ("bias-galerie-1.jpg", "Table de conseil au magasin de Bias"),
         ("bias-galerie-2.jpg", "L'espace de vente du magasin de Bias"),

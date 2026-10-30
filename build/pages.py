@@ -5,7 +5,7 @@ Chaque page : slug (dossier), title, description (meta), body(p) où p est le pr
 
 from blocks import (FAQ_PAY, FAQ_RDV, FAQ_VERRES, NOTICE_TELE, ORDONNANCE_FAQ, TODO_PHONE, cta_end, ext, faq,
                     faq_section, gallery, hours_table, page_hero, pattern, phone_html, products_grid, rdv_buttons,
-                    reviews_links, store_buttons, store_card, where)
+                    reviews_links, review_quotes, store_buttons, store_card, where)
 from site_data import BIAS, BRANDS, PASSAGE, STORES
 
 def badge100(p):
@@ -269,7 +269,14 @@ def store_page(store):
   <div class="wrap">
     <div class="section-head"><span class="kicker">Le magasin en images</span></div>
     {gallery(p, store)}
-    <div class="btn-row" style="margin-top:1.6rem">{ext(store['reviews'], 'Lire nos avis Google', 'btn-ghost')}</div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="wrap">
+    <div class="section-head"><span class="kicker">Avis Google</span><h2>Ce que disent nos clients</h2></div>
+    {review_quotes(store)}
+    <div class="btn-row" style="margin-top:1.6rem">{ext(store['reviews'], 'Lire tous les avis sur Google', 'btn-ghost')}</div>
   </div>
 </section>
 

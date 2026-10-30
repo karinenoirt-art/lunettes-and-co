@@ -88,6 +88,15 @@ def reviews_links():
     return f'<div class="reviews">{cards}</div>'
 
 
+def review_quotes(store):
+    """Avis Google positifs repris mot pour mot, avec leur source, leur auteur et la date de la visite."""
+    from html import escape
+    cards = "".join(f"""
+<figure class="card review-quote"><blockquote>« {escape(t)} »</blockquote>
+  <figcaption>{escape(a)} · avis Google, visite en {escape(d)}</figcaption></figure>""" for t, a, d in store["review_quotes"])
+    return f'<div class="review-quotes">{cards}</div>'
+
+
 def gallery(p, store):
     imgs = "".join(f'<img src="{p}assets/img/{f}" alt="{alt}" loading="lazy" width="1400" height="1050">'
                    for f, alt in store["gallery"])
