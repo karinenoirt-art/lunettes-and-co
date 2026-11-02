@@ -1268,8 +1268,9 @@ def mentions(p):
   le marquage CE. Demandez conseil à votre opticien.</p>
   <h2>Médiation de la consommation</h2>
   <p>En cas de litige, vous pouvez d'abord contacter le magasin concerné. Si le désaccord persiste, vous pouvez recourir
-  gratuitement au médiateur de la consommation : AME Conso.
-  <span class="todo">[adresse postale et site internet à ajouter dès réception des coordonnées]</span>.</p>
+  gratuitement au médiateur de la consommation : le Centre de la Médiation de la Consommation de Conciliateurs de justice
+  (CM2C), 49 rue de Ponthieu, 75008 Paris, <a href="https://www.cm2c.net" rel="noopener">www.cm2c.net</a>,
+  <a href="mailto:contact@cm2c.net">contact@cm2c.net</a>, <a href="tel:+33189470014">01 89 47 00 14</a>.</p>
   <h2>Hébergement</h2>
   <p>Le site est hébergé par GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.
   Téléphone : <a href="tel:+33553401996">05 53 40 19 96</a> (magasin de Bias).</p>
