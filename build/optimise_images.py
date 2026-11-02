@@ -8,7 +8,7 @@ build.py ajoute ensuite srcset/sizes aux <img> dont les fichiers WebP existent.
 import glob
 import os
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 IMG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "img")
 WIDTHS = (480, 800, 1200)
@@ -17,7 +17,7 @@ QUALITY = 80
 before = after = 0
 for path in sorted(glob.glob(os.path.join(IMG, "*.jpg"))):
     name = os.path.splitext(os.path.basename(path))[0]
-    im = Image.open(path)
+    im = ImageOps.exif_transpose(Image.open(path))  # applique l'orientation EXIF (photos iPhone), perdue dans le WebP sinon
     before += os.path.getsize(path)
     for w in WIDTHS:
         if w >= im.width:
