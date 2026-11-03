@@ -131,7 +131,7 @@ def home(p):
       <p>Julien ouvre son magasin à Bias en 2012. Il choisit ensuite de retrouver sa liberté : celle de choisir ses marques et ses montures. Un deuxième magasin ouvre au Passage en 2025, avec, parmi nos marques, des amis lunetiers à Montauban : Loumy.</p>
       <a class="btn btn-ghost" href="{p}notre-histoire/">Découvrir notre histoire</a>
     </div>
-    <img src="{p}assets/img/passage-accueil.jpg" alt="L'accueil du magasin du Passage, mur orange et comptoir en terrazzo" loading="lazy" width="1600" height="1200">
+    <img src="{p}assets/img/passage-tiwi-etageres.jpg" alt="Étagères en bois et montures Tiwi devant un mur bleu, avec l'affiche de la marque, au magasin du Passage" loading="lazy" width="1600" height="1200">
   </div>
 </section>
 
