@@ -106,17 +106,20 @@ BIAS = {
         ("Samedi", "9h – 12h30 · 14h – 19h"),
         ("Dimanche", "Fermé"),
     ],
-    "parking": "Parking gratuit du centre commercial Auchan ; le magasin est accessible par l'entrée du centre commercial",
+    "parking": "Parking du centre commercial Auchan",
+    # Validé par Karine le 03/11/2026. A VÉRIFIER avant mise en ligne : nom exact de l'arrêt devant Auchan et ligne (Élios, bus-elios.fr, 05 53 40 23 30).
+    "bus": "Prenez la ligne L1 du réseau Élios et descendez à l'arrêt <span class=\"todo\">Ponservat</span>.",
 }
 
 STORES = [PASSAGE, BIAS]
 
 PRODUCTS = [
     ("lunettes-de-vue/", "Lunettes de vue", "Verres unifocaux et progressifs, 100% Santé, conseil sur le choix des verres.", "c-green"),
-    ("lunettes-de-soleil/", "Lunettes de soleil", "Avec ou sans correction, et des clips teintés pour la conduite.", "c-orange"),
+    ("lunettes-de-soleil/", "Lunettes de soleil", "Avec ou sans correction, et des lunettes à clips.", "c-orange"),
     ("lunettes-enfants/", "Lunettes enfants", "Pour tous les âges, à essayer avec votre enfant.", "c-coral"),
     ("lentilles-de-contact/", "Lentilles de contact", "Adaptation, renouvellement, produits d'entretien.", "c-blue"),
     ("lunettes-de-sport/", "Lunettes de sport", "Piscine, vélo, running, tir sportif, à votre vue.", "c-rust"),
+    ("lunettes-de-conduite/", "Lunettes de conduite", "Conduite de nuit : antireflet, teinte légère, clip jaune.", "c-blue"),
     ("lunettes-personnalisees/", "Lunettes personnalisées", "Avec Loumy, personnalisez votre monture à vos couleurs.", "c-brown"),
     ("reparation-ajustement-lunettes/", "Réparation et ajustage", "Réglage, réparations, nettoyage aux ultrasons.", "c-green"),
 ]
@@ -134,7 +137,7 @@ BRANDS = [
      "Dessinée en Californie, fabriquée en petites séries par des artisans du nord de l'Italie, au sein d'une entreprise familiale indépendante.",
      "https://tavat-eyewear.com/", "passage", ["vue", "soleil"], False),
     ("Brett", "fr", "",
-     "Inspirée du cinéma des années 70 et de l'univers auto-moto : des montures en titane, carbone ou acétate, et des solaires à verres polarisants.",
+     "Inspirée du cinéma des années 70 et de l'univers auto-moto : des montures en titane, carbone ou acétate, et des solaires à verres polarisants. Des montures aux branches ultrafines et souples, en titane ou en acier inoxydable, conçues pour passer facilement sous un casque.",
      "https://brett-eyewear.com/fr", "passage", ["vue", "soleil"], False),
     ("Tiwi", "es", "",
      "Créée par des professionnels de l'optique, de la mode et de la photographie, Tiwi soutient deux associations pour la vue dans les pays en développement.",

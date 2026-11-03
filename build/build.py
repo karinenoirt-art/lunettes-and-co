@@ -257,6 +257,17 @@ def strip_todos(html):
     return html
 
 
+def nbsp_fr(html):
+    """Espace insécable avant « ; : ! ? » et à l'intérieur des guillemets « », dans le texte visible uniquement
+    (jamais dans les balises, les scripts, les styles ni le JSON-LD)."""
+    def fix(text):
+        text = re.sub(r"(?<=\S) ([;:!?])", "\u00a0\\1", text)
+        text = re.sub(r"« ", "«\u00a0", text)
+        return re.sub(r" »", "\u00a0»", text)
+    parts = re.split(r"(<script.*?</script>|<style.*?</style>|<[^>]+>)", html, flags=re.S)
+    return "".join(x if x.startswith("<") else fix(x) for x in parts)
+
+
 IMG_SIZES = "(max-width: 760px) 100vw, 600px"
 
 
@@ -279,7 +290,7 @@ def render(page):
     slug = page["slug"]
     depth = slug.count("/")
     p = "../" * depth
-    body = optimise_imgs(strip_todos(page["body"](p)))
+    body = nbsp_fr(optimise_imgs(strip_todos(page["body"](p))))
     robots = '<meta name="robots" content="noindex, nofollow">' if DRAFT else ""
     ld = ""
     og_image = f"{DOMAIN}/assets/img/{page.get('og_image', OG_IMAGE_DEFAULT)}"

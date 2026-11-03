@@ -3,7 +3,8 @@
 Chaque page : slug (dossier), title, description (meta), body(p) où p est le préfixe relatif vers la racine.
 """
 
-from blocks import (FAQ_PAY, FAQ_RDV, FAQ_VERRES, NOTICE_TELE, ORDONNANCE_FAQ, TODO_PHONE, cta_end, ext, faq,
+from blocks import (FAQ_CASSE, FAQ_MIX, FAQ_PARKING_BIAS, FAQ_PARKING_PASSAGE, FAQ_PAY, FAQ_PRIX_REPARATION, FAQ_RDV,
+                    FAQ_RDV_TELE, FAQ_REGLAGE, FAQ_ULTRASONS, FAQ_VERRES, NOTICE_TELE, ORDONNANCE_FAQ, TEXTE_ULTRASONS, TODO_PHONE, cta_end, ext, faq,
                     faq_section, gallery, hours_table, page_hero, pattern, phone_html, products_grid, rdv_buttons,
                     reviews_links, review_quotes, store_buttons, store_card, where)
 from site_data import BIAS, BRANDS, PASSAGE, STORES
@@ -199,7 +200,8 @@ def store_page(store):
                     ("Peut-on faire une téléconsultation d'ophtalmologie à Bias ?",
                      "Oui. Le magasin de Bias propose la téléconsultation d'ophtalmologie augmentée, sur rendez-vous, pour les personnes de 16 ans et plus."),
                     ("Proposez-vous le 100% Santé ?", "Oui, le magasin de Bias le propose aussi, pour tous les âges."),
-                    ("Y a-t-il un parking ?", "Oui, le parking du centre commercial Auchan est gratuit. Le magasin est accessible par l'entrée du centre commercial."),
+                    ("Y a-t-il un parking ?", "Oui. Vous pouvez vous garer sur le parking du centre commercial Auchan. Des places PMR sont disponibles."),
+                    ("Comment venir au magasin en bus ?", BIAS["bus"]),
                     ("Le magasin s'appelait-il autrement ?", "Oui. Le magasin de Bias, ouvert en 2012, s'appelait Optical Discount. Il est aujourd'hui un opticien indépendant : Lunettes &amp; Co.")]
         else:
             intro = """<p class="lead">Au Passage, dans la ZAC de Lacassagne, près d'Agen, nous avons pensé notre magasin comme un cocon :
@@ -211,10 +213,10 @@ def store_page(store):
             budget_title = "Des prix accessibles"
             budget_p = """Nos montures démarrent à 100 euros (hors 100% Santé). Devis gratuit en magasin."""
             brands_title = "Nos marques au Passage"
-            brands_p = f"""Vous trouverez notamment Brett, Tavat, Tiwi, French Retro, Marlone, Lafont Enfant, Ray-Ban et Lancel.
-            <a href="{p}marques/">Toutes nos marques</a>."""
-            craft_title = "Loumy, une marque artisanale"
-            craft = """Au Passage, nous proposons Loumy : des montures artisanales fabriquées à Montauban par des amis de Julien."""
+            brands_p = f"""Vous trouverez notamment Loumy, une marque artisanale fabriquée à Montauban, Brett, Tavat, Tiwi, French Retro, Marlone,
+            Lafont Enfant, Ray-Ban et Lancel. <a href="{p}marques/">Toutes nos marques</a>."""
+            craft_title = ""
+            craft = ""
             extra_service = ""
             sante_p = """Le 100% Santé est une sélection de lunettes de vue (monture et verres), sans reste à charge avec une
             complémentaire santé responsable ou la Complémentaire santé solidaire. Il concerne toute la famille. Devis gratuit en magasin."""
@@ -235,7 +237,7 @@ def store_page(store):
                     ("Peut-on faire une téléconsultation d'ophtalmologie au Passage ?",
                      "Oui. Au Passage, un service de téléconsultation d'ophtalmologie augmentée est disponible en magasin, sur rendez-vous, à partir de 16 ans."),
                     ("Proposez-vous le 100% Santé ?", "Oui, le magasin du Passage le propose pour toute la famille."),
-                    ("Où se garer près du magasin ?", "Il y a des places devant le magasin, et le grand parking du Lidl se trouve dans la zone commerciale."),
+                    ("Où se garer près du magasin ?", FAQ_PARKING_PASSAGE),
                     ("Comment venir au magasin en bus ?", "Prenez la ligne 7 du réseau Tempo et descendez à l'arrêt Demi-Lune : le magasin est à 2 minutes à pied.")]
 
         name_h1 = "à Bias" if is_bias else "au Passage d'Agen"
@@ -255,8 +257,7 @@ def store_page(store):
       <p>{budget_p}</p>
       <h3 style="margin-top:2rem">{brands_title}</h3>
       <p>{brands_p}</p>
-      <h3 style="margin-top:2rem">{craft_title}</h3>
-      <p>{craft}</p>
+      {f'<h3 style="margin-top:2rem">{craft_title}</h3><p>{craft}</p>' if craft_title else ''}
       {badge100(p)}
       <h3 style="margin-top:1rem">Le 100% Santé</h3>
       <p>{sante_p}</p>
@@ -293,7 +294,6 @@ def store_page(store):
         <h3>Téléconsultation d'ophtalmologie</h3>
         <p>Des examens réalisés en magasin, puis un échange en visioconférence avec un ophtalmologue.</p>
         <div class="btn-row btn-row-tele">{ext(store['doctolib'], "Téléconsultation : prendre rendez-vous", 'btn-tele btn-sm')}</div>
-        <p class="notice notice-tele">{NOTICE_TELE}</p>
         <p><a href="{p}teleconsultation-ophtalmologie/">Comment ça se passe ? →</a></p>
       </div>
     </div>
@@ -353,7 +353,7 @@ def teleconsultation(p):
         ("Que dois-je apporter ?", "Votre carte Vitale, votre carte bancaire, vos lunettes actuelles, votre dernière ordonnance."),
         ("Est-ce un service d'urgence ?", "Non. En cas d'urgence, contactez le SAMU au 15."),
         ("Puis-je acheter mes lunettes chez vous après ?",
-         "Oui, si vous le souhaitez, notre équipe vous conseille en magasin."),
+         "Oui, bien sûr. Avec votre ordonnance, notre équipe vous conseille et vous aide à choisir vos lunettes en magasin."),
         ("Combien de temps mon ordonnance de lunettes ou de lentilles est-elle valable ?",
          "Cela dépend de votre âge à la date de l'ordonnance. Lunettes : 1 an avant 16 ans, 5 ans de 16 à 42 ans, "
          "3 ans après 42 ans. Lentilles de contact : 1 an avant 16 ans, 3 ans à partir de 16 ans. "
@@ -433,9 +433,7 @@ def lunettes_vue(p):
     et à votre budget. Le 100% Santé est proposé pour toute la famille. Paiement en plusieurs fois, jusqu'à 4 fois.</p>"""
     vfaq = [
         ("Qu'est-ce que le 100% Santé en optique ?", CENT_POUR_CENT),
-        ("Puis-je mélanger une monture 100% Santé et des verres à prix libres ?",
-         "Oui, il est possible d'associer une monture d'une gamme et des verres de l'autre. En revanche, il n'est pas possible de prendre "
-         "des verres de deux gammes différentes."),
+        FAQ_MIX,
         ("Quel budget prévoir pour des lunettes de vue ?",
          "Cela dépend de votre correction, de la monture et des verres choisis, et de votre couverture. Nous vous remettons "
          "un devis gratuit en magasin, avec l'offre 100% Santé et l'offre à tarifs libres. Montures à partir "
@@ -453,10 +451,10 @@ def lunettes_vue(p):
   <div class="wrap">
     <div class="section-head"><span class="kicker">Notre méthode</span><h2>Comment nous choisissons vos lunettes avec vous</h2></div>
     <ol class="steps">
-      <li><strong>Nous écoutons votre besoin</strong> : vos lunettes actuelles, l'évolution de votre correction, votre usage au quotidien (travail, écran, conduite, sport, loisirs).</li>
-      <li><strong>Nous sélectionnons des montures adaptées</strong> à votre correction, à la forme de votre visage, à votre carnation, à vos goûts et à votre budget, puis nous les essayons ensemble.</li>
-      <li><strong>Nous vous conseillons sur les verres</strong> et vous expliquons les options simplement. Pour un premier verre progressif, nous prenons le temps de vous expliquer comment il fonctionne.</li>
-      <li><strong>Nous ajustons vos lunettes à votre visage</strong> au moment de la remise, et vous pouvez repasser au magasin quand vous voulez pour un réglage.</li>
+      <li><strong>Nous écoutons vos besoins</strong> : ce que vous aimez ou non dans vos lunettes actuelles, l'évolution de votre correction, votre usage au quotidien (travail, écran, conduite, sport, loisirs).</li>
+      <li><strong>Nous sélectionnons des montures adaptées</strong> à votre correction, à la forme de votre visage, à votre carnation, à vos goûts et à votre budget, puis nous les essayons ensemble, jusqu'à ce que vous trouviez LA paire qui vous corresponde.</li>
+      <li><strong>Nous vous conseillons sur les verres</strong> et vous expliquons chaque option simplement. Un premier verre progressif ? Nous vous montrons comment il fonctionne et nous restons disponibles le temps de vous y habituer.</li>
+      <li><strong>À la remise</strong>, nous ajustons vos lunettes à votre visage pour qu'elles tiennent bien en place et soient confortables toute la journée. Vous pouvez repasser en magasin quand vous voulez pour un réglage.</li>
     </ol>
   </div>
 </section>
@@ -475,8 +473,11 @@ def lunettes_vue(p):
       <p>Nos montures démarrent à 100 euros (hors 100% Santé), et les montures 100% Santé sont à 30 euros maximum. Devis gratuit
       en magasin, avec l'offre 100% Santé et l'offre à tarifs libres, pour comparer.</p>
       <h3 style="margin-top:2rem">Pour se faire plaisir : des montures artisanales</h3>
-      <p>Loumy, fabriquée à Montauban, et Victoire d'Aqui, fabriquée à Hossegor, dans les Landes, sont des montures artisanales. Bondet et
-      Marlone sont elles aussi fabriquées en France. <a href="{p}marques/">Toutes nos marques</a>.</p>
+      <p>Loumy, fabriquée à Montauban, et Victoire d'Aqui, fabriquée à Hossegor, dans les Landes, sont des montures artisanales.
+      <a href="{p}marques/">Toutes nos marques</a>.</p>
+      <h3 style="margin-top:2rem">Des montures fabriquées en France</h3>
+      <p>Bondet et Marlone, comme Loumy et Victoire d'Aqui, sont fabriquées en France. L'origine de chaque marque est indiquée
+      sur la page <a href="{p}marques/">Nos marques</a>.</p>
     </div>
   </div>
 </section>
@@ -484,14 +485,14 @@ def lunettes_vue(p):
 <section class="bg-white">
   <div class="wrap two-col">
     <div>
-      <h2>Verres unifocaux et progressifs : on vous explique</h2>
+      <h2>Verres unifocaux et progressifs : nous vous expliquons les différences</h2>
       <p>Un verre unifocal corrige la vue à une seule distance. Un verre progressif permet de voir de loin, de près et à
       distance intermédiaire avec les mêmes lunettes. Notre équipe vous conseille le verre qui correspond à votre ordonnance
       et à votre usage au quotidien. Un premier verre progressif demande parfois un peu de temps pour s'y habituer : nous restons
       disponibles pour répondre à vos questions.</p>
       <h3>Traitements et options, selon vos besoins</h3>
-      <p>Traitement anti-reflet, verres qui s'éclaircissent et foncent selon la lumière (photochromiques), verres adaptés
-      au travail sur écran, verres antifatigue. Nous travaillons avec Mega Optic, verrier français, et Optovision, verrier allemand.</p>
+      <p>Traitement anti-reflet, verres qui s'éclaircissent et foncent selon la lumière (photochromiques), verres avec filtre
+      anti-lumière bleue, qui filtrent une partie de la lumière émise par les écrans (ordinateur, téléphone, tablette), verres antifatigue.</p>
     </div>
     <img src="{p}assets/img/vue-rouge.jpg" alt="Monture de vue rouge oversize posée sur une étagère en bois" loading="lazy" width="1600" height="1200">
   </div>
@@ -501,7 +502,7 @@ def lunettes_vue(p):
   <div class="wrap">
     <div class="section-head"><h2>Des lunettes pour chaque usage</h2></div>
     <div class="grid grid-4">
-      <a class="card" href="{p}lunettes-de-soleil/"><i class="dot c-orange"></i><h3>Au volant</h3><p>Clips teintés à fixer sur votre monture.</p></a>
+      <a class="card" href="{p}lunettes-de-conduite/"><i class="dot c-orange"></i><h3>Lunettes de conduite</h3><p>Conduite de nuit : antireflet, teinte légère, clip jaune.</p></a>
       <a class="card" href="{p}lunettes-de-sport/"><i class="dot c-rust"></i><h3>Pour le sport</h3><p>Piscine, vélo, running, tir sportif.</p></a>
       <a class="card" href="{p}lunettes-personnalisees/"><i class="dot c-brown"></i><h3>Personnalisation</h3><p>Une monture à vos couleurs.</p></a>
       <a class="card" href="{p}lunettes-enfants/"><i class="dot c-coral"></i><h3>Enfants et ados</h3><p>Des montures pour tous les âges.</p></a>
@@ -515,7 +516,6 @@ def lunettes_vue(p):
     <h2>Votre ordonnance est ancienne, ou vous n'en avez pas ?</h2>
     <p>Pour renouveler vos lunettes, il faut une ordonnance en cours de validité. Selon votre situation, l'ophtalmologue
     peut établir une ordonnance lors d'une téléconsultation en magasin. Nous réalisons aussi des examens de vue en magasin.</p>
-    <p><strong>Ce n'est pas un service d'urgence : en cas d'urgence, contactez le SAMU au 15.</strong></p>
     <a class="btn btn-light" href="{p}teleconsultation-ophtalmologie/">La téléconsultation en magasin</a>
   </div>
 </section>
@@ -530,17 +530,16 @@ def lunettes_vue(p):
 # ---------------------------------------------------------------- Lunettes de soleil
 def lunettes_soleil(p):
     intro = """<p class="lead">Une forme, une couleur, une teinte de verres : nous vous aidons à choisir des lunettes de soleil qui vous vont bien,
-    pour les adultes comme pour les enfants. Avec ou sans correction : nous réalisons aussi vos lunettes de soleil à votre vue.</p>"""
+    pour les adultes comme pour les enfants. Besoin de verres correcteurs ? Nous réalisons aussi vos lunettes de soleil à votre vue.</p>"""
     sfaq = [
         ("Avez-vous des lunettes de soleil pour enfants ?", "Oui, des montures solaires pour les enfants et les adolescents."),
         ("Peut-on avoir des lunettes de soleil à sa vue ?",
          "Oui. Choisissez votre monture et nous vous conseillons sur les verres : teintes classiques de catégorie 3 (une teinte "
          "foncée, adaptée aux journées très lumineuses), verres polarisants, teintes dégradées, traitement miroité en option. "
-         "Apportez votre ordonnance en cours de validité."),
-        ("Quelle différence entre un clip solaire et un clip pour la conduite de nuit ?",
-         "Le clip solaire (teinte de catégorie 3, polarisant) se porte de jour, par temps lumineux : il ne se porte pas la nuit. "
-         "Le clip pour la conduite de nuit, à teinte jaune, s'utilise la nuit ou en lumière faible. Leur effet varie selon les "
-         "personnes : testez-les avec votre opticien avant de choisir."),
+         "Pour des verres solaires à votre vue, apportez votre ordonnance en cours de validité."),
+        ("Qu'est-ce qu'un verre polarisant ?",
+         "Un verre polarisant filtre les reflets éblouissants (eau, route mouillée, neige). Il apporte plus de confort visuel "
+         "et de contraste. Il ne change pas la catégorie de la teinte."),
         ("Comment fonctionne un clip ?",
          "Le clip teinté se fixe sur votre monture de vue et se retire facilement. Pour choisir le modèle, passez en magasin : "
          "nous vous conseillons."),
@@ -558,7 +557,7 @@ def lunettes_soleil(p):
       vous va, la couleur, et la teinte des verres selon votre usage.</p>
       <h3>Des verres de soleil à votre vue</h3>
       <p>Teintes classiques de catégorie 3 (une teinte foncée, adaptée aux journées très lumineuses), verres polarisants,
-      teintes dégradées, et traitement miroité en option. Apportez votre ordonnance en cours de validité.</p>
+      teintes dégradées, et traitement miroité en option. Pour des verres solaires à votre vue, apportez votre ordonnance en cours de validité.</p>
       <h3>Les marques à découvrir</h3>
       <ul class="prose">
         <li><strong>Dans les deux magasins</strong> : Ki ET LA, Ray-Ban, Lancel.</li>
@@ -575,14 +574,10 @@ def lunettes_soleil(p):
   <div class="wrap two-col">
     <img src="{p}assets/img/osmose-clip.jpg" alt="Montures avec clips solaires sur une étagère" loading="lazy" width="1600" height="1200">
     <div>
-      <span class="kicker">Au volant</span>
-      <h2>Des clips teintés à fixer sur votre monture</h2>
-      <p>Vous portez déjà des lunettes de vue ? Un clip teinté se fixe sur votre monture, sans changer de lunettes.
-      Nous proposons deux types de clips, à ne pas confondre : les clips solaires (teinte de catégorie 3, polarisants),
-      qui se portent de jour et jamais la nuit, et les clips pour la conduite de nuit (teinte jaune), qui s'utilisent la nuit
-      ou en lumière faible.</p>
-      <p>L'effet d'une teinte varie selon les personnes : testez le clip avec votre opticien, en magasin, pour vérifier
-      qu'il vous convient avant de l'adopter.</p>
+      <span class="kicker">Lunettes à clips</span>
+      <h2>Lunettes à clips</h2>
+      <p>Une seule paire pour la vue et pour le soleil : Osmose propose des montures de vue avec des clips aimantés. Le clip
+      solaire (teinte de catégorie 3, polarisant) se fixe sur votre monture et se retire facilement. Il se porte de jour, jamais la nuit.</p>
     </div>
   </div>
 </section>
@@ -638,7 +633,7 @@ def lunettes_enfants(p):
       <h2>Pourquoi venir avec votre enfant ?</h2>
       <p>Un enfant n'est pas un adulte en petit. Selon son âge et la forme de son visage, la taille et la forme de la monture
       ne sont pas les mêmes. Il faut voir, sur lui, que les lunettes sont bien adaptées et qu'elles couvrent bien ses yeux.
-      C'est aussi à lui de choisir une monture qu'il aime : il aura envie de la porter.</p>
+      C'est aussi à lui de choisir une monture qu'il aime et qu'il aura envie de porter.</p>
       <ul class="prose">
         <li><strong>La bonne taille</strong> : ni trop grande, ni trop petite. Les tailles ne dépendent plus seulement de l'âge : il faut essayer.</li>
         <li><strong>Un appui confortable sur le nez</strong> : sur une monture en plastique, il doit être confortable, sans gêne.</li>
@@ -649,8 +644,8 @@ def lunettes_enfants(p):
     <div>
       <h2>Comment ça se passe en magasin</h2>
       <ol class="steps">
-        <li>Vous venez avec votre enfant et son ordonnance en cours de validité. Pour l'ordonnance d'un enfant, consultez un ophtalmologue.</li>
-        <li>Il essaie plusieurs montures, avec l'aide de l'équipe.</li>
+        <li>Vous venez avec votre enfant et son ordonnance en cours de validité.<br>Pour l'ordonnance d'un enfant, consultez un ophtalmologue.</li>
+        <li>Il essaie plusieurs montures avec l'aide de nos opticiens diplômés.</li>
         <li>Nous vérifions ensemble que la monture est bien adaptée à son visage et à ses yeux.</li>
         <li>Nous ajustons la monture à son visage au moment de la remise, puis nous la réajustons quand c'est nécessaire : les enfants grandissent, et les lunettes bougent.</li>
       </ol>
@@ -694,8 +689,8 @@ def lunettes_enfants(p):
 # ---------------------------------------------------------------- Lentilles
 def lentilles(p):
     intro = """<p class="lead">Que vous débutiez avec les lentilles ou que vous les portiez déjà, nous sommes là pour vous : adaptation,
-    renouvellement, changement de lentilles, conseils d'entretien. Nous vous apprenons aussi à les poser, à les retirer et à les
-    entretenir. Les lentilles sont délivrées sur ordonnance.</p>"""
+    renouvellement, changement de lentilles, conseils d'entretien. Nous vous montrons comment les poser, les retirer et les entretenir,
+    jusqu'à ce que vous soyez à l'aise.</p>"""
     lfaq = [
         ("Faut-il une ordonnance pour acheter des lentilles de contact ?", "Oui, les lentilles de contact sont délivrées sur ordonnance."),
         ("Combien de temps mon ordonnance de lentilles est-elle valable ?",
@@ -710,7 +705,7 @@ def lentilles(p):
          "L'Assurance Maladie les prend en charge dans certains cas précis, sur prescription. Renseignez-vous auprès de votre complémentaire santé."),
         ("Proposez-vous la téléconsultation pour renouveler mes lentilles ?",
          "Oui, à partir de 16 ans, en magasin et sur rendez-vous : l'ophtalmologue décide, selon votre situation, de la "
-         "prescription adaptée. Ce n'est pas un service d'urgence : en cas d'urgence, contactez le SAMU au 15."),
+         "prescription adaptée."),
     ]
     return f"""
 {page_hero(p, "Lentilles de contact", "Lentilles de contact : adaptation, renouvellement et entretien, au Passage et à Bias", intro,
@@ -731,7 +726,6 @@ def lentilles(p):
       de 16 ans et 3 ans à partir de 16 ans, sauf mention contraire du médecin. Si votre ordonnance est trop ancienne,
       l'ophtalmologue peut, selon votre situation, établir une nouvelle ordonnance lors d'une
       <a href="{p}teleconsultation-ophtalmologie/">téléconsultation d'ophtalmologie en magasin</a>.</p>
-      <p class="notice">{NOTICE_TELE}</p>
     </div>
   </div>
 </section>
@@ -739,8 +733,8 @@ def lentilles(p):
 <section>
   <div class="wrap grid grid-2">
     <div class="card"><i class="dot c-blue"></i><h3>Produits d'entretien</h3>
-      <p>Nous vendons des produits d'entretien et des accessoires pour vos lentilles de contact, avec conseil en magasin.
-      Pour vos lunettes : sprays, lingettes et microfibres. Voir aussi <a href="{p}reparation-ajustement-lunettes/">Réparation et ajustage</a>.</p></div>
+      <p>Produits d'entretien et accessoires pour vos lentilles de contact : nos opticiens vous conseillent en magasin.
+      Pour vos lunettes : sprays, lingettes et microfibres. Plus d'informations : <a href="{p}reparation-ajustement-lunettes/">Réparation et ajustage</a>.</p></div>
     <div class="card"><i class="dot c-green"></i><h3>Prix et prise en charge</h3>
       <p>La prise en charge des lentilles par l'Assurance Maladie est prévue dans certains cas précis, sur prescription médicale.
       Renseignez-vous auprès de votre complémentaire santé. Paiement en plusieurs fois, jusqu'à 4 fois, également pour les lentilles.</p></div>
@@ -756,7 +750,7 @@ def lentilles(p):
 # ---------------------------------------------------------------- Sport
 def sport(p):
     intro = """<p class="lead">Piscine, vélo, running, tir sportif : chaque sport a ses contraintes, et votre correction doit suivre.
-    Dites-nous ce que vous pratiquez : nous cherchons la solution qui vous convient, au Passage et à Bias.</p>"""
+    Dites-nous quel sport vous pratiquez, et nous cherchons ensemble la solution qui vous convient.</p>"""
     spfaq = [
         ("Proposez-vous des lunettes de sport à ma vue ?",
          "Oui : montures et verres adaptés à la pratique sportive, avec votre correction : lunettes de piscine à la vue, "
@@ -778,7 +772,7 @@ def sport(p):
     de votre correction et de votre confort pour vous proposer des montures et des verres adaptés.</p></div>
     <div class="grid grid-3">
       <div class="card"><i class="dot half c-blue"></i><h3>Piscine</h3><p>Des lunettes de piscine à votre vue, avec notre fournisseur Demetz, qui propose des équipements à la vue avec des montures spécifiques pour de nombreux sports. L'astigmatisme peut être pris en compte. Nous pouvons aussi proposer des masques de plongée à la vue.</p></div>
-      <div class="card"><i class="dot half c-orange"></i><h3>Vélo et running</h3><p>Selon les modèles, nous proposons un clip (utile pour les montures très enveloppantes) ou une monture qui s'adapte directement à votre vue, sans les contraintes du clip, comme la buée.</p></div>
+      <div class="card"><i class="dot half c-orange"></i><h3>Vélo et running</h3><p>Selon les modèles, nous proposons une lunette de vue avec clip, ou une monture qui s'adapte directement à votre vue, sans les contraintes du clip, comme la buée.</p></div>
       <div class="card"><i class="dot half c-green"></i><h3>Autres sports</h3><p>Parlez-nous de votre pratique : nous cherchons avec vous la solution adaptée, à partir de votre correction.</p></div>
     </div>
   </div>
@@ -789,13 +783,11 @@ def sport(p):
     <div>
       <span class="kicker">Tir sportif</span>
       <h2>Tir sportif : le conseil d'un tireur de compétition</h2>
-      <p>Julien pratique le tir sportif depuis l'enfance, en compétition. Plusieurs fois qualifié aux championnats de France, il a été à de nombreuses reprises
-      champion départemental et régional. Il tire en discipline ISSF, au pistolet à 10 mètres
-      et à 25 mètres. Cette pratique lui permet de comprendre ce que les tireurs attendent de leurs lunettes, quelle que soit
-      leur discipline.</p>
-      <p>Son conseil aux tireurs : avoir une correction juste en vision de loin (les progressifs sont très rares chez les tireurs).
-      En magasin, nous pouvons adapter la correction de l'œil de visée à votre discipline, à partir de votre ordonnance :
-      organes de visée nets, cible légèrement plus floue.</p>
+      <p>Julien tire en compétition depuis son enfance. Plusieurs fois champion départemental et régional, il s'est aussi qualifié
+      de nombreuses fois pour les championnats de France. Il tire en discipline ISSF, au pistolet à 10 mètres et à 25 mètres.
+      Cette pratique lui permet de comprendre ce que les tireurs attendent de leurs lunettes, quelle que soit leur discipline.</p>
+      <p>Son conseil aux tireurs : avoir une correction juste en vision de loin. En magasin, nous adaptons la correction de l'œil
+      de visée à votre discipline, à partir de votre ordonnance et de votre confort : organes de visée nets, cible légèrement plus floue.</p>
       <p>Vous tirez en club ou en compétition ? Prenez rendez-vous en magasin et précisez que c'est pour le tir sportif :
       Julien sera présent lors de votre rendez-vous.</p>
       <div class="btn-row">{ext(PASSAGE['opc'], 'Rendez-vous en magasin : Le Passage', 'btn-store')}
@@ -807,14 +799,63 @@ def sport(p):
 
 <section>
   <div class="wrap prose">
-    <p>Vous roulez ou vous conduisez avant ou après votre sport ? Voir aussi les clips teintés à fixer sur votre monture,
-    page <a href="{p}lunettes-de-soleil/">Lunettes de soleil</a>.</p>
+    <p>Vous conduisez beaucoup ? Découvrez <a href="{p}lunettes-de-conduite/">nos lunettes de conduite</a>.</p>
   </div>
 </section>
 
 {where(p)}
 {faq_section(p, spfaq)}
 {cta_end(p, "Parlez-nous de votre sport.", "Passez nous voir au Passage ou à Bias, ou prenez rendez-vous.")}
+"""
+
+
+# ---------------------------------------------------------------- Lunettes de conduite
+CONDUITE_FAQ = [
+    ("Les lunettes de conduite de nuit sont-elles efficaces ?",
+     "L'effet varie selon les personnes. Essayez-les avec votre opticien avant de vous décider."),
+    ("Puis-je avoir des lunettes de conduite avec ma correction ?",
+     "Si vous portez une correction : nous réalisons vos verres correcteurs avec un traitement antireflet, à partir d'une "
+     "ordonnance en cours de validité. Une seule paire pour corriger votre vue et conduire de nuit."),
+    ("Peut-on porter des lunettes de soleil pour conduire de nuit ?", "Non."),
+]
+
+
+def conduite(p):
+    intro = """<p class="lead">La nuit, les phares des autres véhicules éblouissent et les halos lumineux fatiguent les yeux.
+    Certains équipements peuvent rendre la conduite plus confortable. Nous vous conseillons en magasin.</p>"""
+    return f"""
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker">Lunettes de conduite</span>
+    <h1>Lunettes de conduite</h1>
+    {intro}
+    {rdv_buttons(p, urgence=False)}
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="wrap two-col" style="align-items:start">
+    <div>
+      <h2>Les solutions</h2>
+      <ul class="prose">
+        <li><strong>Traitement antireflet.</strong> Il limite les reflets parasites sur les verres. C'est la première solution à envisager pour conduire de nuit.</li>
+        <li><strong>Verres à très légère teinte jaune (catégorie 0).</strong> Certaines personnes y trouvent plus de confort face à l'éblouissement des phares. L'effet varie d'une personne à l'autre.</li>
+        <li><strong>Clip jaune « conduite de nuit ».</strong> Il se fixe sur vos lunettes de vue et se retire facilement. Venez l'essayer en magasin.</li>
+        <li><strong>Si vous portez une correction.</strong> Nous réalisons vos verres correcteurs avec un traitement antireflet, à partir d'une ordonnance en cours de validité. Une seule paire pour corriger votre vue et conduire de nuit.</li>
+      </ul>
+    </div>
+    <div class="callout">
+      <h2>Ce qu'il faut éviter la nuit</h2>
+      <p>Les verres de lunettes de soleil ne conviennent pas à la conduite de nuit, ni les clips solaires.</p>
+      <p>Les verres polarisants ne sont pas recommandés la nuit : ils peuvent altérer la perception de certains éléments de signalisation.</p>
+      <p>Si la conduite de nuit vous gêne beaucoup, parlez-en à votre ophtalmologue.</p>
+    </div>
+  </div>
+</section>
+
+{where(p)}
+{faq_section(p, CONDUITE_FAQ)}
+{cta_end(p, "Envie d'essayer ?", "Passez nous voir au Passage ou à Bias, ou prenez rendez-vous.")}
 """
 
 
@@ -827,7 +868,7 @@ def sur_mesure(p):
     mfaq = [
         ("Que veut dire « personnaliser » une monture ?",
          "Choisir les couleurs, les effets de matière et les branches d'une monture Loumy."),
-        ("Qui fabrique les montures ?", "Loumy, une marque née à Montauban, créée par Dominique et Aurore Basso."),
+        ("Qui fabrique les montures ?", "Loumy, une marque née à Montauban, créée par Domy et Aurore."),
         ("La personnalisation est-elle disponible dans les deux magasins ?", "Oui, au Passage et à Bias."),
         ("Puis-je personnaliser une monture avec ma correction ?", "Oui, tous les types de verres sont compatibles."),
     ]
@@ -847,7 +888,7 @@ def sur_mesure(p):
   <div class="wrap two-col">
     <div>
       <h2>Loumy, des amis lunetiers à Montauban</h2>
-      <p>Loumy a été créée à Montauban par Dominique et Aurore Basso, des amis de Julien depuis ses études d'opticien. Il allait de soi que leurs montures, artisanales, soient dans nos magasins.</p>
+      <p>Loumy a été créée à Montauban par Domy et Aurore, des amis de Julien depuis ses études d'opticien. Leurs montures artisanales sont disponibles dans nos deux magasins.</p>
       <p><a href="{p}notre-histoire/" style="color:var(--ink)">Notre histoire</a> · <a href="{p}marques/" style="color:var(--ink)">Nos marques</a></p>
     </div>
     <div style="max-width:380px;justify-self:center;width:100%">{pattern(p)}</div>
@@ -870,25 +911,16 @@ def sur_mesure(p):
 
 # ---------------------------------------------------------------- Réparation
 def reparation(p):
-    intro = """<p class="lead">Une branche qui bouge, des lunettes qui glissent, une monture abîmée : passez nous voir. Nous réglons,
-    ajustons, nettoyons aux ultrasons et réparons vos lunettes. Vos lunettes viennent d'ailleurs ? Nous les réglons ou les
-    réparons dans la mesure du possible.</p>"""
+    intro = """<p class="lead">Ajustage, nettoyage, réparation : nous prenons soin de vos lunettes, même si vous les avez achetées ailleurs.
+    Pour une réparation, tout dépend de la casse : nous regardons ensemble ce qui est possible.</p>"""
     buttons = f"""<div class="btn-row">{ext(PASSAGE['opc'], 'Rendez-vous en magasin : Le Passage', 'btn-store')}
     {ext(BIAS['opc'], 'Rendez-vous en magasin : Bias', 'btn-store')}</div>"""
     rfaq = [
-        ("Pouvez-vous régler mes lunettes ?",
-         "Oui, y compris pour des lunettes achetées ailleurs, dans la mesure du possible. Passez au "
-         "magasin, avec ou sans rendez-vous."),
-        ("Mes lunettes sont cassées, pouvez-vous les réparer ?",
-         "Cela dépend de la casse : passez nous voir, nous regardons ensemble si la monture est réparable. Branches, plaquettes, "
-         "vis, soudures : nous réparons dans la mesure du possible."),
+        FAQ_REGLAGE,
+        FAQ_CASSE,
         FAQ_VERRES,
-        ("À quoi sert le nettoyage aux ultrasons ?",
-         "C'est un nettoyage de vos lunettes dans un bac à ultrasons : principalement pour la monture, avec les verres montés dessus."),
-        ("Combien coûte une réparation ?",
-         "Une petite réparation est gratuite ; pour une réparation plus importante, le coût "
-         "dépend de ce qui est cassé, et les lunettes encore sous garantie sont réparées sans frais, dans les conditions de la "
-         "garantie. Passez en magasin, nous vous répondons sur place."),
+        FAQ_ULTRASONS,
+        FAQ_PRIX_REPARATION,
         ("Réparez-vous les lunettes d'enfant ?",
          "Oui, comme les autres lunettes : passez au magasin nous montrer le souci. Nous regardons si la monture est réparable "
          "et si une pièce peut être commandée."),
@@ -900,11 +932,10 @@ def reparation(p):
 <section class="bg-white">
   <div class="wrap">
     <div class="section-head"><h2>Ce que nous faisons</h2></div>
-    <div class="grid grid-4">
-      <div class="card"><i class="dot c-green"></i><h3>Réglage et ajustage</h3><p>Nous ajustons vos lunettes sur votre visage, au magasin, pour qu'elles soient bien posées.</p></div>
-      <div class="card"><i class="dot c-blue"></i><h3>Nettoyage aux ultrasons</h3><p>Un nettoyage de votre monture, que nous passons au bac à ultrasons avec les verres.</p></div>
-      <div class="card"><i class="dot c-orange"></i><h3>Réparation</h3><p>Changement de plaquettes, revissage, remplacement de vis perdues, dépannage de branches, soudures sur les montures métalliques classiques (le titane et le plastique injecté ne se soudent pas).</p></div>
-      <div class="card"><i class="dot c-coral"></i><h3>Changement de verres</h3><p>Si votre monture est en bon état, nous pouvons simplement changer les verres.</p></div>
+    <div class="grid grid-3">
+      <div class="card"><i class="dot c-green"></i><h3>Réglage et ajustage</h3><p>Des lunettes qui glissent, qui serrent ou qui penchent : nous les ajustons à votre visage, quel que soit l'endroit où vous les avez achetées.</p></div>
+      <div class="card"><i class="dot c-blue"></i><h3>Nettoyage aux ultrasons</h3><p>{TEXTE_ULTRASONS}</p></div>
+      <div class="card"><i class="dot c-orange"></i><h3>Réparation</h3><p>Une branche cassée, une vis perdue, une plaquette à changer : nous réparons dans la mesure du possible. Soudures sur les montures métalliques (hors titane et plastique injecté).</p></div>
     </div>
   </div>
 </section>
@@ -913,9 +944,10 @@ def reparation(p):
   <div class="wrap two-col" style="align-items:start">
     <div>
       <h2>Pourquoi faire régler ses lunettes ?</h2>
-      <p>Des lunettes qui glissent, qui serrent ou qui penchent se règlent. Une monture ajustée à votre visage est plus
-      confortable à porter au quotidien. Les enfants grandissent et les montures bougent : un réglage régulier est utile.
-      Voir aussi <a href="{p}lunettes-enfants/">Lunettes enfants</a>.</p>
+      <p>Des lunettes qui glissent, qui serrent ou qui penchent se règlent. Des lunettes bien réglées, ce sont aussi des verres
+      bien placés devant vos yeux : vous voyez mieux et vous êtes plus à l'aise. Évitez de redresser vous-même vos lunettes :
+      vous risquez de les casser ou d'abîmer les verres. Nous le faisons avec le matériel adapté. Les enfants grandissent et les
+      montures bougent : un réglage régulier est utile. Plus d'informations : <a href="{p}lunettes-enfants/">Lunettes enfants</a>.</p>
       <h2 style="margin-top:2rem">Réparer plutôt que remplacer</h2>
       <p>Quand c'est possible, nous préférons réparer votre monture plutôt que de la remplacer, et changer seulement les verres
       si elle est en bon état. Nous collectons aussi les montures dont vous n'avez plus l'usage : le Lions Club les trie et leur offre une seconde vie.</p>
@@ -923,8 +955,8 @@ def reparation(p):
     <div class="callout coral">
       <h3>Prix et délais</h3>
       <p>Une petite réparation est gratuite. Pour une réparation plus
-      importante, le coût dépend de ce qui est cassé : nous vous l'indiquons avant de commencer. Les lunettes encore sous
-      garantie sont réparées sans frais, dans les conditions de la garantie. Si la réparation est possible tout de suite,
+      importante, le prix dépend de ce qui est cassé : nous vous l'annonçons avant de commencer. Les lunettes encore couvertes par la
+      garantie sont réparées sans frais, selon ses conditions. Si la réparation est possible tout de suite,
       nous la faisons pendant votre visite ; sinon, le délai dépend de la réception de la pièce.</p>
       <h3>L'entretien au quotidien</h3>
       <p>Sprays, lingettes et microfibres pour l'entretien de vos lunettes sont disponibles en magasin. Pour les lentilles,
@@ -1011,8 +1043,8 @@ def histoire(p):
   <div class="wrap two-col" style="align-items:start">
     <div class="prose">
       <h2>Tout a commencé à Bias, en 2012</h2>
-      <p>En 2012, Julien ouvre son magasin à Bias, alors Optical Discount, et travaille quelques années au sein d'un réseau
-      de franchise. Mais ce qu'il aime dans son métier, c'est choisir : ses marques, les qualités qu'il propose, ce qu'il a
+      <p>En 2012, Julien ouvre son magasin à Bias<span class="todo">, d'abord sous l'enseigne Claro, puis Optical Discount, au sein du réseau
+      de franchise Afflelou</span>. Mais ce qu'il aime dans son métier, c'est choisir : ses marques, les qualités qu'il propose, ce qu'il a
       vraiment envie de conseiller. Il décide de retrouver sa liberté, et Lunettes &amp; Co est né de ce choix. Depuis, beaucoup
       de clients nous sont restés fidèles. Le 31 juillet 2025, un deuxième magasin ouvre au Passage, près d'Agen.</p>
       <h2>Des montures choisies avec soin</h2>
@@ -1023,19 +1055,19 @@ def histoire(p):
     </div>
     <div class="prose">
       <h2>Loumy, une histoire d'amitié</h2>
-      <p>Dominique, l'un des meilleurs amis de Julien depuis ses études d'opticien, et sa femme Aurore Basso créent des
-      lunettes dans leur atelier de Montauban. Des montures originales, artisanales, que l'on peut personnaliser : couleurs,
+      <p>Julien et Domy se connaissent depuis leurs études d'opticien. Aujourd'hui, Domy et sa femme Aurore conçoivent et fabriquent
+      les montures Loumy dans leur atelier de Montauban. Des montures originales, artisanales, que l'on peut personnaliser : couleurs,
       effets de matière, branches. Chaque année, de nouvelles collections arrivent, et Loumy a été nommée au Silmo d'Or 2026
-      pour son savoir-faire. Il allait de soi qu'elle ait sa place chez nous. La personnalisation est possible dans nos deux
-      magasins.</p>
+      pour son savoir-faire. Leurs montures originales et artisanales ont naturellement leur place dans nos deux magasins.
+      La personnalisation est possible dans nos deux magasins.</p>
       <h2>Le savoir-faire français, en plus du reste</h2>
       <p>Loumy n'est pas seule : nous proposons une large sélection de montures fabriquées en France, pour valoriser ce
       savoir-faire : Victoire d'Aqui, Bondet, Marlone, Lafont Enfant, et Matttew, une marque belge fabriquée en France.
       L'origine de chaque monture est indiquée sur la page <a href="{p}marques/">Nos marques</a>. Côté verres, nous travaillons
-      notamment avec Mega Optic, verrier français titulaire du label Origine France Garantie, et avec Optovision, verrier allemand.</p>
-      <h2>Deux magasins, deux caractères</h2>
-      <p><strong>Bias</strong> : installé depuis 2012, le magasin connaît bien ses clients, et ils le lui rendent bien. Julien,
-      Anne et Francesca y accueillent chaque jour une clientèle fidèle.</p>
+      notamment avec Mega Optic, verrier français titulaire du label Origine France Garantie.</p>
+      <h2>Bias et Le Passage</h2>
+      <p><strong>Bias</strong> : à Bias, nous vous accueillons depuis 2012. Autour de la table ronde, Julien, Anne et Francesca
+      vous aident à choisir parmi un large choix de montures.</p>
       <p><strong>Le Passage</strong> : notre magasin le plus récent, ouvert en juillet 2025. Un cocon chaleureux, avec un grand
       choix de montures pour tous les goûts et tous les budgets.</p>
     </div>
@@ -1052,8 +1084,8 @@ def histoire(p):
 <section class="bg-cream2">
   <div class="wrap grid grid-3">
     <div class="card"><i class="dot c-green"></i><h3>Une démarche éco-responsable, à notre échelle</h3><p>Nous agissons à notre échelle : quasiment pas de plastique dans nos magasins, des sacs et des étuis en kraft. Si votre monture est en bon état, nous changeons seulement les verres. Et nous collectons les montures dont vous n'avez plus l'usage : le Lions Club les trie et leur offre une seconde vie.</p></div>
-    <div class="card"><i class="dot c-orange"></i><h3>Pourquoi « Lunettes &amp; Co » ?</h3><p>Un nom simple. « Lunettes », c'est notre métier. « &amp; Co », parce que nous ne faisons pas ce métier seuls. Le « Co » reprend d'abord les premières lettres du nom de famille de Julien. Ce sont aussi les copains, comme Dominique et Aurore, les collections, les collaborations et les clients comblés.</p></div>
-    <div class="card"><i class="dot c-blue"></i><h3>Julien, une autre passion : le tir sportif</h3><p>Julien pratique le tir sportif depuis l'enfance, en compétition, au pistolet à 10 et 25 mètres. Plusieurs fois qualifié aux championnats de France, il a été à de nombreuses reprises champion départemental et régional. Une pratique qui l'aide à conseiller les tireurs sur leurs lunettes. <a href="{p}lunettes-de-sport/">Lunettes de sport</a></p></div>
+    <div class="card"><i class="dot c-orange"></i><h3>Pourquoi « Lunettes &amp; Co » ?</h3><p>Un nom simple. « Lunettes », c'est notre métier. « &amp; Co », parce que nous ne faisons pas ce métier seuls. Le « Co » reprend d'abord les premières lettres du nom de famille de Julien. Ce sont aussi les copains, comme Domy et Aurore, les collections, les collaborations et les clients comblés.</p></div>
+    <div class="card"><i class="dot c-blue"></i><h3>Julien, une autre passion : le tir sportif</h3><p>Julien tire en compétition depuis son enfance, au pistolet à 10 et 25 mètres. Plusieurs fois champion départemental et régional, il s'est aussi qualifié de nombreuses fois pour les championnats de France. Une pratique qui l'aide à conseiller les tireurs sur leurs lunettes. <a href="{p}lunettes-de-sport/">Lunettes de sport</a></p></div>
   </div>
 </section>
 
@@ -1086,10 +1118,7 @@ def contact(p):
   </div>
 </div>""")
     cfaq = [
-        ("Quelle est la différence entre le rendez-vous téléconsultation et le rendez-vous en magasin ?",
-         "La téléconsultation permet de consulter un ophtalmologue en visioconférence depuis le magasin, sur rendez-vous "
-         "(Doctolib). Le rendez-vous en magasin sert aux lunettes, aux lentilles, aux réglages et réparations (réservation "
-         "en ligne)."),
+        FAQ_RDV_TELE,
         FAQ_RDV,
         ("Que dois-je apporter ?",
          "Pour un conseil lunettes : votre ordonnance et vos lunettes actuelles. Pour la téléconsultation : votre carte Vitale, "
@@ -1113,7 +1142,6 @@ def contact(p):
     <div class="grid grid-2">
       <div class="callout blue"><h3>Téléconsultation d'ophtalmologie</h3>
         <p>Voir un ophtalmologue en visioconférence depuis le magasin, sur rendez-vous. Dès 16 ans.</p>
-        <p class="notice"><strong>Ce n'est pas un service d'urgence : en cas d'urgence, contactez le SAMU au 15.</strong></p>
         <p class="partner"><img src="{p}assets/img/doctolib.svg" alt="Doctolib" width="110" height="26"><span>Téléconsultation, rendez-vous :</span>
   <a href="{PASSAGE['doctolib']}" target="_blank" rel="noopener">Le Passage</a>
   <a href="{BIAS['doctolib']}" target="_blank" rel="noopener">Bias</a></p>
@@ -1151,21 +1179,17 @@ FAQ_GROUPS = [
          "les clients d'Agen, de Villeneuve-sur-Lot et des communes voisines."),
         ("Êtes-vous une enseigne nationale ?", "Non, nous sommes un opticien indépendant, avec deux magasins en Lot-et-Garonne."),
         FAQ_RDV,
-        ("Quelle est la différence entre le rendez-vous téléconsultation et le rendez-vous en magasin ?",
-         "La téléconsultation permet de consulter un ophtalmologue en visioconférence depuis le magasin, sur rendez-vous (Doctolib). "
-         "Le rendez-vous en magasin sert aux lunettes, aux lentilles, aux réglages et réparations."),
+        FAQ_RDV_TELE,
         ("Que dois-je apporter ?",
          "Pour un conseil lunettes : votre ordonnance et vos lunettes actuelles. Pour la téléconsultation : votre carte Vitale, "
          "votre carte bancaire, vos lunettes actuelles, votre dernière ordonnance."),
-        ("Où se garer ?", "Au Passage, il y a des places devant le magasin et le grand parking du Lidl dans la zone commerciale. À Bias, le parking du centre commercial Auchan est gratuit, et le magasin est accessible par l'entrée du centre commercial."),
+        ("Où se garer ?", f"{FAQ_PARKING_PASSAGE} {FAQ_PARKING_BIAS}"),
         ("Le magasin de Bias s'appelait-il autrement ?", "Oui. Le magasin de Bias, ouvert en 2012, s'appelait Optical Discount. Il est aujourd'hui un opticien indépendant : Lunettes &amp; Co."),
     ]),
     ("Prix, 100% Santé et paiement", [
         ("Qu'est-ce que le 100% Santé en optique ?", CENT_POUR_CENT),
         ("Proposez-vous le 100% Santé ?", "Oui, dans chaque magasin, pour toute la famille."),
-        ("Puis-je mélanger une monture 100% Santé et des verres à prix libres ?",
-         "Oui, il est possible d'associer une monture d'une gamme et des verres de l'autre. En revanche, il n'est pas possible de prendre "
-         "des verres de deux gammes différentes."),
+        FAQ_MIX,
         ("Quel budget prévoir pour des lunettes de vue ?",
          "Cela dépend de votre correction, de la monture et des verres choisis, et de votre couverture. Nous vous remettons un devis "
          "gratuit en magasin, avec l'offre 100% Santé et l'offre à tarifs libres. Montures à partir de 100 euros (hors 100% Santé) ; "
@@ -1184,7 +1208,7 @@ FAQ_GROUPS = [
         ("Est-ce un service d'urgence ?", "Non. En cas d'urgence, contactez le SAMU au 15."),
         ("La téléconsultation remplace-t-elle un rendez-vous chez l'ophtalmologue ?",
          "Non, c'est un service complémentaire. Si vous pouvez obtenir un rendez-vous avec un ophtalmologue, c'est la première option. La téléconsultation s'adresse aux personnes qui ont des difficultés à obtenir un rendez-vous avec un ophtalmologue."),
-        ("Puis-je acheter mes lunettes chez vous après ?", "Oui, notre équipe peut vous conseiller en magasin si vous le souhaitez."),
+        ("Puis-je acheter mes lunettes chez vous après ?", "Oui, bien sûr. Avec votre ordonnance, notre équipe vous conseille et vous aide à choisir vos lunettes en magasin."),
         ("Qui peut faire une téléconsultation d'ophtalmologie ?",
          "Les personnes de 16 ans et plus, sur rendez-vous. Pour un enfant, consultez un ophtalmologue."),
         ("Proposez-vous la téléconsultation pour renouveler mes lentilles ?",
@@ -1196,14 +1220,11 @@ FAQ_GROUPS = [
          "Une monture aux lignes arrondies adoucit un visage plutôt anguleux, et une monture aux lignes plus marquées structure un visage plutôt rond. Elle ne doit pas dépasser la largeur du visage, et vos sourcils restent visibles au-dessus. La forme du visage n'est qu'un critère, avec la carnation, la correction, votre style et votre confort : le mieux est de les essayer, notre équipe vous guide."),
         FAQ_VERRES,
         ("Peut-on avoir des lunettes de soleil à sa vue ?",
-         "Oui. Choisissez votre monture et nous vous conseillons sur les verres et les teintes. Apportez votre ordonnance en cours de validité."),
+         "Oui. Choisissez votre monture et nous vous conseillons sur les verres et les teintes. Pour des verres solaires à votre vue, apportez votre ordonnance en cours de validité."),
         ("Faut-il amener mon enfant pour choisir ses lunettes ?",
          "Oui, c'est le plus important. Selon son âge et la forme de son visage, il faut voir que la monture est bien adaptée et "
          "qu'elle couvre bien ses yeux. Il peut aussi choisir sa monture : une monture qu'il aime, il la porte plus volontiers."),
         ("Proposez-vous des lunettes de sport à ma vue ?", "Oui : montures et verres adaptés à la pratique sportive, avec votre correction."),
-        ("Quelle différence entre un clip solaire et un clip pour la conduite de nuit ?",
-         "Le clip solaire (teinte de catégorie 3, polarisant) se porte de jour et ne se porte pas la nuit. Le clip pour la conduite "
-         "de nuit, à teinte jaune, s'utilise la nuit ou en lumière faible. L'effet varie selon les personnes : testez-les avec votre opticien."),
         ("Que veut dire « personnaliser » une monture ?",
          "Avec Loumy, vous pouvez choisir les couleurs, les effets de matière et les branches d'une monture existante. "
          "Votre opticien vous conseille en magasin."),
@@ -1213,12 +1234,10 @@ FAQ_GROUPS = [
         ("Vendez-vous des produits d'entretien pour lentilles ?", "Oui, avec conseil en magasin."),
     ]),
     ("Réglages et réparations", [
-        ("Pouvez-vous régler mes lunettes ?", "Oui, y compris pour des lunettes achetées ailleurs, dans la mesure du possible."),
-        ("Mes lunettes sont cassées, pouvez-vous les réparer ?",
-         "Cela dépend de la casse : passez nous voir, nous regardons ensemble si la monture est réparable."),
-        ("Combien coûte une réparation ?",
-         "Une petite réparation est gratuite. Pour une réparation plus importante, le coût dépend "
-         "de ce qui est cassé, et les lunettes encore sous garantie sont réparées sans frais, dans les conditions de la garantie."),
+        FAQ_REGLAGE,
+        FAQ_CASSE,
+        FAQ_ULTRASONS,
+        FAQ_PRIX_REPARATION,
     ]),
 ]
 FAQ_ALL = [qa for _, items in FAQ_GROUPS for qa in items]
@@ -1343,7 +1362,7 @@ PAGES = [
      "description": "Lunettes de vue près d'Agen et de Villeneuve-sur-Lot : montures dès 100 euros (hors 100% Santé), verres progressifs, conseil d'un opticien indépendant.",
      "body": lunettes_vue},
     {"slug": "lunettes-de-soleil/", "title": "Lunettes de soleil, à votre vue ou non | Lunettes & Co",
-     "description": "Lunettes de soleil au Passage et à Bias : Ray-Ban, Ki ET LA, Lancel, verres polarisants, solaires à la vue et clips pour la conduite.",
+     "description": "Lunettes de soleil au Passage et à Bias : Ray-Ban, Ki ET LA, Lancel, verres polarisants, solaires à la vue et lunettes à clips.",
      "body": lunettes_soleil},
     {"slug": "lunettes-enfants/", "title": "Lunettes enfants, pour tous les âges | Lunettes & Co",
      "description": "Lunettes pour enfants au Passage et à Bias : essayage avec votre enfant, montures dès 80 euros (hors 100% Santé), 100% Santé.",
@@ -1354,6 +1373,9 @@ PAGES = [
     {"slug": "lunettes-de-sport/", "title": "Lunettes de sport à la vue, tir sportif | Lunettes & Co",
      "description": "Lunettes de sport à votre vue au Passage et à Bias : piscine, vélo, running, et tir sportif avec Julien, tireur de compétition. Opticien indépendant.",
      "body": sport},
+    {"slug": "lunettes-de-conduite/", "title": "Lunettes de conduite de nuit | Lunettes & Co",
+     "description": "Antireflet, teinte jaune légère, clip : nos conseils pour conduire de nuit, au Passage et à Bias. Conseil personnalisé en magasin.",
+     "body": conduite, "faq_ld": CONDUITE_FAQ},
     {"slug": "lunettes-personnalisees/", "title": "Lunettes personnalisées avec Loumy | Lunettes & Co",
      "description": "Personnalisez votre monture Loumy, lunetier de Montauban : couleurs, matières, branches. Au Passage et à Bias, avec le conseil de votre opticien.",
      "body": sur_mesure},
