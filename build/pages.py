@@ -1032,7 +1032,7 @@ def marques(p):
 # ---------------------------------------------------------------- Notre histoire
 def histoire(p):
     intro = """<p class="lead"><strong>Un opticien indépendant, un conseil personnalisé, un budget adapté à chacun.</strong>
-    Voici comment Lunettes &amp; Co est né à Bias en 2012, et ce qui guide aujourd'hui nos deux magasins.</p>"""
+    C'est ainsi que nous exerçons notre métier, depuis l'ouverture de notre premier magasin à Bias, en 2012, jusqu'à celui du Passage, en 2025.</p>"""
     buttons = f"""<div class="btn-row"><a class="btn btn-ghost" href="{p}{PASSAGE['page']}">Le Passage</a>
     <a class="btn btn-ghost" href="{p}{BIAS['page']}">Bias</a></div>"""
     return f"""
@@ -1043,32 +1043,20 @@ def histoire(p):
   <div class="wrap two-col" style="align-items:start">
     <div class="prose">
       <h2>Tout a commencé à Bias, en 2012</h2>
-      <p>En 2012, Julien ouvre son magasin à Bias, au sein d'un réseau de franchise. Mais ce qu'il aime dans son métier, c'est choisir : ses marques, les qualités qu'il propose, ce qu'il a
-      vraiment envie de conseiller. Il décide de retrouver sa liberté, et Lunettes &amp; Co est né de ce choix. Depuis, beaucoup
-      de clients nous sont restés fidèles. Le 31 juillet 2025, un deuxième magasin ouvre au Passage, près d'Agen.</p>
+      <p>Julien ouvre son magasin à Bias en 2012, sous franchise, au sein du groupe Afflelou. Ce qu'il aime dans son métier, c'est choisir ses marques, les qualités qu'il propose et ce qu'il a vraiment envie de conseiller. Il veut retrouver sa liberté. En 2024, son magasin devient indépendant et prend le nom de Lunettes &amp; Co. Le 31 juillet 2025, un deuxième magasin ouvre au Passage, près d'Agen.</p>
       <h2>Des montures choisies avec soin</h2>
-      <p>Chaque monture a sa place chez nous parce qu'elle plaît, qu'elle se porte bien et qu'elle dure. Nous les choisissons
-      selon vos goûts, vos envies et ce que nos clients nous racontent depuis plus de 15 ans. Des créateurs aux marques plus
-      accessibles, en passant par des griffes comme Lancel ou Azzaro : chez nous, lunettes ne rime pas avec cher. Il y a une
-      paire pour chaque budget, et personne n'a peur de pousser la porte.</p>
+      <p>Nous choisissons nos montures selon vos goûts, vos envies et ce que nos clients nous racontent depuis des années. Vous trouverez des créateurs, des marques plus accessibles et des griffes comme Lancel ou Azzaro. Chez nous, lunettes ne rime pas avec cher. Il y a une paire pour chaque budget, et personne n'a peur de pousser la porte.</p>
     </div>
     <div class="prose">
       <h2>Loumy, une histoire d'amitié</h2>
-      <p>Julien et Domy se connaissent depuis leurs études d'opticien. Aujourd'hui, Domy et sa femme Aurore conçoivent et fabriquent
-      les montures Loumy dans leur atelier de Montauban. Des montures originales, artisanales, que l'on peut personnaliser : couleurs,
-      effets de matière, branches. Chaque année, de nouvelles collections arrivent, et Loumy a été nommée au Silmo d'Or 2026
-      pour son savoir-faire. Leurs montures originales et artisanales ont naturellement leur place dans nos deux magasins.
-      La personnalisation est possible dans nos deux magasins.</p>
-      <h2>Le savoir-faire français, en plus du reste</h2>
-      <p>Loumy n'est pas seule : nous proposons une large sélection de montures fabriquées en France, pour valoriser ce
-      savoir-faire : Victoire d'Aqui, Bondet, Marlone, Lafont Enfant, et Matttew, une marque belge fabriquée en France.
-      L'origine de chaque monture est indiquée sur la page <a href="{p}marques/">Nos marques</a>. Côté verres, nous travaillons
-      notamment avec Mega Optic, verrier français titulaire du label Origine France Garantie.</p>
+      <p>Julien et Domy se connaissent depuis leurs études d'opticien. Aujourd'hui, Domy et sa femme Aurore conçoivent et fabriquent les montures Loumy dans leur atelier de Montauban. Ces montures sont originales, artisanales, et vous pouvez les personnaliser : couleurs, effets de matière, branches. De nouvelles collections arrivent chaque année, et Loumy a été nommée au Silmo d'Or 2026 pour son savoir-faire. Vous les trouvez dans nos deux magasins, où la personnalisation est possible.</p>
+      <h2>Des montures fabriquées en France</h2>
+      <p>Loumy n'est pas la seule. Nous proposons une large sélection de montures françaises, comme Victoire d'Aqui, Bondet, Marlone et Lafont Enfant, ainsi que Matttew, une marque belge fabriquée en France. L'origine de chaque monture est indiquée sur la page <a href="{p}marques/">Nos marques</a>. Côté verres, nous travaillons notamment avec Mega Optic, verrier français titulaire du label Origine France Garantie.</p>
       <h2>Bias et Le Passage</h2>
-      <p><strong>Bias</strong> : à Bias, nous vous accueillons depuis 2012. Autour de la table ronde, Julien, Anne et Francesca
-      vous aident à choisir parmi un large choix de montures.</p>
-      <p><strong>Le Passage</strong> : notre magasin le plus récent, ouvert en juillet 2025. Un cocon chaleureux, avec un grand
-      choix de montures pour tous les goûts et tous les budgets.</p>
+      <h3>Bias</h3>
+      <p>Nous vous accueillons à Bias depuis 2012. Autour de la table ronde, Julien, Anne et Francesca vous aident à choisir parmi un large choix de montures.</p>
+      <h3>Le Passage</h3>
+      <p>Notre magasin le plus récent a ouvert en juillet 2025. C'est un cocon chaleureux, avec un grand choix de montures pour tous les goûts et tous les budgets.</p>
     </div>
   </div>
 </section>
@@ -1082,7 +1070,7 @@ def histoire(p):
 
 <section class="bg-cream2">
   <div class="wrap grid grid-3">
-    <div class="card"><i class="dot c-green"></i><h3>Une démarche éco-responsable, à notre échelle</h3><p>Nous agissons à notre échelle : quasiment pas de plastique dans nos magasins, des sacs et des étuis en kraft. Si votre monture est en bon état, nous changeons seulement les verres. Et nous collectons les montures dont vous n'avez plus l'usage : le Lions Club les trie et leur offre une seconde vie.</p></div>
+    <div class="card"><i class="dot c-green"></i><h3>Une démarche éco-responsable, à notre échelle</h3><p>Nos magasins n'utilisent quasiment pas de plastique, et nos sacs et nos étuis sont en kraft. Si votre monture est en bon état, nous changeons seulement les verres. Nous collectons aussi les montures dont vous n'avez plus l'usage. Le Lions Club les trie et leur offre une seconde vie.</p></div>
     <div class="card"><i class="dot c-orange"></i><h3>Pourquoi « Lunettes &amp; Co » ?</h3><p>Un nom simple. « Lunettes », c'est notre métier. « &amp; Co », parce que nous ne faisons pas ce métier seuls. Le « Co » reprend d'abord les premières lettres du nom de famille de Julien. Ce sont aussi les copains, comme Domy et Aurore, les collections, les collaborations et les clients comblés.</p></div>
     <div class="card"><i class="dot c-blue"></i><h3>Julien, une autre passion : le tir sportif</h3><p>Julien tire en compétition depuis son enfance, au pistolet à 10 et 25 mètres. Plusieurs fois champion départemental et régional, il s'est aussi qualifié de nombreuses fois pour les championnats de France. Une pratique qui l'aide à conseiller les tireurs sur leurs lunettes. <a href="{p}lunettes-de-sport/">Lunettes de sport</a></p></div>
   </div>
