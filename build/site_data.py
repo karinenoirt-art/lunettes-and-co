@@ -107,8 +107,8 @@ BIAS = {
         ("Dimanche", "Fermé"),
     ],
     "parking": "Parking du centre commercial Auchan",
-    # Validé par Karine le 03/11/2026. A VÉRIFIER avant mise en ligne : nom exact de l'arrêt devant Auchan et ligne (Élios, bus-elios.fr, 05 53 40 23 30).
-    "bus": "Prenez la ligne L1 du réseau Élios et descendez à l'arrêt <span class=\"todo\">Ponservat</span>.",
+    # Ligne L1 (Élios) et arrêt Ponservat : validés par Karine le 03/11/2026.
+    "bus": "Prenez la ligne L1 du réseau Élios et descendez à l'arrêt Ponservat.",
 }
 
 STORES = [PASSAGE, BIAS]
@@ -188,7 +188,7 @@ BRANDS = [
      "Des montures légères en titane, d'une élégance discrète, dont des modèles sans cercle.",
      "https://shop.mpg-eyewear.com/ruud-van-dyke-8", "both", ["vue"], False),
     ("Osmose Clip", "fr", "",
-     "Des montures avec deux clips aimantés : un solaire polarisant, et un jaune pour la conduite de nuit.",
+     "Des montures avec deux clips aimantés : un solaire polarisant et, sur certains modèles, un clip jaune pour la conduite de nuit.",
      "https://www.octika.com/content/9-presentation-marque-osmose", "both", ["vue"], False),
     ("Ki ET LA", "fr", "Certains modèles fabriqués en France",
      "Créée en 2010 par trois amis d'enfance : des lunettes de soleil incassables pour les enfants, jusqu'à 12 ans.",

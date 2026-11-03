@@ -1043,8 +1043,7 @@ def histoire(p):
   <div class="wrap two-col" style="align-items:start">
     <div class="prose">
       <h2>Tout a commencé à Bias, en 2012</h2>
-      <p>En 2012, Julien ouvre son magasin à Bias<span class="todo">, d'abord sous l'enseigne Claro, puis Optical Discount, au sein du réseau
-      de franchise Afflelou</span>. Mais ce qu'il aime dans son métier, c'est choisir : ses marques, les qualités qu'il propose, ce qu'il a
+      <p>En 2012, Julien ouvre son magasin à Bias, au sein d'un réseau de franchise. Mais ce qu'il aime dans son métier, c'est choisir : ses marques, les qualités qu'il propose, ce qu'il a
       vraiment envie de conseiller. Il décide de retrouver sa liberté, et Lunettes &amp; Co est né de ce choix. Depuis, beaucoup
       de clients nous sont restés fidèles. Le 31 juillet 2025, un deuxième magasin ouvre au Passage, près d'Agen.</p>
       <h2>Des montures choisies avec soin</h2>
