@@ -18,6 +18,15 @@ User-agent: omgili
 User-agent: Timpibot
 Disallow: /
 
-# Ébauche non indexée : bloc à retirer à la mise en ligne publique (DRAFT = False).
-User-agent: *
-Disallow: /
+# Moteurs de recherche et assistants IA : autorisés (pour pouvoir être cité dans les réponses)
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+Sitemap: https://www.lunettesandco.fr/sitemap.xml

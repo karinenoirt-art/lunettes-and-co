@@ -17,7 +17,7 @@ from pages import PAGES
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Tant que le site est une ébauche, il n'est pas indexé par les moteurs de recherche.
-DRAFT = True
+DRAFT = False
 
 # Image de partage (Open Graph) : 1200×630, motifs de la charte + logo.
 OG_IMAGE_DEFAULT = "partage-1200x630.jpg"
