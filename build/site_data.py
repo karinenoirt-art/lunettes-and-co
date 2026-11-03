@@ -49,7 +49,7 @@ PASSAGE = {
         ("passage-galerie-1.jpg", "Vue d'ensemble du magasin du Passage, suspensions orange et fauteuils"),
         ("passage-galerie-2.jpg", "Étagères de montures sur mur bleu, au magasin du Passage"),
         ("passage-galerie-3.jpg", "Table de conseil sous les suspensions orange, au magasin du Passage"),
-        ("passage-galerie-4.jpg", "Fauteuils et présentoirs de montures, au magasin du Passage"),
+        ("passage-galerie-4.jpg", "Étagères en bois et montures de soleil devant le mur en terrazzo, au magasin du Passage"),
     ],
     "image": "passage-magasin.jpg",
     "image_alt": "Intérieur du magasin Lunettes & Co au Passage, près d'Agen",
@@ -90,10 +90,10 @@ BIAS = {
         ("Très très professionnel. Accueil très chaleureux avec des conseils personnalisés. Suivi de votre dossier avec le plus grand soin jusqu'à ce que vous ayez vos lunettes sur le nez . Je recommande et j'y retournerai", "Marine T.", "avril 2024"),
         ("Accueil chaleureux , Jimmy et Anne sont très pro et trouveront toujours une solution adaptée.", "Idrelythïa", "décembre 2025"),
     ],
-    "gallery": [  # photos provisoires : Karine fournit de nouvelles photos de Bias
-        ("bias-galerie-1.jpg", "Table de conseil au magasin de Bias"),
-        ("bias-galerie-2.jpg", "L'espace de vente du magasin de Bias"),
-        ("bias-galerie-3.jpg", "Présentoirs de montures au magasin de Bias"),
+    "gallery": [  # photos de Bias du 03/11/2026, retouchées avec build/retouche_bias.py
+        ("bias-galerie-1.jpg", "Mur de lunettes de soleil au magasin de Bias"),
+        ("bias-galerie-2.jpg", "Présentoir de montures de vue et miroir au magasin de Bias"),
+        ("bias-galerie-3.jpg", "Montures de vue Vicomte A en gros plan sur un présentoir, au magasin de Bias"),
     ],
     "image": "bias-magasin.jpg",
     "image_alt": "Intérieur du magasin Lunettes & Co à Bias, galerie Auchan Ponservat",

@@ -106,7 +106,7 @@ def home(p):
       </div>
       <p><a href="{p}teleconsultation-ophtalmologie/">Comment ça se passe ? →</a></p>
     </div>
-    <img src="{p}assets/img/examen-de-vue.jpg" alt="Salle d'examen de vue équipée, au magasin du Passage" loading="lazy" width="1600" height="1200">
+    <img src="{p}assets/img/examen-de-vue.jpg" alt="Appareil d'examen de vue (réfracteur) dans une salle d'examen, en magasin" loading="lazy" width="1600" height="1200">
   </div>
 </section>
 
@@ -230,7 +230,7 @@ def store_page(store):
         <li>Paiement en plusieurs fois, jusqu'à 4 fois.</li>"""
             around = """Nous accueillons les clients du Passage, d'Agen, de Boé, Bon-Encontre, Brax, Colayrac-Saint-Cirq, Estillac,
             Foulayronnes, Pont-du-Casse et Roquefort. Repères : zone commerciale de Lacassagne, à proximité d'Action et de Basic-Fit."""
-            img2 = ("passage-mur-montures.jpg", "Mur de montures au magasin du Passage")
+            img2 = ("passage-gros-plan-loumy.jpg", "Gros plan d'une monture Loumy sur un socle, devant le mur en terrazzo du magasin du Passage")
             faqs = [("Faut-il prendre rendez-vous au Passage ?",
                      "Vous pouvez passer sans rendez-vous, mais pour un examen de vue, mieux vaut réserver : il demande du temps. "
                      "Avec un rendez-vous, vous êtes pris en charge dès votre arrivée."),
@@ -364,7 +364,7 @@ def teleconsultation(p):
     ]
     return f"""
 {page_hero(p, "Service en magasin, sur rendez-vous", "Téléconsultation d'ophtalmologie augmentée, au Passage et à Bias",
-           intro, "examen-de-vue.jpg", "Salle d'examen de vue équipée, au magasin du Passage", buttons, ("c-blue", "c-coral"))}
+           intro, "examen-de-vue.jpg", "Appareil d'examen de vue (réfracteur) dans une salle d'examen, en magasin", buttons, ("c-blue", "c-coral"))}
 
 <section class="bg-white">
   <div class="wrap two-col">
@@ -494,7 +494,7 @@ def lunettes_vue(p):
       <p>Traitement anti-reflet, verres qui s'éclaircissent et foncent selon la lumière (photochromiques), verres avec filtre
       anti-lumière bleue, qui filtrent une partie de la lumière émise par les écrans (ordinateur, téléphone, tablette), verres antifatigue.</p>
     </div>
-    <img src="{p}assets/img/vue-rouge.jpg" alt="Monture de vue rouge oversize posée sur une étagère en bois" loading="lazy" width="1600" height="1200">
+    <img src="{p}assets/img/vue-rouge.jpg" alt="Étagères en bois et montures de vue Chroma by Etnia Barcelona, au magasin du Passage" loading="lazy" width="1600" height="1200">
   </div>
 </section>
 
