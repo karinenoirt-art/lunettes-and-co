@@ -131,7 +131,7 @@ def home(p):
       <p>Julien ouvre son magasin à Bias en 2012. Il choisit ensuite de retrouver sa liberté : celle de choisir ses marques et ses montures. Un deuxième magasin ouvre au Passage en 2025, avec, parmi nos marques, des amis lunetiers à Montauban : Loumy.</p>
       <a class="btn btn-ghost" href="{p}notre-histoire/">Découvrir notre histoire</a>
     </div>
-    <img src="{p}assets/img/equipe.jpg" alt="L'équipe Lunettes & Co au magasin du Passage" loading="lazy" width="1600" height="1200">
+    <img src="{p}assets/img/passage-accueil.jpg" alt="L'accueil du magasin du Passage, mur orange et comptoir en terrazzo" loading="lazy" width="1600" height="1200">
   </div>
 </section>
 
@@ -494,7 +494,7 @@ def lunettes_vue(p):
       <p>Traitement anti-reflet, verres qui s'éclaircissent et foncent selon la lumière (photochromiques), verres avec filtre
       anti-lumière bleue, qui filtrent une partie de la lumière émise par les écrans (ordinateur, téléphone, tablette), verres antifatigue.</p>
     </div>
-    <img src="{p}assets/img/vue-rouge.jpg" alt="Étagères en bois et montures de vue Chroma by Etnia Barcelona, au magasin du Passage" loading="lazy" width="1600" height="1200">
+    <img src="{p}assets/img/vue-rouge.jpg" alt="Étagères en bois avec des montures de vue rouge et verte Chroma by Etnia Barcelona, au magasin du Passage" loading="lazy" width="1600" height="1200">
   </div>
 </section>
 
@@ -1037,7 +1037,7 @@ def histoire(p):
     <a class="btn btn-ghost" href="{p}{BIAS['page']}">Bias</a></div>"""
     return f"""
 {page_hero(p, "Notre histoire", "Lunettes &amp; Co, des opticiens indépendants à Bias et au Passage", intro,
-           "equipe.jpg", "L'équipe Lunettes & Co au magasin du Passage", buttons, ("c-orange", "c-green"))}
+           "passage-accueil.jpg", "L'accueil du magasin du Passage, mur orange et comptoir en terrazzo", buttons, ("c-orange", "c-green"))}
 
 <section class="bg-white">
   <div class="wrap two-col" style="align-items:start">
