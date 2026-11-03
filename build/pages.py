@@ -1301,7 +1301,7 @@ def confidentialite(p):
     return """
 <section class="page-hero"><div class="wrap prose">
   <h1>Politique de confidentialité</h1>
-  <p>Dernière mise à jour : 28 octobre 2026.</p>
+  <p>Dernière mise à jour : 4 novembre 2026.</p>
   <h2>Qui est responsable de vos données ?</h2>
   <p>Julien Communal, éditeur du site (coordonnées dans les <a href="/mentions-legales/">mentions légales</a>).
   Contact : <a href="mailto:bias@lunettesandco.fr">bias@lunettesandco.fr</a>.</p>
@@ -1313,12 +1313,12 @@ def confidentialite(p):
     <li>des statistiques de fréquentation anonymisées, si vous acceptez les cookies de mesure d'audience (voir ci-dessous).</li>
   </ul>
   <h2>Cookies et mesure d'audience</h2>
-  <p>Un cookie est un petit fichier enregistré sur votre appareil. Nous utilisons Google Analytics pour comprendre
+  <p>Un cookie est un petit fichier enregistré sur votre appareil. Nous utilisons Google Analytics et Metricool pour comprendre
   comment le site est consulté (pages vues, durée, type d'appareil) et l'améliorer. Ces cookies ne sont déposés
   qu'avec votre accord. Vous pouvez le donner, le refuser ou le retirer à tout moment : avec le bandeau
   qui s'affiche lors de votre première visite, puis avec le lien « Gérer mes cookies » en bas de chaque page.
   Refuser n'empêche pas de consulter le site. Votre choix est conservé 6 mois. Les cookies de mesure d'audience
-  sont conservés 13 mois au maximum. Les données peuvent être traitées par Google, y compris hors de l'Union européenne.</p>
+  sont conservés 13 mois au maximum. Les données sont traitées par Google, y compris hors de l'Union européenne, et par Metricool, qui édite l'outil de mesure.</p>
   <h2>Services tiers</h2>
   <p>Les boutons de rendez-vous et les cartes ouvrent Doctolib, Opticiens par Conviction et Google Maps, qui traitent vos
   données selon leurs propres politiques de confidentialité.

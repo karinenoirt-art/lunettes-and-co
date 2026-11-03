@@ -101,8 +101,9 @@
     document.documentElement.classList.add("reveal-on");
   }
 
-  // Cookies : Google Analytics n'est chargé qu'après accord. Le choix est gardé 6 mois, puis redemandé.
+  // Cookies : Google Analytics et Metricool ne sont chargés qu'après accord. Le choix est gardé 6 mois, puis redemandé.
   var gaId = document.body.getAttribute("data-ga");
+  var mcHash = document.body.getAttribute("data-metricool");
   var banner = document.getElementById("cookies");
   if (gaId && banner) {
     var KEY = "lc-consent";
@@ -119,7 +120,16 @@
     function saveChoice(v) {
       try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) {}
     }
+    function loadMetricool() {
+      if (!mcHash || window.beTracker || window.__mcLoading) return;
+      window.__mcLoading = true;
+      var m = document.createElement("script");
+      m.src = "https://tracker.metricool.com/resources/be.js";
+      m.onload = function () { if (window.beTracker) window.beTracker.t({ hash: mcHash }); };
+      document.head.appendChild(m);
+    }
     function loadAnalytics() {
+      loadMetricool();
       if (window.gtag) return;
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
@@ -152,7 +162,7 @@
       if (v === "accept") { loadAnalytics(); return; }
       window["ga-disable-" + gaId] = true; // coupe Analytics avant d'effacer ses cookies
       removeAnalyticsCookies();
-      if (window.gtag) location.reload();
+      if (window.gtag || window.__mcLoading) location.reload();
     });
     document.querySelectorAll("[data-cookie-settings]").forEach(function (el) {
       el.addEventListener("click", function (e) { e.preventDefault(); showBanner(); });

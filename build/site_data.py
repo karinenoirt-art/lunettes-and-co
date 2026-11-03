@@ -9,6 +9,8 @@ DOMAIN = "https://www.lunettesandco.fr"  # adresse principale (DNS chez OVH)
 
 # Google Analytics 4 : identifiant de mesure (« G-XXXXXXXXXX »). Tant qu'il est vide, ni Analytics ni bandeau cookies.
 GA_ID = "G-JGCQHGMNHW"
+# Metricool (mesure d'audience du site, marque « Site Lunettes & Co »), chargé après consentement comme Google Analytics
+METRICOOL_HASH = "b6a98d5028dc3d184b8a70d4ab3c03de"
 
 DOCTOLIB_PASSAGE = (
     "https://www.doctolib.fr/magasin-d-optique/le-passage/lunettes-co-teleconsultation-ophtalmologique"

@@ -11,7 +11,7 @@ import os
 import re
 from datetime import date
 
-from site_data import (BIAS, BRANDS, DOMAIN, GA_ID, PASSAGE, PRODUCTS, SITE_NAME, STORES)
+from site_data import (BIAS, BRANDS, DOMAIN, GA_ID, METRICOOL_HASH, PASSAGE, PRODUCTS, SITE_NAME, STORES)
 from pages import PAGES
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -124,7 +124,7 @@ def cookie_banner(p):
     return f"""
 <div class="cookie-banner" id="cookies" role="dialog" aria-labelledby="cookies-title" aria-describedby="cookies-text" hidden>
   <p class="cookie-title" id="cookies-title">Cookies</p>
-  <p id="cookies-text">Avec votre accord, nous utilisons des cookies de mesure d'audience (Google Analytics) pour savoir
+  <p id="cookies-text">Avec votre accord, nous utilisons des cookies de mesure d'audience (Google Analytics et Metricool) pour savoir
   comment le site est consulté et l'améliorer. Vous pouvez changer d'avis à tout moment.
   <a href="{p}confidentialite/">En savoir plus</a></p>
   <div class="cookie-actions">
@@ -322,7 +322,7 @@ def render(page):
 <link rel="stylesheet" href="{p}assets/style.css?v={asset_version("style.css")}">
 {ld}
 </head>
-<body{f' data-ga="{GA_ID}"' if GA_ID else ""}>
+<body{f' data-ga="{GA_ID}"' if GA_ID else ""}{f' data-metricool="{METRICOOL_HASH}"' if METRICOOL_HASH else ""}>
 {header(p, slug)}
 <main id="contenu">
 {body}
