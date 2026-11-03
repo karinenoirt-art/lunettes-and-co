@@ -48,7 +48,7 @@ PASSAGE = {
     "gallery": [
         ("passage-galerie-1.jpg", "Vue d'ensemble du magasin du Passage, suspensions orange et fauteuils"),
         ("passage-galerie-2.jpg", "Étagères de montures sur mur bleu, au magasin du Passage"),
-        ("passage-galerie-3.jpg", "Table de conseil sous les suspensions orange, au magasin du Passage"),
+        ("passage-galerie-3.jpg", "Grand meuble en bois avec ses étagères de montures, au magasin du Passage"),
         ("passage-galerie-4.jpg", "Étagères en bois et montures de soleil devant le mur en terrazzo, au magasin du Passage"),
     ],
     "image": "passage-magasin.jpg",
