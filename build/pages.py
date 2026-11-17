@@ -116,7 +116,7 @@ def home(p):
     <div>
       <span class="kicker">Nos marques</span>
       <h2>Des créateurs, des marques accessibles, des montures fabriquées en France</h2>
-      <p>Loumy, lunetier de Montauban, Bondet, Victoire d'Aqui, Marlone, Lafont Enfant, et aussi Tavat, Brett, Tiwi,
+      <p>Loumy, créateur de lunettes de Montauban, Bondet, Victoire d'Aqui, Marlone, Lafont Enfant, et aussi Tavat, Brett, Tiwi,
       Etnia Barcelona, Lancel, Ray-Ban et bien d'autres.</p>
       <a class="btn btn-ghost" href="{p}marques/">Voir toutes nos marques</a>
     </div>
@@ -128,7 +128,7 @@ def home(p):
     <div>
       <span class="kicker">Notre histoire</span>
       <h2>Julien, opticien indépendant depuis 2012</h2>
-      <p>Julien ouvre son magasin à Bias en 2012. Il choisit ensuite de retrouver sa liberté : celle de choisir ses marques et ses montures. Un deuxième magasin ouvre au Passage en 2025, avec, parmi nos marques, des amis lunetiers à Montauban : Loumy.</p>
+      <p>Julien ouvre son magasin à Bias en 2012. Il choisit ensuite de retrouver sa liberté : celle de choisir ses marques et ses montures. Un deuxième magasin ouvre au Passage en 2025, avec, parmi nos marques, des amis créateurs de lunettes à Montauban : Loumy.</p>
       <a class="btn btn-ghost" href="{p}notre-histoire/">Découvrir notre histoire</a>
     </div>
     <img src="{p}assets/img/passage-tiwi-etageres.jpg" alt="Étagères en bois et montures Tiwi devant un mur bleu, avec l'affiche de la marque, au magasin du Passage" loading="lazy" width="1600" height="1200">
