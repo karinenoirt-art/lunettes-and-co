@@ -193,7 +193,9 @@ def store_page(store):
         <li>Téléconsultation d'ophtalmologie augmentée en magasin, <a href="{p}teleconsultation-ophtalmologie/">sur rendez-vous</a>.</li>
         <li>Facilités de paiement : jusqu'à 4 fois.</li>"""
             extra_service = "<li>Magasin partenaire du réseau de soins Carte Blanche.</li>"
-            around = """Nous accueillons les clients de Villeneuve-sur-Lot, Sainte-Livrade-sur-Lot, Pujols, Lédat, Casseneuil, Allez-et-Cazeneuve et des communes voisines."""
+            around = """Depuis le centre de Villeneuve-sur-Lot, le magasin est à 7 minutes en voiture, par l'avenue Jacques Bordeneuve. Comptez
+            une petite dizaine de minutes depuis Pujols ou Casseneuil, un peu plus de dix depuis Sainte-Livrade-sur-Lot par l'avenue de
+            Bordeaux, et une douzaine depuis Allez-et-Cazeneuve ou Le Lédat."""
             img2 = ("bias-accueil.jpg", "L'accueil du magasin Lunettes & Co à Bias, mur vert et logo")
             faqs = [("Peut-on venir sans rendez-vous à Bias ?",
                      "Oui, mais nous conseillons de réserver pour un examen de vue, qui demande du temps. Un rendez-vous vous évite d'attendre."),
@@ -201,6 +203,10 @@ def store_page(store):
                      "Oui. Le magasin de Bias propose la téléconsultation d'ophtalmologie augmentée, sur rendez-vous, pour les personnes de 16 ans et plus."),
                     ("Proposez-vous le 100% Santé ?", "Oui, le magasin de Bias le propose aussi, pour tous les âges."),
                     ("Y a-t-il un parking ?", "Oui. Vous pouvez vous garer sur le parking du centre commercial Auchan. Des places PMR sont disponibles."),
+                    ("Le magasin est-il loin du centre de Villeneuve-sur-Lot ?",
+                     "Non. Le magasin est à Bias, dans la galerie du centre commercial Auchan Ponservat, à 7 minutes en voiture du centre de Villeneuve-sur-Lot."),
+                    ("Je viens de Sainte-Livrade-sur-Lot ou de Casseneuil : est-ce loin ?",
+                     "Non. Depuis Casseneuil, comptez une petite dizaine de minutes en voiture. Depuis Sainte-Livrade-sur-Lot, un peu plus de dix minutes par l'avenue de Bordeaux."),
                     ("Comment venir au magasin en bus ?", BIAS["bus"]),
                     ("Le magasin s'appelait-il autrement ?", "Oui. Le magasin de Bias, ouvert en 2012, s'appelait Optical Discount. Il est aujourd'hui un opticien indépendant : Lunettes &amp; Co.")]
         else:
@@ -228,8 +234,10 @@ def store_page(store):
         <li><a href="{p}reparation-ajustement-lunettes/">Réparation et ajustage</a> de vos lunettes.</li>
         <li><a href="{p}teleconsultation-ophtalmologie/">Téléconsultation d'ophtalmologie augmentée</a> en magasin, sur rendez-vous.</li>
         <li>Paiement en plusieurs fois, jusqu'à 4 fois.</li>"""
-            around = """Nous accueillons les clients du Passage, d'Agen, de Boé, Bon-Encontre, Brax, Colayrac-Saint-Cirq, Estillac,
-            Foulayronnes, Pont-du-Casse et Roquefort. Repères : zone commerciale de Lacassagne, à proximité d'Action et de Basic-Fit."""
+            around = """Depuis le centre d'Agen, comptez une dizaine de minutes en voiture par le boulevard de la Liberté. Le trajet est de même
+            durée depuis Estillac, Roquefort, Brax ou Colayrac-Saint-Cirq, d'un petit quart d'heure depuis Boé, Bon-Encontre ou
+            Foulayronnes, et d'une vingtaine de minutes depuis Pont-du-Casse. Repères : zone commerciale de Lacassagne, à proximité
+            d'Action et de Basic-Fit."""
             img2 = ("passage-gros-plan-loumy.jpg", "Gros plan d'une monture Loumy sur un socle, devant le mur en terrazzo du magasin du Passage")
             faqs = [("Faut-il prendre rendez-vous au Passage ?",
                      "Vous pouvez passer sans rendez-vous, mais pour un examen de vue, mieux vaut réserver : il demande du temps. "
@@ -237,6 +245,10 @@ def store_page(store):
                     ("Peut-on faire une téléconsultation d'ophtalmologie au Passage ?",
                      "Oui. Au Passage, un service de téléconsultation d'ophtalmologie augmentée est disponible en magasin, sur rendez-vous, à partir de 16 ans."),
                     ("Proposez-vous le 100% Santé ?", "Oui, le magasin du Passage le propose pour toute la famille."),
+                    ("Le magasin est-il facile d'accès depuis Agen ?",
+                     "Oui. Il est au Passage, dans la zone commerciale de Lacassagne, à une dizaine de minutes en voiture du centre d'Agen."),
+                    ("Je viens de Boé, de Bon-Encontre ou de Foulayronnes : est-ce loin ?",
+                     "Non. Comptez un petit quart d'heure en voiture depuis ces trois communes, et une dizaine de minutes depuis Estillac, Roquefort, Brax ou Colayrac-Saint-Cirq."),
                     ("Où se garer près du magasin ?", FAQ_PARKING_PASSAGE),
                     ("Comment venir au magasin en bus ?", "Prenez la ligne 7 du réseau Tempo et descendez à l'arrêt Demi-Lune : le magasin est à 2 minutes à pied.")]
 

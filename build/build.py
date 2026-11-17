@@ -200,12 +200,13 @@ def optician(s):
         "image": f"{DOMAIN}/assets/img/{s['image']}",
         "geo": {"@type": "GeoCoordinates", "latitude": s["geo"][0], "longitude": s["geo"][1]},
         "openingHoursSpecification": opening_hours(s),
-        "sameAs": [s["reviews"]],
+        "sameAs": [s["reviews"], s["maps"]],
+        "areaServed": [{"@type": "City", "name": c} for c in s["areas"]],
         "parentOrganization": {"@id": f"{DOMAIN}/#organisation"},
     }
     if s["phone_intl"]:
         d["telephone"] = s["phone_intl"]
-    # Ni areaServed, ni priceRange : en attente de la validation de Karine (brief SEO, A2).
+    # Pas de priceRange : information commerciale non validée par Karine.
     return d
 
 

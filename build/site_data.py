@@ -54,6 +54,8 @@ PASSAGE = {
         ("passage-galerie-4.jpg", "Étagères en bois et montures de soleil devant le mur en terrazzo, au magasin du Passage"),
     ],
     "image": "passage-magasin.jpg",
+    # communes déjà citées (et validées) dans le texte de la page, reprises dans le JSON-LD
+    "areas": ["Le Passage", "Agen", "Boé", "Bon-Encontre", "Brax", "Colayrac-Saint-Cirq", "Estillac", "Foulayronnes", "Pont-du-Casse", "Roquefort"],
     "image_alt": "Intérieur du magasin Lunettes & Co au Passage, près d'Agen",
     "hours": [
         ("Lundi", "Fermé"),
@@ -98,6 +100,8 @@ BIAS = {
         ("bias-galerie-3.jpg", "Montures de vue Vicomte A en gros plan sur un présentoir, au magasin de Bias"),
     ],
     "image": "bias-magasin.jpg",
+    # communes déjà citées (et validées) dans le texte de la page, reprises dans le JSON-LD
+    "areas": ["Bias", "Villeneuve-sur-Lot", "Sainte-Livrade-sur-Lot", "Pujols", "Le Lédat", "Casseneuil", "Allez-et-Cazeneuve"],
     "image_alt": "Intérieur du magasin Lunettes & Co à Bias, galerie Auchan Ponservat",
     "hours": [
         ("Lundi", "Fermé"),
