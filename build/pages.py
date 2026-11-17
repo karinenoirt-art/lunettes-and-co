@@ -196,7 +196,7 @@ def store_page(store):
             around = """Depuis le centre de Villeneuve-sur-Lot, le magasin est à 7 minutes en voiture, par l'avenue Jacques Bordeneuve. Comptez
             une petite dizaine de minutes depuis Pujols ou Casseneuil, un peu plus de dix depuis Sainte-Livrade-sur-Lot par l'avenue de
             Bordeaux, et une douzaine depuis Allez-et-Cazeneuve ou Le Lédat."""
-            img2 = ("bias-accueil.jpg", "L'accueil du magasin Lunettes & Co à Bias, mur vert et logo")
+            img2 = ("bias-accueil.jpg", "Le comptoir d'accueil du magasin de Bias, devant le papier peint vert créé sur mesure, orné du logo Lunettes &amp; Co")
             faqs = [("Peut-on venir sans rendez-vous à Bias ?",
                      "Oui, mais nous conseillons de réserver pour un examen de vue, qui demande du temps. Un rendez-vous vous évite d'attendre."),
                     ("Peut-on faire une téléconsultation d'ophtalmologie à Bias ?",
@@ -1075,8 +1075,8 @@ def histoire(p):
 
 <section>
   <div class="wrap grid grid-2">
-    <img src="{p}assets/img/bias-accueil.jpg" alt="Le magasin de Bias, mur vert et logo Lunettes & Co" loading="lazy" style="border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover" width="1600" height="1200">
-    <img src="{p}assets/img/passage-salon.jpg" alt="Le magasin du Passage, fauteuils et montures" loading="lazy" style="border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover" width="1600" height="1200">
+    <img src="{p}assets/img/bias-accueil.jpg" alt="Le comptoir d'accueil du magasin de Bias, devant le papier peint vert créé sur mesure, orné du logo Lunettes &amp; Co" loading="lazy" style="border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover" width="1600" height="1200">
+    <img src="{p}assets/img/passage-salon.jpg" alt="Le coin salon du magasin du Passage, fauteuils et présentoirs de montures" loading="lazy" style="border-radius:var(--radius);aspect-ratio:4/3;object-fit:cover" width="1600" height="1200">
   </div>
 </section>
 

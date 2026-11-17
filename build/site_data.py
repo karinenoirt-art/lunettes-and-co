@@ -96,7 +96,7 @@ BIAS = {
     ],
     "gallery": [  # photos de Bias du 03/11/2026, retouchées avec build/retouche_bias.py
         ("bias-galerie-1.jpg", "Mur de lunettes de soleil au magasin de Bias"),
-        ("bias-galerie-2.jpg", "Présentoir de montures de vue et miroir au magasin de Bias"),
+        ("bias-galerie-table-ronde.jpg", "Le magasin de Bias vu depuis une table ronde ; au fond, un papier peint vert créé sur mesure, orné du logo Lunettes & Co"),
         ("bias-galerie-3.jpg", "Montures de vue Vicomte A en gros plan sur un présentoir, au magasin de Bias"),
     ],
     "image": "bias-magasin.jpg",
